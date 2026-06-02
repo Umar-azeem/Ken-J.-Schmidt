@@ -40,112 +40,107 @@ export default function Header() {
           >
             Home
           </Link>
-
           {/* Dropdown 1 */}
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-white hover:bg-[#1b4f78] focus:bg-[#1b4f78]">
+                <NavigationMenuTrigger className="bg-transparent text-white hover:bg-[#1b4f78]">
                   About
                 </NavigationMenuTrigger>
 
-                <NavigationMenuContent>
-                  <ul className="grid w-[200px] gap-2 p-4 bg-white text-[#1b4f78]">
+                <NavigationMenuContent className="absolute">
+                  <ul className="w-[220px] p-4 bg-white text-[#1b4f78] rounded-md shadow-md">
                     <li>
-                      <NavigationMenuLink asChild>
-                        <Link href="/men/shirts">Ken J. Schmidt</Link>
-                      </NavigationMenuLink>
+                      <Link href="/men/shirts">Ken J. Schmidt</Link>
                     </li>
-
                     <li>
-                      <NavigationMenuLink asChild>
-                        <Link href="/men/jeans"> Mortgagey</Link>
-                      </NavigationMenuLink>
-                    </li>
-
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <Link href="/men/shoes">Shoes</Link>
-                      </NavigationMenuLink>
+                      <Link href="/men/jeans">Mortgagey</Link>
                     </li>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-
           {/* Dropdown 2 */}
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-white hover:bg-[#1b4f78] focus:bg-[#1b4f78]">
-                  Women
+                <NavigationMenuTrigger className="bg-transparent text-white hover:bg-[#1b4f78]">
+                  Business{" "}
                 </NavigationMenuTrigger>
 
-                <NavigationMenuContent>
-                  <ul className="grid w-[200px] gap-2 p-4 bg-white text-[#1b4f78]">
+                <NavigationMenuContent className="absolute">
+                  <ul className="w-[220px] p-4 bg-white text-[#1b4f78] rounded-md shadow-md">
                     <li>
-                      <NavigationMenuLink asChild>
-                        <Link href="/women/dresses">Dresses</Link>
-                      </NavigationMenuLink>
+                      <Link href="/men/shirts">Investments</Link>
                     </li>
-
                     <li>
-                      <NavigationMenuLink asChild>
-                        <Link href="/women/bags">Bags</Link>
-                      </NavigationMenuLink>
-                    </li>
-
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <Link href="/women/heels">Heels</Link>
-                      </NavigationMenuLink>
+                      <Link href="/men/jeans">Insurance</Link>
                     </li>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-
           {/* Dropdown 3 */}
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-white hover:bg-[#1b4f78] focus:bg-[#1b4f78]">
-                  Electronics
+                <NavigationMenuTrigger className="bg-transparent text-white hover:bg-[#1b4f78]">
+                  Private Bank
                 </NavigationMenuTrigger>
 
-                <NavigationMenuContent>
-                  <ul className="grid w-[200px] gap-2 p-4 bg-white text-[#1b4f78] ">
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <Link href="/electronics/mobile">Mobile</Link>
-                      </NavigationMenuLink>
+                <NavigationMenuContent className="absolute">
+                  <ul className="w-[220px] p-4 bg-white text-[#1b4f78] rounded-md shadow-md">
+                    <li className="text-[#1b4f78]">
+                      <Link href="/men/shirts">Open an Account</Link>
                     </li>
-
                     <li>
-                      <NavigationMenuLink asChild>
-                        <Link href="/electronics/laptop">Laptop</Link>
-                      </NavigationMenuLink>
+                      <Link href="/men/jeans">Banking</Link>
                     </li>
-
                     <li>
-                      <NavigationMenuLink asChild>
-                        <Link href="/electronics/watch">Smart Watch</Link>
-                      </NavigationMenuLink>
+                      <Link href="/men/shoes">Borrowing</Link>
                     </li>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-transparent text-white hover:bg-[#1b4f78]">
+                  communication
+                </NavigationMenuTrigger>
 
+                <NavigationMenuContent className="absolute">
+                  <ul className="w-[220px] p-4 bg-[#1b4f78] text-white rounded-md shadow-md">
+                    <li>
+                      <Link href="/men/shirts">Online Services</Link>
+                    </li>
+                    <li>
+                      <Link href="/men/jeans">Learn</Link>
+                    </li>
+                    <li>
+                      <Link href="/men/shoes">Online Services</Link>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          <Link
+            href="/contact"
+            className="hover:bg-[#1b4f78] px-3 py-2 rounded-md transition"
+          >
+            Security
+          </Link>
           <Link
             href="/contact"
             className="hover:bg-[#1b4f78] px-3 py-2 rounded-md transition"
           >
             Contact
-          </Link>
+          </Link>{" "}
         </div>
         {/* Mobile Button */}
         <Button
@@ -167,37 +162,47 @@ export default function Header() {
 
           <details className="group">
             <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-              Men
+              About
             </summary>
 
             <div className="ml-4 mt-2 flex flex-col gap-2">
-              <Link href="/men/shirts">Shirts</Link>
-              <Link href="/men/jeans">Jeans</Link>
-              <Link href="/men/shoes">Shoes</Link>
+              <Link href="/men/shirts">Ken J. Schmidt</Link>
+              <Link href="/men/jeans">Mortgagey</Link>
             </div>
           </details>
 
           <details className="group">
             <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-              Women
+              Business
             </summary>
 
             <div className="ml-4 mt-2 flex flex-col gap-2">
-              <Link href="/women/dresses">Dresses</Link>
-              <Link href="/women/bags">Bags</Link>
+              <Link href="/women/dresses">Investments</Link>
+              <Link href="/women/bags">Insurance </Link>
               <Link href="/women/heels">Heels</Link>
             </div>
           </details>
 
           <details className="group">
             <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-              Electronics
+              Private Bank
             </summary>
 
             <div className="ml-4 mt-2 flex flex-col gap-2">
-              <Link href="/electronics/mobile">Mobile</Link>
-              <Link href="/electronics/laptop">Laptop</Link>
-              <Link href="/electronics/watch">Smart Watch</Link>
+              <Link href="/electronics/mobile">Open an Account</Link>
+              <Link href="/electronics/laptop">Banking</Link>
+              <Link href="/electronics/watch">Borrowing</Link>
+            </div>
+          </details>
+          <details className="group">
+            <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
+              communication
+            </summary>
+
+            <div className="ml-4 mt-2 flex flex-col gap-2">
+              <Link href="/electronics/mobile">Online Services</Link>
+              <Link href="/electronics/laptop">Learn</Link>
+              <Link href="/electronics/watch">Online Services</Link>
             </div>
           </details>
 
