@@ -123,3 +123,18 @@
     @apply bg-background text-foreground;
   }
 }
+/* app/globals.css or styles/globals.css */
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+}
+
+.animate-scroll {
+  animation: scroll 1.5s ease-in-out infinite;
+}
