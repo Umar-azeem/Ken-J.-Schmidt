@@ -5,75 +5,212 @@ import { Button } from "@/components/ui/button";
 
 export default function MeetMarkCohen() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-[#000D1E] via-[#000A19] to-[#000D1E] py-20 md:py-28">
-      {/* Background blur effects */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#236193] rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#236193] rounded-full blur-3xl"></div>
+   <section
+             ref={heroRef}
+             className="relative overflow-hidden min-h-[600px] md:min-h-[700px]"
+           >
+             {/* Background Image */}
+             <div className="absolute inset-0 z-0">
+               <Image
+                 src="/img/ken-j.png"
+                 alt="Mortgage Broker Background"
+                 fill
+                 className="object-cover"
+                 priority
+               />
+               {/* Gradient Overlay for better text visibility */}
+               <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+             </div>
+   
+             {/* Animated content */}
+             <div
+               ref={contentRef}
+               className="relative z-10 max-w-screen mx-auto px-4 py-10 md:py-16 lg:py-24 sm:px-6 lg:px-8 transition-transform duration-100 ease-out"
+             >
+               <div className="max-w-4xl mx-auto text-center">
+                 {/* Location Badge */}
+                 <div className="flex items-center justify-center gap-2 mb-4">
+                   <MapPin className="w-5 h-5 text-[#236193]" />
+                   <span className="text-[#236193] font-semibold tracking-wide">
+                     Welcome to Your Trusted Advisor
+                   </span>
+                 </div>
+   
+                 {/* Title */}
+                 <h1 className="w-full text-5xl md:text-6xl lg:text-7xl font-extralight text-white leading-tight mb-6">
+                   MORTGAGE BROKER
+                 </h1>
+   
+                 {/* Description */}
+                 <p className="text-lg md:text-xl text-slate-200 leading-relaxed mb-8 max-w-3xl mx-auto">
+                   Ken J. Schmidt and the team at Cohen Financial Group have been
+                   financing residential and commercial throughout Greater Illinois
+                   from our Beverly Hills office for over 25 years plus of
+                   experience.
+                 </p>
+   
+                 {/* Features List */}
+                 <div className="space-y-3 text-slate-200 mb-8 max-w-md mx-auto">
+                   <div className="flex items-center justify-center gap-3">
+                     <CheckCircle2 className="w-5 h-5 text-[#236193] flex-shrink-0" />
+                     <span>Over 25 Years of Experience</span>
+                   </div>
+                   <div className="flex items-center justify-center gap-3">
+                     <CheckCircle2 className="w-5 h-5 text-[#236193] flex-shrink-0" />
+                     <span>Residential & Commercial Financing</span>
+                   </div>
+                 </div>
+   
+                 {/* CTA Buttons */}
+                 <div className="flex flex-wrap gap-4 justify-center">
+                   <Button className="border-1 border-x-4 bg-transparent border-white hover:bg-[#1a4a70] text-white hover: px-10 py-7 text-lg rounded-none">
+                     APPLY FOR A LOAN
+                   </Button>
+                 </div>
+               </div>
+             </div>
+   
+             {/* Scroll indicator */}
+             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+               <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                 <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-scroll"></div>
+               </div>
+             </div>
+           </section>
+
+
+
+  );
+}
+
+
+
+
+
+
+'use client';
+
+import React, { useRef, useEffect } from 'react';
+import Image from 'next/image';
+import { MapPin, CheckCircle2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+export default function HeroSection() {
+  const heroRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    // Parallax effect on scroll
+    const handleScroll = () => {
+      if (heroRef.current && contentRef.current) {
+        const scrolled = window.scrollY;
+        const content = contentRef.current as HTMLElement;
+        content.style.transform = `translateY(${scrolled * 0.4}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <section
+      ref={heroRef}
+      className="relative overflow-hidden min-h-[600px] md:min-h-[700px] lg:min-h-[800px]"
+    >
+      {/* Background Image with Mobile Optimization */}
+      <div className="absolute inset-0 z-0">
+        {/* Mobile-specific image positioning */}
+        <div className="relative w-full h-full">
+          <Image
+            src="/img/ken-j.png"
+            alt="Mortgage Broker Background"
+            fill
+            className="object-cover md:object-cover"
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            style={{
+              objectPosition: 'center 30%', // Adjusts focus point on mobile
+            }}
+          />
+        </div>
+        
+        {/* Gradient Overlay - Mobile Optimized */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80 md:bg-gradient-to-r md:from-black/80 md:via-black/50 md:to-transparent"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
-          <div className="space-y-6">
-            {/* Tagline */}
-            <p className="text-[#236193] font-semibold tracking-wide text-lg">
-              DECADES OF EXPERTISE.
-              <br />
-              ONE ADVOCATE WORKING FOR YOU.
-            </p>
+      {/* Animated content - Mobile First Design */}
+      <div
+        ref={contentRef}
+        className="relative z-10 max-w-screen mx-auto px-4 py-12 sm:px-6 lg:px-8 transition-transform duration-100 ease-out"
+      >
+        <div className="max-w-4xl mx-auto text-center md:text-left md:text-left">
+          
+          {/* Location Badge - Mobile Friendly */}
+          <div className="flex items-center justify-center md:justify-center gap-2 mb-4 md:mb-5">
+            <MapPin className="w-4 h-4 md:w-5 md:h-5 text-[#236193]" />
+            <span className="text-[#236193] font-semibold tracking-wide text-sm md:text-base">
+              Welcome to Your Trusted Advisor
+            </span>
+          </div>
 
-            {/* Title */}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              MEET MARK COHEN
-            </h2>
+          {/* Title - Responsive Font Sizes for Mobile */}
+          <h1 className="w-full text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight text-white leading-tight mb-4 md:mb-6">
+            MORTGAGE<br className="hidden sm:block" /> BROKER
+          </h1>
 
-            {/* Description */}
-            <div className="space-y-4 text-slate-200">
-              <p className="text-lg leading-relaxed">
-                For 15 consecutive years, Mark Cohen has ranked in the top 1% of mortgage brokers nationwide. 
-                In 2026, he was named the #1 Mortgage Broker in the U.S. and the #1 Non-QM Originator by the 
-                Scotsman Guide.
-              </p>
-              <p className="text-lg leading-relaxed">
-                Over his career, Mark has originated more than 31,200 loans totaling over $18 billion in volume, 
-                and remains the only mortgage broker in the U.S. to average $1 billion in annual loan volume 
-                for 11 consecutive years.
-              </p>
-              <p className="text-lg leading-relaxed">
-                Whether you're purchasing your first home, financing a luxury property, or navigating a complex 
-                lending situation, Mark and his team bring an unmatched depth of experience to every transaction.
-              </p>
+          {/* Description - Better readability on mobile */}
+          <p className="text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed mb-6 md:mb-8 max-w-3xl mx-auto md:mx-auto px-2 sm:px-0">
+            Ken J. Schmidt and the team at Cohen Financial Group have been
+            financing residential and commercial throughout Greater Illinois
+            from our Beverly Hills office for over 25 years plus of
+            experience.
+          </p>
+
+          {/* Features List - Stacked on mobile, centered */}
+          <div className="space-y-3 text-slate-200 mb-6 md:mb-8 max-w-md mx-auto md:mx-auto">
+            <div className="flex items-center justify-center md:justify-center gap-3">
+              <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#236193] flex-shrink-0" />
+              <span className="text-sm md:text-base">Over 25 Years of Experience</span>
             </div>
-
-            {/* Buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Button className="bg-[#236193] hover:bg-[#1a4a70] text-white px-8 py-6 text-lg">
-                LEARN MORE ABOUT MARK
-              </Button>
-              <Button 
-                variant="outline" 
-                className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg"
-              >
-                MEET OUR TEAM
-              </Button>
+            <div className="flex items-center justify-center md:justify-center gap-3">
+              <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#236193] flex-shrink-0" />
+              <span className="text-sm md:text-base">Residential & Commercial Financing</span>
             </div>
           </div>
 
-          {/* Right Column - Image */}
-          <div className="relative">
-            <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-2xl">
-              <Image
-                src="/mark-cohen.jpg"
-                alt="Mark Cohen"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-[#236193] rounded-lg opacity-20 blur-xl"></div>
+          {/* CTA Buttons - Full width on mobile */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-center">
+            <Button className="border-2 border-white bg-transparent hover:bg-[#236193] hover:border-[#236193] text-white px-6 sm:px-8 md:px-10 py-5 md:py-7 text-base md:text-lg rounded-none transition-all duration-300 w-full sm:w-auto">
+              APPLY FOR A LOAN
+            </Button>
           </div>
         </div>
       </div>
+
+      {/* Scroll indicator - Hidden on mobile for better UX */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce hidden md:block">
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-scroll"></div>
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(8px);
+            opacity: 0;
+          }
+        }
+        
+        .animate-scroll {
+          animation: scroll 1.5s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 }

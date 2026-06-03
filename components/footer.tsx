@@ -1,33 +1,47 @@
 // components/footer.tsx
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
+import Image from "next/image";
 
 export function Footer() {
   return (
     <footer className="bg-[#236193] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <Link href="/" className="flex items-center gap-2">
+              <Image
+                src="/img/logo.png"
+                alt="Shopique"
+                width={100}
+                height={100}
+                priority
+                className="h-42 w-68 object-contain"
+              />
+            </Link>
+          </div>
           {/* Company Info */}
           <div>
-            <h4 className="font-bold text-lg mb-4">MARK H. COHEN</h4>
+            <h4 className="font-bold text-lg mb-4">Ken J. Schmidt</h4>
             <p className="text-blue-100 text-sm mb-2">Mortgage Broker</p>
             <div className="flex items-start gap-2 text-blue-100 text-sm">
               <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
-              <span>
-                9665 Wilshire Blvd, Suite 260
-                <br />
-                Beverly Hills, CA 90212
-              </span>
+              <span>Coverage Area: Illinois</span>
             </div>
             <div className="mt-3 space-y-1 text-blue-100 text-sm">
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4" />
-                <a
-                  href="tel:+13107775401"
-                  className="hover:text-white transition"
-                >
-                  310.777.5401
-                </a>
+              <div className="flex flex-col gap-2">
+                <div className="flex  gap-2">
+                  <Phone className="w-4 h-4" />
+                  <a className="hover:text-white transition">(630) 479-8545 </a>
+                </div>
+                <div className="flex  gap-2">
+                  <Phone className="w-4 h-4" />
+                  <a className="hover:text-white transition">(630) 479-8545 </a>
+                </div>
+                <div className="flex  gap-2">
+                  <Phone className="w-4 h-4" />
+                  <a className="hover:text-white transition">(630) 479-8545 </a>
+                </div>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
@@ -35,7 +49,7 @@ export function Footer() {
                   href="mailto:cfg@cohenfinancialgroup.com"
                   className="hover:text-white transition"
                 >
-                  cfg@cohenfinancialgroup.com
+                  ken.j.schmidt@huntington.com{" "}
                 </a>
               </div>
             </div>
@@ -51,13 +65,16 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-white transition">
+                <Link
+                  href="/kenSchmidt"
+                  className="hover:text-white transition"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/reviews" className="hover:text-white transition">
-                  Reviews
+                <Link href="/security" className="hover:text-white transition">
+                  Security
                 </Link>
               </li>
               <li>
@@ -69,7 +86,7 @@ export function Footer() {
           </div>
 
           {/* Loan Programs */}
-          <div>
+          {/* <div>
             <h4 className="font-bold mb-4">Loan Programs</h4>
             <ul className="space-y-2 text-blue-100">
               <li>
@@ -121,10 +138,10 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Resources */}
-          <div>
+          {/* <div>
             <h4 className="font-bold mb-4">Resources</h4>
             <ul className="space-y-2 text-blue-100">
               <li>
@@ -160,7 +177,7 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
 
         {/* Map Section */}

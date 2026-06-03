@@ -55,13 +55,13 @@ export default function Header() {
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
-                  <Link href="/about/ken-schmidt" className="cursor-pointer">
+                  <Link href="/kenSchmidt" className="cursor-pointer">
                     Ken J. Schmidt
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/about/mortgagey" className="cursor-pointer">
-                    Mortgagey
+                  <Link href="/mortgage" className="cursor-pointer">
+                    Mortgage
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
@@ -80,12 +80,12 @@ export default function Header() {
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
-                  <Link href="/business/investments" className="cursor-pointer">
+                  <Link href="/investments" className="cursor-pointer">
                     Investments
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/business/insurance" className="cursor-pointer">
+                  <Link href="/insurance" className="cursor-pointer">
                     Insurance
                   </Link>
                 </DropdownMenuItem>
@@ -105,17 +105,17 @@ export default function Header() {
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
-                  <Link href="/private-bank/open-account" className="cursor-pointer">
+                  <Link href="/" className="cursor-pointer">
                     Open an Account
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/private-bank/banking" className="cursor-pointer">
+                  <Link href="/" className="cursor-pointer">
                     Banking
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/private-bank/borrowing" className="cursor-pointer">
+                  <Link href="/" className="cursor-pointer">
                     Borrowing
                   </Link>
                 </DropdownMenuItem>
@@ -135,12 +135,12 @@ export default function Header() {
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
-                  <Link href="/communication/online-services" className="cursor-pointer">
+                  <Link href="/" className="cursor-pointer">
                     Online Services
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/communication/learn" className="cursor-pointer">
+                  <Link href="/" className="cursor-pointer">
                     Learn
                   </Link>
                 </DropdownMenuItem>
@@ -175,80 +175,128 @@ export default function Header() {
       </div>
 
       {/* Mobile Menu */}
-      {open && (
-        <div className="md:hidden bg-[#236193] px-6 pb-4 flex flex-col gap-3">
-          <Link href="/" className="hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-            Home
-          </Link>
+     {open && (
+  <div className="md:hidden bg-[#236193] px-6 pb-4 flex flex-col gap-3">
+    <Link 
+      href="/" 
+      className="hover:bg-[#1b4f78] px-3 py-2 rounded-md"
+      onClick={() => setOpen(false)}
+    >
+      Home
+    </Link>
 
-          <details className="group">
-            <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-              About
-            </summary>
-            <div className="ml-4 mt-2 flex flex-col gap-2">
-              <Link href="/about/ken-schmidt" className="hover:underline px-3 py-1">
-                Ken J. Schmidt
-              </Link>
-              <Link href="/about/mortgagey" className="hover:underline px-3 py-1">
-                Mortgagey
-              </Link>
-            </div>
-          </details>
+    <details className="group">
+      <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
+        About
+      </summary>
+      <div className="ml-4 mt-2 flex flex-col gap-2">
+        <Link 
+          href="/kenSchmidt" 
+          className="hover:underline px-3 py-1"
+          onClick={() => setOpen(false)}
+        >
+          Ken J. Schmidt
+        </Link>
+        <Link 
+          href="/mortgage" 
+          className="hover:underline px-3 py-1"
+          onClick={() => setOpen(false)}
+        >
+          Mortgagey
+        </Link>
+      </div>
+    </details>
 
-          <details className="group">
-            <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-              Business
-            </summary>
-            <div className="ml-4 mt-2 flex flex-col gap-2">
-              <Link href="/business/investments" className="hover:underline px-3 py-1">
-                Investments
-              </Link>
-              <Link href="/business/insurance" className="hover:underline px-3 py-1">
-                Insurance
-              </Link>
-            </div>
-          </details>
+    <details className="group">
+      <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
+        Business
+      </summary>
+      <div className="ml-4 mt-2 flex flex-col gap-2">
+        <Link 
+          href="/investments" 
+          className="hover:underline px-3 py-1"
+          onClick={() => setOpen(false)}
+        >
+          Investments
+        </Link>
+        <Link 
+          href="/insurance" 
+          className="hover:underline px-3 py-1"
+          onClick={() => setOpen(false)}
+        >
+          Insurance
+        </Link>
+      </div>
+    </details>
 
-          <details className="group">
-            <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-              Private Bank
-            </summary>
-            <div className="ml-4 mt-2 flex flex-col gap-2">
-              <Link href="/private-bank/open-account" className="hover:underline px-3 py-1">
-                Open an Account
-              </Link>
-              <Link href="/private-bank/banking" className="hover:underline px-3 py-1">
-                Banking
-              </Link>
-              <Link href="/private-bank/borrowing" className="hover:underline px-3 py-1">
-                Borrowing
-              </Link>
-            </div>
-          </details>
+    <details className="group">
+      <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
+        Private Bank
+      </summary>
+      <div className="ml-4 mt-2 flex flex-col gap-2">
+        <Link 
+          href="/" 
+          className="hover:underline px-3 py-1"
+          onClick={() => setOpen(false)}
+        >
+          Open an Account
+        </Link>
+        <Link 
+          href="/" 
+          className="hover:underline px-3 py-1"
+          onClick={() => setOpen(false)}
+        >
+          Banking
+        </Link>
+        <Link 
+          href="/" 
+          className="hover:underline px-3 py-1"
+          onClick={() => setOpen(false)}
+        >
+          Borrowing
+        </Link>
+      </div>
+    </details>
 
-          <details className="group">
-            <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-              Communication
-            </summary>
-            <div className="ml-4 mt-2 flex flex-col gap-2">
-              <Link href="/communication/online-services" className="hover:underline px-3 py-1">
-                Online Services
-              </Link>
-              <Link href="/communication/learn" className="hover:underline px-3 py-1">
-                Learn
-              </Link>
-            </div>
-          </details>
+    <details className="group">
+      <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
+        Communication
+      </summary>
+      <div className="ml-4 mt-2 flex flex-col gap-2">
+        <Link 
+          href="/" 
+          className="hover:underline px-3 py-1"
+          onClick={() => setOpen(false)}
+        >
+          Online Services
+        </Link>
+        <Link 
+          href="/" 
+          className="hover:underline px-3 py-1"
+          onClick={() => setOpen(false)}
+        >
+          Learn
+        </Link>
+      </div>
+    </details>
 
-          <Link href="/security" className="hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-            Security
-          </Link>
+    <Link 
+      href="/security" 
+      className="hover:bg-[#1b4f78] px-3 py-2 rounded-md"
+      onClick={() => setOpen(false)}
+    >
+      Security
+    </Link>
 
-          <Link href="/contact" className="hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-            Contact
-          </Link>
-        </div>
-      )}
+    <Link 
+      href="/contact" 
+      className="hover:bg-[#1b4f78] px-3 py-2 rounded-md"
+      onClick={() => setOpen(false)}
+    >
+      Contact
+    </Link>
+  </div>
+)}
     </nav>
   );
 }
