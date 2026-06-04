@@ -71,25 +71,21 @@ export default function HomePage() {
                 <div className="bg-white p-4">
                   <div className="space-y-4 text-black">
                     <p className="text-lg font-light leading-relaxed">
-                      Premier mortgage lending professional with 25+ years of
-                      experience and over three quarters of a billion dollars in
-                      funded loans.
+                      Premier mortgage lending professional with more than 20
+                      years of expertise in the home financing industry,
+                      
                     </p>
                     <p className="text-lg font-light leading-relaxed">
-                      I understand that listening to short term and long term
-                      goals is essential in structuring a loan that will help
-                      meet your individual mortgage needs. Whether new to the
-                      process or an old pro, as a knowledgeable professional,
+                     dedicated to building the home loan that meets your
+                      needs.
                       <span className="underline font-normal">
                         I'm here to work with you
                       </span>
                     </p>
                     <p className="text-lg font-light leading-relaxed">
-                      towards a successful and timely loan closing. My team
-                      works with experienced processors, underwriters and
-                      closers to make the financing process a smooth and
-                      pleasurable experience. Welcome to Huntington, we're here
-                      to help!
+                      Whether you are new to the process or an old pro, a
+                      knowledgeable, trustworthy and patient loan officer is an
+                      invaluable resource.
                     </p>
                   </div>
                 </div>
@@ -237,7 +233,9 @@ export default function HomePage() {
               {/* Refinancing */}
               <Card className="p-8 hover:shadow-lg transition border-slate-200">
                 <div className="w-12 h-12 bg-[#236193] rounded-lg flex items-center justify-center mb-6">
-                  <div className="text-white text-xl font-bold"><CloudSync/></div>
+                  <div className="text-white text-xl font-bold">
+                    <CloudSync />
+                  </div>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">
                   borrowing{" "}
