@@ -92,7 +92,7 @@ export default function HomePage() {
 
                 <div className="flex flex-wrap gap-4 pt-4">
                   <Button className="border-1  border-x-4 bg-transparent border-black hover:bg-[#1a4a70] text-black hover:text-white hover: px-10 py-7 text-lg rounded-none">
-                    <Link href="/kenSchmidt">LEARN MORE ABOUT MARK</Link>
+                    <Link href="/kenSchmidt">MORE ABOUT KEN J. SCHMIDT</Link>
                   </Button>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export default function HomePage() {
               <div className="relative">
                 <div className="relative w-full bg-gradient-to-r from-[#000D1E] via-[#000A19] to-[#000D1E]  aspect-square rounded-lg overflow-hidden shadow-2xl">
                   <Image
-                    src="/img/ken.png"
+                    src="/img/kens.png"
                     alt="Mark Cohen"
                     fill
                     className="object-cover"
