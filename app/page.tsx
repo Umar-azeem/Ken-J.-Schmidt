@@ -101,7 +101,7 @@ export default function HomePage() {
                 <div className="relative w-full bg-gradient-to-r from-[#000D1E] via-[#000A19] to-[#000D1E]  aspect-square rounded-lg overflow-hidden shadow-2xl">
                   <Image
                     src="/img/kens.png"
-                    alt="Mark Cohen"
+                    alt="KEN J. SCHMIDT"
                     fill
                     className="object-cover"
                   />

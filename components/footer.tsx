@@ -136,7 +136,7 @@ export function Footer() {
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
                 <a
-                  href="mailto:cfg@cohenfinancialgroup.com"
+                  href="mailto:ken.j.schmidt@huntington.com"
                   className="hover:text-white transition"
                 >
                   ken.j.schmidt@huntington.com{" "}
