@@ -89,39 +89,33 @@ export default function Beverly() {
         {/* Bottom: white bg, centered content */}
         <div className="flex-1 bg-white px-6 py-10 text-center flex flex-col items-center">
           <p className="text-xs font-semibold tracking-[0.2em] uppercase text-slate-700 mb-4">
-            Serving the Greater
-            <br />
-            Los Angeles Area
+            Serving the Greater Chicago, Illinois
           </p>
 
           <h2 className="text-[#236193] text-3xl font-bold tracking-wide uppercase leading-tight mb-6">
             FROM OUR BEVERLY
             <br />
-            HILLS OFFICE
+            Service Area: Illinois
           </h2>
 
           <p className="text-slate-600 text-sm leading-relaxed mb-4 max-w-sm">
-            Through our strategic network of lending partners, we structure
-            mortgage solutions for residential and commercial properties
-            throughout the{" "}
-            <strong className="text-slate-800">greater Los Angeles area</strong>
+            Every home has a story, and your mortgage should support the one
+            you're creating. At Huntington, we don't just offer loans. We offer
+            guidance, built around your goals, your timeline and your life.
+            every stage of homeownership.
+            <strong className="text-slate-800">First-time buyer support Let's get more from money</strong>
             . From first-time buyers to complex and high-value transactions, our
             team helps borrowers find the right financing fit.
           </p>
-
           <p className="text-slate-600 text-sm leading-relaxed mb-4 max-w-sm">
-            Based in Beverly Hills, we bring more than{" "}
-            <strong className="text-slate-800">
-              38 years of industry experience
-            </strong>{" "}
-            and a relationship-driven approach that goes beyond traditional
-            banks.
+            Learn more about our .
+          
           </p>
 
           <p className="text-slate-600 text-sm mb-8 max-w-sm">
             Learn more about working with a{" "}
             <span className="underline font-semibold cursor-pointer text-slate-800">
-              Los Angeles mortgage broker
+               Illinois mortgage broker
             </span>
             .
           </p>
@@ -156,16 +150,11 @@ export default function Beverly() {
           </p>
 
           <p className="text-slate-200 text-sm leading-relaxed mb-4">
-            <strong className="text-white">
-              First-time buyer support
-            </strong>{" "}
+            <strong className="text-white">First-time buyer support</strong>{" "}
             Let's get more from money
           </p>
 
-          <p className="text-slate-200 text-sm mb-8">
-            Learn more about our{" "}
-                        .
-          </p>
+          <p className="text-slate-200 text-sm mb-8">Learn more about our .</p>
 
           <Link href="/mortgage">
             <button className="border border-white text-white text-xs font-bold tracking-widest uppercase px-10 py-4 hover:bg-white hover:text-[#1e3f5c] transition-colors w-full">

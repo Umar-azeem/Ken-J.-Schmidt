@@ -92,7 +92,7 @@ export default function HomePage() {
 
                 <div className="flex flex-wrap gap-4 pt-4">
                   <Button className="border-1  border-x-4 bg-transparent border-black hover:bg-[#1a4a70] text-black hover:text-white hover: px-10 py-7 text-lg rounded-none">
-                    <Link href="/kenSchmidt">MORE ABOUT KEN J. SCHMIDT</Link>
+                    <Link href="/kenSchmidt">MORE ABOUT KEN j.</Link>
                   </Button>
                 </div>
               </div>
@@ -225,8 +225,8 @@ export default function HomePage() {
                   knowledge and support.
                 </p>
                 <a className="text-[#236193] font-semibold flex items-center gap-2 hover:gap-3 transition">
-                  <Link href="/banking">Learn more</Link>{" "}
-                  <ArrowRight className="w-4 h-4" />
+                  {/* <Link href="/banking">Learn more</Link>{" "}
+                  <ArrowRight className="w-4 h-4" /> */}
                 </a>
               </Card>
 
@@ -245,8 +245,8 @@ export default function HomePage() {
                   access home equity.
                 </p>
                 <a className="text-[#236193] font-semibold flex items-center gap-2 hover:gap-3 transition">
-                  <Link href="/security">Learn more</Link>{" "}
-                  <ArrowRight className="w-4 h-4" />
+                  {/* <Link href="/security">Learn more</Link>{" "}
+                  <ArrowRight className="w-4 h-4" /> */}
                 </a>
               </Card>
             </div>

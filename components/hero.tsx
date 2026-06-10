@@ -2,6 +2,7 @@ import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import { CheckCircle2, MapPin } from "lucide-react";
+import Link from "next/link";
 
 function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -80,7 +81,9 @@ function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 justify-center">
               <Button className="border-1 border-x-4 bg-transparent border-white hover:bg-[#1a4a70] text-white hover: px-10 py-7 text-lg rounded-none">
-                APPLY FOR A LOAN
+                <Link href="/contact" className="text-white hover:text-white">
+                  APPLY FOR A LOAN
+                </Link>
               </Button>
             </div>
           </div>
@@ -112,10 +115,10 @@ function Hero() {
             BROKER
           </h1>
           <p className="text-sm text-gray-600 leading-relaxed mb-7">
-           Ken J. Schmidt is a leading mortgage lending expert with over 20
-              years of experience in the home financing industry, committed to
-              delivering tailored loan solutions designed to meet your unique
-              homeownership goals. 
+            Ken J. Schmidt is a leading mortgage lending expert with over 20
+            years of experience in the home financing industry, committed to
+            delivering tailored loan solutions designed to meet your unique
+            homeownership goals.
           </p>
           <button className="w-full border border-[#1a3a5c] text-[#1a3a5c] font-semibold tracking-widest uppercase py-4 text-sm hover:bg-[#1a3a5c] hover:text-white transition-colors">
             APPLY FOR A LOAN
