@@ -104,7 +104,7 @@ export default function ContactPage() {
                     <div className="flex items-start justify-between cursor-pointer">
                       <div className="flex gap-3">
                         <FileText className="w-5 h-5 text-[#236193] mt-1 flex-shrink-0" />
-                        <p className="text-slate-700 font-medium">Where can I find notary services at Huntington?</p>
+                        <p className="text-slate-700 font-medium">Where can I find notary services ken?</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-[#236193] transition" />
                     </div>
@@ -150,7 +150,7 @@ export default function ContactPage() {
                       <div className="flex gap-3">
                         <CreditCard className="w-5 h-5 text-[#236193] mt-1 flex-shrink-0" />
                         <p className="text-slate-700 font-medium">
-                          How do I make a payment to my Huntington Auto Loan, Credit Card, Mortgage, 
+                          How do I make a payment to my ken j. Auto Loan, Credit Card, Mortgage, 
                           Personal Credit Line or Personal Loan?
                         </p>
                       </div>
@@ -208,7 +208,7 @@ export default function ContactPage() {
                   <h4 className="text-lg font-bold text-slate-900 mb-2">CHECKING BASICS</h4>
                   <p className="text-slate-600 text-sm mb-3">How to activate a debit card</p>
                   <p className="text-slate-500 text-sm mb-4">
-                    You just received your new Huntington debit card but before you can start using it, 
+                    You just received your new ken j debit card but before you can start using it, 
                     you need to activate it. Here's how.
                   </p>
                   <Link href="#" className="text-[#236193] font-semibold text-sm hover:underline">
@@ -272,7 +272,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Find a branch</h4>
-                    <p className="text-slate-300 text-sm mb-2">Find your nearest Huntington Bank branch</p>
+                    <p className="text-slate-300 text-sm mb-2">Find your nearest ken j branch</p>
                     <Button variant="outline" className="border-[#236193] text-[#236193] hover:bg-[#236193] hover:text-white mt-2">
                       Branch Locator
                     </Button>

@@ -210,7 +210,7 @@ export default function InsuranceSection() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-slate-700 mb-6">
-                    Your home holds more than your belongings—it holds your life. Huntington offers homeowners insurance 
+                    Your home holds more than your belongings—it holds your life.ken j offers homeowners insurance 
                     that helps protect it from the unexpected, so you can feel confident in what you've built and what's ahead.
                   </p>
                   

@@ -104,7 +104,7 @@ export default function InvestmentSolutions() {
                 </CardHeader>
                 <CardContent className="pt-6">
                   <p className="text-slate-700 mb-6">
-                    Transparent, responsive and objective. A Huntington advisor can help put your future in perspective. 
+                    Transparent, responsive and objective. A Ken J. Schmidt advisor can help put your future in perspective. 
                     And we back it all with a promise—if you're not satisfied with our advisory service, we'll refund your 
                     last 90 days of account fees.
                   </p>
@@ -330,7 +330,7 @@ export default function InvestmentSolutions() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-slate-700 mb-6">
-                    For more than 100 years, Huntington Private Bank® has helped individuals shape their legacy with 
+                    For more than 100 years,ken j  Private Bank® has helped individuals shape their legacy with 
                     thoughtful trust and estate planning. Our specialists bring the experience and care to help you 
                     manage wealth transfer now and for generations to come.
                   </p>
@@ -394,7 +394,7 @@ export default function InvestmentSolutions() {
                   <div>
                     <h3 className="text-lg font-semibold text-slate-900 mb-3">Important Information</h3>
                     <p className="text-slate-700 text-sm mb-4">
-                      Huntington Financial Advisors® (HFA) strives to look out for our clients. We believe it's important 
+                      Ken J. Schmidt Financial Advisors® (HFA) strives to look out for our clients. We believe it's important 
                       for you to have the information you need to make decisions about how to save and invest for the future.
                     </p>
                     <div className="bg-slate-100 p-4 rounded-lg">
@@ -407,14 +407,14 @@ export default function InvestmentSolutions() {
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-slate-900 mb-3">Huntington Financial Services Structure</h3>
+                    <h3 className="text-lg font-semibold text-slate-900 mb-3">Ken J. Schmidt Financial Services Structure</h3>
                     <div className="space-y-3 text-sm text-slate-700">
-                      <p>Huntington offers a full range of wealth management and financial services through dedicated teams:</p>
+                      <p>Ken J. Schmidt offers a full range of wealth management and financial services through dedicated teams:</p>
                       <ul className="list-disc list-inside space-y-1 ml-4">
-                        <li>Banking solutions are provided by The Huntington National Bank</li>
-                        <li>Trust and investment management services are provided by The Huntington National Bank</li>
-                        <li>Investment advisory solutions, securities, and insurance products are provided by Huntington Financial Advisors®</li>
-                        <li>Certain insurance products are offered by Huntington Insurance, Inc.</li>
+                        <li>Banking solutions are provided by The Ken J. Schmidt</li>
+                        <li>Trust and investment management services are provided by The Ken J. Schmidt </li>
+                        <li>Investment advisory solutions, securities, and insurance products are provided by Ken J. Schmidt Financial Advisors®</li>
+                        <li>Certain insurance products are offered by Ken J. Schmidt Insurance, Inc.</li>
                       </ul>
                     </div>
                   </div>
@@ -453,7 +453,7 @@ export default function InvestmentSolutions() {
             <div className="text-center p-6 bg-slate-50 rounded-lg">
               <Building2 className="w-8 h-8 text-[#236193] mx-auto mb-3" />
               <h3 className="font-semibold text-lg mb-2">Visit a Branch</h3>
-              <p className="text-slate-600">Find your nearest Huntington location</p>
+              <p className="text-slate-600">Find your nearest Ken J. Schmidt location</p>
               <Button variant="outline" className="mt-3 border-[#236193] text-[#236193] hover:bg-[#236193] hover:text-white">
                 Find a Branch
               </Button>
@@ -466,11 +466,11 @@ export default function InvestmentSolutions() {
       <section className="py-6 bg-slate-100 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs text-slate-500 text-center">
-            Huntington Financial Advisors® is a federally registered service mark and a trade name under which 
-            The Huntington Investment Company does business as a registered broker-dealer, member FINRA and SIPC, 
+            Ken J. Schmidt Financial Advisors® is a federally registered service mark and a trade name under which 
+            The Ken J. Schmidt Investment Company does business as a registered broker-dealer, member FINRA and SIPC, 
             a registered investment advisor with the U.S. Securities and Exchange Commission (SEC), and a licensed 
-            insurance agency. The Huntington National Bank, The Huntington Investment Company, and Huntington Insurance, Inc., 
-            are wholly-owned subsidiaries of Huntington Bancshares Incorporated.
+            insurance agency. The Ken J. Schmidt, The Ken J. Schmidt Investment Company, and Ken J. Schmidt Insurance, Inc., 
+            are wholly-owned subsidiaries of Ken J. Schmidt Bancshares Incorporated.
           </p>
         </div>
       </section>
