@@ -121,7 +121,9 @@ function Hero() {
             homeownership goals.
           </p>
           <button className="w-full border border-[#1a3a5c] text-[#1a3a5c] font-semibold tracking-widest uppercase py-4 text-sm hover:bg-[#1a3a5c] hover:text-white transition-colors">
-            APPLY FOR A LOAN
+            <Link href="/contact">
+                  APPLY FOR A LOAN
+                </Link> 
           </button>
         </div>
       </section>

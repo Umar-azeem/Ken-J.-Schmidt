@@ -357,7 +357,7 @@ export default function InsuranceSection() {
                 <CardContent>
                   <p className="text-slate-700 mb-6">
                     Your vehicle does more than get you from place to place—it lets you live life on your own terms. 
-                    With Huntington riding alongside, your policy moves with you, every mile of the way.
+                    With riding alongside, your policy moves with you, every mile of the way.
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
@@ -590,12 +590,12 @@ export default function InsuranceSection() {
       <section className="py-6 bg-slate-100 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs text-slate-500 text-center">
-            Insurance products are offered by Huntington Insurance, Inc., a licensed agency and a wholly-owned subsidiary 
-            of Huntington Bancshares Incorporated and underwritten by third party insurance carriers not affiliated with 
-            Huntington Insurance, Inc.
+            Insurance products are offered by ken Insurance, Inc., a licensed agency and a wholly-owned subsidiary 
+            of  Bancshares Incorporated and underwritten by third party insurance carriers not affiliated with 
+            ken Insurance, Inc.
           </p>
           <p className="text-xs text-slate-500 text-center mt-2">
-            Title Insurance products are offered by HBI Title Services, Inc., a subsidiary of Huntington Bancshares Incorporated 
+            Title Insurance products are offered by HBI Title Services, Inc., a subsidiary of ken Bancshares Incorporated 
             and a licensed title agency.
           </p>
         </div>

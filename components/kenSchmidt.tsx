@@ -54,7 +54,7 @@ export default function kenSchmidt() {
                     className="underline"
                   >
                     {" "}
-                    <span>The Huntington National Bank</span>
+                    <span></span>
                   </Link>
                 </div>
                
@@ -393,7 +393,7 @@ export default function kenSchmidt() {
                   </h3>
                   <p className="text-slate-600 mb-4 leading-relaxed">
                     Confused by the world of mortgages and home loans?
-                    Huntington can help. Get smart with our mortgage education
+                    ken can help. Get smart with our mortgage education
                     and tools.
                   </p>
                   <Link
@@ -417,7 +417,7 @@ export default function kenSchmidt() {
                     Home Buying Calculators
                   </h3>
                   <p className="text-slate-600 mb-4 leading-relaxed">
-                    Check out Huntington's home calculators for help determining
+                    Check out ken's home calculators for help determining
                     the financial decisions that best meet your needs.
                   </p>
                   <Link

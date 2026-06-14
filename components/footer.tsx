@@ -288,13 +288,10 @@ export function Footer() {
         {/* Legal and Copyright */}
         <div className="border-t border-blue-400 pt-8 text-center text-blue-100">
           <p className="text-sm mb-2">
-            © The Huntington National Bank is an Equal Housing Lender and Member
-            FDIC. Huntington, Huntington Bank, and the Huntington Brandmark are
-            service marks of Huntington Bancshares Incorporated. © 2026
-            Huntington Bancshares Incorporated..
+           
           </p>
           <p className="text-xs">
-            Lending products are subject to credit application and approval.
+            © Lending products are subject to credit application and approval.
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-4 text-xs">
             <Link href="/privacy" className="hover:text-white transition">
@@ -304,8 +301,7 @@ export function Footer() {
               Terms of Use
             </Link>
             <Link href="/licensing" className="hover:text-white transition">
-              VA loans require a VA certificate of eligibility. Huntington is
-              not acting on behalf of, or at the direction of, the VA, FHA, or
+              VA loans require a VA certificate of eligibility. not acting on behalf of, or at the direction of, the VA, FHA, or
               the Federal Government.
             </Link>
           </div>

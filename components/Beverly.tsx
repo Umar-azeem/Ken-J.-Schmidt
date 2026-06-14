@@ -143,7 +143,7 @@ export default function Beverly() {
 
           <p className="text-slate-200 text-sm leading-relaxed mb-4">
             Every home has a story, and your mortgage should support the one
-            you're creating. At Huntington, we don't just offer loans. We offer
+            you're creating. we don't just offer loans. We offer
             guidance, built around your goals, your timeline and your life.{" "}
             <strong className="text-white">every stage of homeownership</strong>
             .

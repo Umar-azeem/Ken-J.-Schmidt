@@ -56,7 +56,7 @@ export default function LoanComparisonPage() {
             </h2>
             <p className="text-xl text-slate-600 leading-relaxed">
               Every home has a story, and your mortgage should support the one you're creating. 
-              At Huntington, we don't just offer loans. We offer guidance, built around your goals, 
+              At ken, we don't just offer loans. We offer guidance, built around your goals, 
               your timeline and your life.
             </p>
           </div>
@@ -90,7 +90,7 @@ export default function LoanComparisonPage() {
               <div className="w-16 h-16 bg-[#236193]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Smartphone className="w-8 h-8 text-[#236193]" />
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">Get the Huntington Bank mobile app</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">Get the mobile app</h3>
             </div>
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-[#236193]/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -208,7 +208,7 @@ export default function LoanComparisonPage() {
             Let's get more from money
           </h2>
           <p className="text-xl text-slate-300 leading-relaxed mb-8">
-            At Huntington, we believe money is a craft. Mortgages are no exception. We're not just here to help you buy a house. 
+             we believe money is a craft. Mortgages are no exception. We're not just here to help you buy a house. 
             We're here to help you build a life with tools, guidance, and people who care. From your first payment to your last, 
             we're with you. Because when your mortgage fits your life, you can focus on what matters most.
           </p>
@@ -350,7 +350,7 @@ export default function LoanComparisonPage() {
       <section className="py-8 bg-slate-100 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs text-slate-500 text-center">
-            VA loans require a VA certificate of eligibility. Huntington is not acting on behalf of, or at the direction of 
+            VA loans require a VA certificate of eligibility. ken is not acting on behalf of, or at the direction of 
             the FHA, VA, the USDA or the Federal Government. All lending products are subject to application and credit approval. 
             Home equity loans and lines also subject to acceptable appraisal and title search.
           </p>

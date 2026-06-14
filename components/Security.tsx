@@ -132,7 +132,7 @@ export default function Security() {
 
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-2xl text-[#236193]">Online Banking with Huntington</CardTitle>
+                    <CardTitle className="text-2xl text-[#236193]">Online Banking with </CardTitle>
                     <CardDescription>Secure, SSL-encrypted system</CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -171,13 +171,13 @@ export default function Security() {
 
                     <div className="mt-6 p-4 bg-red-50 rounded-lg border border-red-200">
                       <p className="text-red-700 text-sm">
-                        <strong>Remember:</strong> Huntington will never ask you for account numbers or passwords by phone, email or text. 
-                        If you receive a suspicious email, please forward it to ReportFraud@huntington.com or call (800) 480-2265.
+                        <strong>Remember:</strong> will never ask you for account numbers or passwords by phone, email or text. 
+                        If you receive a suspicious email, please forward it to Report.com or call (800) 480-2265.
                       </p>
                     </div>
 
                     <div className="mt-4">
-                      <p className="text-slate-600 text-sm">Only download the Huntington Mobile App from the Apple Store (iOS) or Google Play (Android).</p>
+                      <p className="text-slate-600 text-sm">Only download the Mobile App from the Apple Store (iOS) or Google Play (Android).</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -252,9 +252,9 @@ export default function Security() {
                   </div>
 
                   <div className="mt-8 p-4 bg-slate-100 rounded-lg">
-                    <h3 className="font-semibold mb-2">Changing Your Huntington Username and Password:</h3>
+                    <h3 className="font-semibold mb-2">Changing Your Username and Password:</h3>
                     <ol className="space-y-2 text-slate-700 list-decimal list-inside">
-                      <li>Log into your Huntington account</li>
+                      <li>Log into your  account</li>
                       <li>At the top of the page, click Profile</li>
                       <li>Select Change Password and follow the instructions</li>
                     </ol>
@@ -532,7 +532,7 @@ export default function Security() {
             <div className="p-6 bg-slate-50 rounded-lg">
               <Mail className="w-8 h-8 text-[#236193] mx-auto mb-3" />
               <h3 className="font-semibold mb-2">Email Us</h3>
-              <p className="text-slate-600">ReportFraud@huntington.com</p>
+              <p className="text-slate-600">ReportFraud@.com</p>
               <p className="text-sm text-slate-500">For suspicious emails</p>
             </div>
             <div className="p-6 bg-slate-50 rounded-lg">

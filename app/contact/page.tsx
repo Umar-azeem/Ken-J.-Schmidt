@@ -239,7 +239,7 @@ export default function ContactPage() {
                   <p className="text-slate-600 text-sm mb-3">How to order checks and checkbooks online</p>
                   <p className="text-slate-500 text-sm mb-4">
                     Need to order checks? It's easy. You can do it online, by phone, or at your local 
-                    Huntington branch—whatever works best for you.
+                    branch—whatever works best for you.
                   </p>
                   <Link href="#" className="text-[#236193] font-semibold text-sm hover:underline">
                     Read More →
