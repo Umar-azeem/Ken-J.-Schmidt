@@ -93,8 +93,6 @@ export default function Beverly() {
           </p>
 
           <h2 className="text-[#236193] text-3xl font-bold tracking-wide uppercase leading-tight mb-6">
-            FROM OUR BEVERLY
-            <br />
             Service Area: Illinois
           </h2>
 
