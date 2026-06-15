@@ -153,7 +153,7 @@ export default function Email() {
             name="phone"
             type="tel"
             className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#236193]"
-            placeholder="(312) 555-1234"
+            placeholder="(630) 479-8545"
           />
         </div>
 

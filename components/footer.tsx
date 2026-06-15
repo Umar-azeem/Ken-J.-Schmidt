@@ -124,14 +124,8 @@ export function Footer() {
                   <Phone className="w-4 h-4" />
                   <a className="hover:text-white transition">(630) 479-8545 </a>
                 </div>
-                <div className="flex  gap-2">
-                  <Phone className="w-4 h-4" />
-                  <a className="hover:text-white transition">(331) 702-7422 </a>
-                </div>
-                <div className="flex  gap-2">
-                  <Phone className="w-4 h-4" />
-                  <a className="hover:text-white transition">(877) 230-9441 </a>
-                </div>
+                
+                
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />

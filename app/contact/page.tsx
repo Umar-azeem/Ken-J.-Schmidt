@@ -262,7 +262,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-semibold mb-1">Speak with us</h4>
                     <p className="text-slate-300 text-sm mb-2">We're here to help</p>
-                    <a href="tel:+13317027422" className="text-[#236193] font-bold text-lg">(331) 702-7422</a>
+                    <a href="tel:+13317027422" className="text-[#236193] font-bold text-lg">630 479 8545</a>
                   </div>
                 </div>
 

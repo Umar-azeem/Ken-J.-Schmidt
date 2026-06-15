@@ -73,11 +73,9 @@ export default function HomePage() {
                     <p className="text-lg font-light leading-relaxed">
                       Premier mortgage lending professional with more than 20
                       years of expertise in the home financing industry,
-                      
                     </p>
                     <p className="text-lg font-light leading-relaxed">
-                     dedicated to building the home loan that meets your
-                      needs.
+                      dedicated to building the home loan that meets your needs.
                       <span className="underline font-normal">
                         I'm here to work with you
                       </span>
@@ -289,7 +287,7 @@ export default function HomePage() {
                   href="tel:+13125551234"
                   className="text-[#236193] hover:underline text-lg"
                 >
-                  (312) 555-1234
+                  (630) 479-8545{" "}
                 </a>
               </Card>
 

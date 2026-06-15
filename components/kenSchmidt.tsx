@@ -233,31 +233,10 @@ export default function kenSchmidt() {
             </div>
 
             {/* Phone */}
-            <div className="bg-gradient-to-br from-slate-50 to-white p-6 rounded-xl shadow-lg border border-slate-200 hover:shadow-xl transition-all group">
-              <div className="w-12 h-12 bg-[#236193]/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#236193] transition-colors">
-                <Phone className="w-6 h-6 text-[#236193] group-hover:text-white transition-colors" />
-              </div>
-              <h3 className="text-sm font-semibold text-slate-500 mb-2">
-                Phone
-              </h3>
-              <a
-                href="tel:+13317027422"
-                className="text-slate-800 hover:text-[#236193] transition text-lg font-semibold"
-              >
-                (331) 702-7422
-              </a>
-            </div>
+            
 
             {/* Fax */}
-            <div className="bg-gradient-to-br from-slate-50 to-white p-6 rounded-xl shadow-lg border border-slate-200 hover:shadow-xl transition-all group">
-              <div className="w-12 h-12 bg-[#236193]/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#236193] transition-colors">
-                {/* <Fax className="w-6 h-6 text-[#236193] group-hover:text-white transition-colors" /> */}
-              </div>
-              <h3 className="text-sm font-semibold text-slate-500 mb-2">Fax</h3>
-              <p className="text-slate-800 text-lg font-semibold">
-                (877) 230-9441
-              </p>
-            </div>
+            
           </div>
         </div>
       </section>
