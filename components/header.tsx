@@ -46,7 +46,10 @@ export default function Header() {
           {/* About Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="text-white hover:bg-[#1b4f78] hover:text-white">
+              <Button
+                variant="ghost"
+                className="text-white hover:bg-[#1b4f78] hover:text-white"
+              >
                 About <ChevronDown className="ml-1 h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
@@ -71,7 +74,10 @@ export default function Header() {
           {/* Business Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="text-white hover:bg-[#1b4f78] hover:text-white">
+              <Button
+                variant="ghost"
+                className="text-white hover:bg-[#1b4f78] hover:text-white"
+              >
                 Business <ChevronDown className="ml-1 h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
@@ -93,10 +99,36 @@ export default function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
+          {/* Ken Offer Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="ghost"
+                className="text-white hover:bg-[#1b4f78] hover:text-white"
+              >
+                Ken Offer <ChevronDown className="ml-1 h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-48 bg-white">
+              <DropdownMenuLabel>Ken Offer</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem asChild>
+                  <Link href="/tools/calculator" className="cursor-pointer">
+                    Loan Calculator
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           {/* Private Bank Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="text-white hover:bg-[#1b4f78] hover:text-white">
+              <Button
+                variant="ghost"
+                className="text-white hover:bg-[#1b4f78] hover:text-white"
+              >
                 Private Bank <ChevronDown className="ml-1 h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
@@ -126,7 +158,10 @@ export default function Header() {
           {/* Communication Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="text-white hover:bg-[#1b4f78] hover:text-white">
+              <Button
+                variant="ghost"
+                className="text-white hover:bg-[#1b4f78] hover:text-white"
+              >
                 Communication <ChevronDown className="ml-1 h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
@@ -175,128 +210,148 @@ export default function Header() {
       </div>
 
       {/* Mobile Menu */}
-     {open && (
-  <div className="md:hidden bg-[#236193] px-6 pb-4 flex flex-col gap-3">
-    <Link 
-      href="/" 
-      className="hover:bg-[#1b4f78] px-3 py-2 rounded-md"
-      onClick={() => setOpen(false)}
-    >
-      Home
-    </Link>
+      {open && (
+        <div className="md:hidden bg-[#236193] px-6 pb-4 flex flex-col gap-3">
+          <Link
+            href="/"
+            className="hover:bg-[#1b4f78] px-3 py-2 rounded-md"
+            onClick={() => setOpen(false)}
+          >
+            Home
+          </Link>
 
-    <details className="group">
-      <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-        About
-      </summary>
-      <div className="ml-4 mt-2 flex flex-col gap-2">
-        <Link 
-          href="/kenSchmidt" 
-          className="hover:underline px-3 py-1"
-          onClick={() => setOpen(false)}
-        >
-          Ken J. Schmidt
-        </Link>
-        <Link 
-          href="/mortgage" 
-          className="hover:underline px-3 py-1"
-          onClick={() => setOpen(false)}
-        >
-          Mortgagey
-        </Link>
-      </div>
-    </details>
+          {/* About */}
+          <details className="group">
+            <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
+              About
+            </summary>
+            <div className="ml-4 mt-2 flex flex-col gap-2">
+              <Link
+                href="/kenSchmidt"
+                className="hover:underline px-3 py-1"
+                onClick={() => setOpen(false)}
+              >
+                Ken J. Schmidt
+              </Link>
+              <Link
+                href="/mortgage"
+                className="hover:underline px-3 py-1"
+                onClick={() => setOpen(false)}
+              >
+                Mortgage
+              </Link>
+            </div>
+          </details>
 
-    <details className="group">
-      <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-        Business
-      </summary>
-      <div className="ml-4 mt-2 flex flex-col gap-2">
-        <Link 
-          href="/investments" 
-          className="hover:underline px-3 py-1"
-          onClick={() => setOpen(false)}
-        >
-          Investments
-        </Link>
-        <Link 
-          href="/insurance" 
-          className="hover:underline px-3 py-1"
-          onClick={() => setOpen(false)}
-        >
-          Insurance
-        </Link>
-      </div>
-    </details>
+          {/* Business */}
+          <details className="group">
+            <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
+              Business
+            </summary>
+            <div className="ml-4 mt-2 flex flex-col gap-2">
+              <Link
+                href="/investments"
+                className="hover:underline px-3 py-1"
+                onClick={() => setOpen(false)}
+              >
+                Investments
+              </Link>
+              <Link
+                href="/insurance"
+                className="hover:underline px-3 py-1"
+                onClick={() => setOpen(false)}
+              >
+                Insurance
+              </Link>
+            </div>
+          </details>
 
-    <details className="group">
-      <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-        Private Bank
-      </summary>
-      <div className="ml-4 mt-2 flex flex-col gap-2">
-        <Link 
-          href="/" 
-          className="hover:underline px-3 py-1"
-          onClick={() => setOpen(false)}
-        >
-          Open an Account
-        </Link>
-        <Link 
-          href="/" 
-          className="hover:underline px-3 py-1"
-          onClick={() => setOpen(false)}
-        >
-          Banking
-        </Link>
-        <Link 
-          href="/" 
-          className="hover:underline px-3 py-1"
-          onClick={() => setOpen(false)}
-        >
-          Borrowing
-        </Link>
-      </div>
-    </details>
+          {/* Ken Offer — NEW */}
+          <details className="group">
+            <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
+              Ken Offer
+            </summary>
+            <div className="ml-4 mt-2 flex flex-col gap-2">
+              <Link
+                href="/tools/calculator"
+                className="hover:underline px-3 py-1"
+                onClick={() => setOpen(false)}
+              >
+                Loan Calculator
+              </Link>
+            </div>
+          </details>
 
-    <details className="group">
-      <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-        Communication
-      </summary>
-      <div className="ml-4 mt-2 flex flex-col gap-2">
-        <Link 
-          href="/" 
-          className="hover:underline px-3 py-1"
-          onClick={() => setOpen(false)}
-        >
-          Online Services
-        </Link>
-        <Link 
-          href="/" 
-          className="hover:underline px-3 py-1"
-          onClick={() => setOpen(false)}
-        >
-          Learn
-        </Link>
-      </div>
-    </details>
+          {/* Private Bank */}
+          <details className="group">
+            <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
+              Private Bank
+            </summary>
+            <div className="ml-4 mt-2 flex flex-col gap-2">
+              <Link
+                href="/"
+                className="hover:underline px-3 py-1"
+                onClick={() => setOpen(false)}
+              >
+                Open an Account
+              </Link>
+              <Link
+                href="/"
+                className="hover:underline px-3 py-1"
+                onClick={() => setOpen(false)}
+              >
+                Banking
+              </Link>
+              <Link
+                href="/"
+                className="hover:underline px-3 py-1"
+                onClick={() => setOpen(false)}
+              >
+                Borrowing
+              </Link>
+            </div>
+          </details>
 
-    <Link 
-      href="/security" 
-      className="hover:bg-[#1b4f78] px-3 py-2 rounded-md"
-      onClick={() => setOpen(false)}
-    >
-      Security
-    </Link>
+          {/* Communication */}
+          <details className="group">
+            <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
+              Communication
+            </summary>
+            <div className="ml-4 mt-2 flex flex-col gap-2">
+              <Link
+                href="/"
+                className="hover:underline px-3 py-1"
+                onClick={() => setOpen(false)}
+              >
+                Online Services
+              </Link>
+              <Link
+                href="/"
+                className="hover:underline px-3 py-1"
+                onClick={() => setOpen(false)}
+              >
+                Learn
+              </Link>
+            </div>
+          </details>
 
-    <Link 
-      href="/contact" 
-      className="hover:bg-[#1b4f78] px-3 py-2 rounded-md"
-      onClick={() => setOpen(false)}
-    >
-      Contact
-    </Link>
-  </div>
-)}
+          <Link
+            href="/security"
+            className="hover:bg-[#1b4f78] px-3 py-2 rounded-md"
+            onClick={() => setOpen(false)}
+          >
+            Security
+          </Link>
+
+          <Link
+            href="/contact"
+            className="hover:bg-[#1b4f78] px-3 py-2 rounded-md"
+            onClick={() => setOpen(false)}
+          >
+            Contact
+          </Link>
+        </div>
+      )}
     </nav>
   );
 }

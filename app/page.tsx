@@ -26,6 +26,9 @@ import { useEffect, useRef } from "react";
 import Beverly from "@/components/Beverly";
 import Hero from "@/components/hero";
 import Email from "@/components/email";
+import MortgageCalculator3D from "@/components/MortgageCalculator3D";
+import LeadCaptureSection from "@/components/LeadCaptureSection";
+import WhyChooseSection from "@/components/WhyChooseSection";
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -111,6 +114,7 @@ export default function HomePage() {
         </section>
 
         <Beverly />
+        <WhyChooseSection />
         <section id="specialties" className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -250,7 +254,8 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
+        {/* <LeadCaptureSection  /> */}
+        <MortgageCalculator3D/>
         <section id="contact" className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">

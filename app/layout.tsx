@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import Header from '@/components/header';
 import { Footer } from '@/components/footer';
+import FAQSection from '@/components/FAQSection';
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -40,10 +41,10 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <Header />
       <body className="font-sans antialiased bg-slate-50">
-        
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
+      <FAQSection />
       <Footer/>
     </html>
   )
