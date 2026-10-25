@@ -67,6 +67,11 @@ export default function Header() {
                     Mortgage
                   </Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/physician-mortgage" className="cursor-pointer">
+                     Physician-mortgage
+                  </Link>
+                </DropdownMenuItem>
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>

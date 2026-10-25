@@ -9,34 +9,44 @@ type FAQ = {
 
 const faqs: FAQ[] = [
   {
-    question: "How much does it cost to refinance?",
+    question: "Can I qualify for a physician mortgage while still in residency?",
     answer:
-      "Refinancing costs typically range from 2% to 6% of the loan amount and include fees such as appraisal, title insurance, and closing costs. Factors like your loan type, location, and credit score can significantly impact these expenses. Our team can help provide strategies that can help minimize costs.",
+      "Yes. Many physician mortgage lenders offer financing programs for eligible medical residents and fellows. Qualification depends on income, credit history, existing financial obligations, and lender-specific underwriting requirements.",
   },
   {
-    question: "How much house can I afford?",
+    question: "Can I qualify with significant medical school student loan debt?",
     answer:
-      "We'll review your income, debts, down payment, and financial goals to establish a clear, comfortable budget before you start looking for a home. This helps you shop with confidence.",
+      "Potentially. Physician mortgage programs frequently provide specialized methods for evaluating student loan obligations. Lenders may consider documented repayment arrangements and qualifying monthly payments when calculating debt-to-income ratios.",
   },
   {
-    question: "What is a good credit score?",
+    question: "Can I purchase a home before starting my new physician position?",
     answer:
-      "While this is program-dependent, many conventional loan options look for a score of 620 or higher. Government-backed loans like FHA and VA are often more flexible.",
+      "Yes, many physician mortgage programs allow qualified borrowers to use signed employment contracts or offer letters for positions beginning after the mortgage application. Lenders generally establish specific requirements regarding employment start dates, contract terms, and supporting documentation.",
   },
   {
-    question: "What is a HELOC?",
+    question: "Do physician mortgage loans require a 20% down payment?",
     answer:
-      "A Home Equity Line of Credit (HELOC) is a revolving line of credit that uses your home's equity as collateral. It offers flexibility, allowing you to borrow what you need, when you need it, and typically features interest-only payments during the draw period.",
+      "No. Many physician mortgage programs offer financing with less than 20% down, and certain programs provide zero-down-payment options for qualified borrowers. The required down payment depends on the lender, loan amount, borrower qualifications, and program guidelines.",
   },
   {
-    question: "How do I calculate mortgage payments?",
+    question: "Do physician mortgage loans require PMI?",
     answer:
-      "You can use our comprehensive mortgage calculator on the Tools page. It allows you to factor in the home price, down payment, interest rate, loan term, and other costs to estimate your monthly payment. You can even download an amortization schedule.",
+      "Many physician mortgage programs do not require private mortgage insurance, even when the borrower makes a down payment below 20%. Borrowers should compare interest rates, closing costs, and overall loan terms when evaluating financing options.",
   },
   {
-    question: "What cash-out option is better for me?",
+    question: "Are physician mortgage interest rates lower than conventional mortgage rates?",
     answer:
-      "A HELOC (Home Equity Line of Credit) and a HELOAN (Home Equity Loan) are both great options to access your home equity as cash, but what's the difference? Here is the high-level breakdown, but give us a call and we will help you choose the right option, with side-by-side comparisons and advice from a dedicated mortgage professional.",
+      "Not necessarily. Physician mortgage rates vary based on the lender, market conditions, borrower qualifications, loan amount, and selected mortgage program. Comparing the total cost of financing is important when determining which mortgage option best meets your financial objectives.",
+  },
+  {
+    question: "Can physicians use these programs to purchase more expensive homes?",
+    answer:
+      "Yes. Physician mortgage programs frequently offer higher loan limits designed to accommodate qualified medical professionals purchasing homes in a variety of price ranges. Loan limits and qualification requirements vary by lender and program.",
+  },
+  {
+    question: "Are physician mortgage loans available in multiple states?",
+    answer:
+      "Physician mortgage programs are offered in multiple states, although availability, eligibility requirements, and financing terms vary by lender and property location.",
   },
 ];
 
@@ -71,15 +81,14 @@ export default function FAQSection() {
             FREQUENTLY ASKED
           </span>
           <h2
-            className="mt-4 text-4xl font-bold  text-[#236193] tracking-tight md:text-5xl"
+            className="mt-4 text-4xl font-bold text-[#236193] tracking-tight md:text-5xl"
             style={{ color: "#133653" }}
           >
-            Questions, answered.
+            Physician mortgage questions, answered.
           </h2>
-          <p
-            className="mx-auto mt-4 max-w-2xl text-lg text-[#133d5f] ">
-            Straight answers on refinancing, affordability, credit, and using your
-            home's equity — with guidance from a dedicated mortgage professional.
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[#133d5f]">
+            Straight answers on residency qualification, student loan debt,
+            down payments, PMI, and purchasing a home as a medical professional.
           </p>
         </div>
 
@@ -108,8 +117,7 @@ export default function FAQSection() {
                       isOpen ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"
                     }`}
                     style={{
-                      background:
-                        "linear-gradient(to bottom, #4f88c2, #236193)",
+                      background: "linear-gradient(to bottom, #4f88c2, #236193)",
                     }}
                   />
 
@@ -133,9 +141,7 @@ export default function FAQSection() {
                         backgroundColor: isOpen ? "#236193" : "transparent",
                         color: isOpen ? "#ffffff" : "#236193",
                         transformStyle: "preserve-3d",
-                        transform: isOpen
-                          ? "rotateX(180deg)"
-                          : "rotateX(0deg)",
+                        transform: isOpen ? "rotateX(180deg)" : "rotateX(0deg)",
                       }}
                     >
                       {isOpen ? (

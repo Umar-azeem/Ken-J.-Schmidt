@@ -29,6 +29,7 @@ import Email from "@/components/email";
 import MortgageCalculator3D from "@/components/MortgageCalculator3D";
 import LeadCaptureSection from "@/components/LeadCaptureSection";
 import WhyChooseSection from "@/components/WhyChooseSection";
+import PhysicianGuidanceSection from "@/components/PhysicianGuidanceSection";
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -114,6 +115,7 @@ export default function HomePage() {
         </section>
 
         <Beverly />
+        <PhysicianGuidanceSection/>
         <WhyChooseSection />
         <section id="specialties" className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
