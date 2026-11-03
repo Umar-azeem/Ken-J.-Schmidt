@@ -143,10 +143,10 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   CONSTRUCTION PAGE — Global animations
+   CONSTRUCTION PAGE — General Animations
    ═══════════════════════════════════════════════════════════ */
 
-/* ── Fade-up entrance (used heavily in construction page) ── */
+/* ── Fade-up entrance ── */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -162,7 +162,7 @@
   animation: fadeUp 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
-/* ── Floating orbs (hero + section backgrounds) ── */
+/* ── Floating orbs ── */
 @keyframes floatSlow {
   0%, 100% {
     transform: translate(0, 0) scale(1);
@@ -176,7 +176,7 @@
   animation: floatSlow 8s ease-in-out infinite;
 }
 
-/* ── Scroll-reveal container (IntersectionObserver target) ── */
+/* ── Scroll-reveal container ── */
 .reveal > * {
   opacity: 0;
   transform: translateY(24px);
@@ -188,163 +188,178 @@
   transform: translateY(0);
 }
 
-/* ── 3D Hero Scene ── */
-.scene {
-  perspective: 1000px;
-  perspective-origin: 50% 40%;
-}
+/* ═══════════════════════════════════════════════════════════
+   CONSTRUCTION HERO 3D SCENE (MATCHING YOUR IMAGE)
+   ═══════════════════════════════════════════════════════════ */
 
-.cube-wrap {
+/* Main perspective container */
+.scene-container {
+  perspective: 1200px;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  width: 340px;
-  height: 340px;
+  background: radial-gradient(circle at 50% 50%, rgba(248, 250, 252, 0.5), transparent);
+}
+
+/* Isometric base */
+.iso-wrapper {
+  position: relative;
+  width: 320px;
+  height: 320px;
   transform-style: preserve-3d;
-  transform: rotateX(58deg) rotateZ(-35deg);
-  animation: sceneSpin 22s linear infinite;
+  /* Exact isometric angle */
+  transform: rotateX(60deg) rotateZ(-45deg);
+  animation: floatScene 6s ease-in-out infinite;
 }
 
-@keyframes sceneSpin {
-  from {
-    transform: rotateX(58deg) rotateZ(-35deg);
-  }
-  to {
-    transform: rotateX(58deg) rotateZ(325deg);
-  }
-}
-
-.ground {
+/* The grid ground plate */
+.iso-ground {
   position: absolute;
   inset: 0;
-  border-radius: 16px;
-  background:
-    linear-gradient(rgba(35, 97, 147, 0.18) 1px, transparent 1px) 0 0 / 40px 40px,
-    linear-gradient(90deg, rgba(35, 97, 147, 0.18) 1px, transparent 1px) 0 0 / 40px 40px,
-    linear-gradient(135deg, #e6eef6, #f4f8fb);
-  box-shadow: inset 0 0 0 2px rgba(35, 97, 147, 0.12);
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(rgba(35, 97, 147, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(35, 97, 147, 0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+  border: 1px solid rgba(35, 97, 147, 0.2);
+  border-radius: 12px;
+  box-shadow: 
+    -10px 15px 30px rgba(35, 97, 147, 0.08),
+    inset 0 0 20px rgba(35, 97, 147, 0.03);
 }
 
-/* ── Building blocks ── */
-.block {
+/* The blue building blocks */
+.iso-block {
   position: absolute;
-  bottom: 20%;
-  width: 70px;
-  height: 70px;
-  border-radius: 8px;
-  background: linear-gradient(145deg, #4f88c2, #236193);
-  box-shadow:
-    0 12px 30px -8px rgba(35, 97, 147, 0.5),
-    inset 0 2px 4px rgba(255, 255, 255, 0.25);
+  background: linear-gradient(135deg, #4f88c2, #236193);
+  border-radius: 6px;
+  box-shadow: 
+    -6px 8px 0px #133653, /* 3D side shadow */
+    -12px 15px 20px rgba(35, 97, 147, 0.3); /* Drop shadow */
+  animation: blockFloat 4s ease-in-out infinite alternate;
+}
+
+/* Individual block sizes and positions */
+.iso-block.b1 {
+  width: 60px;
+  height: 80px;
+  left: 70px;
+  top: 120px;
   transform: translateZ(20px);
-  animation: blockBob 3.6s ease-in-out infinite;
+  animation-delay: 0s;
 }
 
-.block.b1 { left: 18%;  animation-delay: 0s;   height: 90px; }
-.block.b2 { left: 42%;  animation-delay: 0.6s; height: 120px; }
-.block.b3 { left: 66%;  animation-delay: 1.2s; height: 70px; }
-.block.b4 { left: 42%;  bottom: 52%; animation-delay: 1.8s; height: 60px; }
-
-@keyframes blockBob {
-  0%, 100% { transform: translateZ(20px) translateY(0); }
-  50%      { transform: translateZ(20px) translateY(-8px); }
+.iso-block.b2 {
+  width: 70px;
+  height: 110px;
+  left: 140px;
+  top: 60px;
+  transform: translateZ(30px);
+  animation-delay: 0.5s;
 }
 
-/* ── Crane ── */
-.crane {
+.iso-block.b3 {
+  width: 60px;
+  height: 50px;
+  left: 220px;
+  top: 140px;
+  transform: translateZ(15px);
+  animation-delay: 1s;
+}
+
+/* The Yellow Crane */
+.iso-crane-mast {
   position: absolute;
-  left: 6%;
-  bottom: 20%;
+  left: 40px;
+  top: 40px;
   width: 10px;
-  transform-style: preserve-3d;
+  height: 180px;
+  background: #eab308; /* Yellow */
+  border-radius: 4px;
+  transform: translateZ(40px);
+  box-shadow: -4px 4px 0px #a16207;
+}
+
+.iso-crane-jib {
+  position: absolute;
+  left: -60px;
+  top: 0;
+  width: 120px;
+  height: 8px;
+  background: #eab308;
+  border-radius: 4px;
+  transform: translateZ(40px);
+  box-shadow: -4px 4px 0px #a16207;
+}
+
+.iso-crane-cable {
+  position: absolute;
+  left: -55px;
+  top: 8px;
+  width: 2px;
+  height: 50px;
+  background: #1e293b;
   transform: translateZ(40px);
 }
 
-.crane-mast {
-  width: 10px;
-  height: 200px;
-  background: repeating-linear-gradient(
-    45deg,
-    #f2b60d,
-    #f2b60d 6px,
-    #d99c00 6px,
-    #d99c00 12px
-  );
-  border-radius: 3px;
-  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.35);
-}
-
-.crane-jib {
+.iso-crane-hook {
   position: absolute;
-  top: 0;
-  left: -140px;
-  width: 160px;
-  height: 8px;
-  background: #f2b60d;
-  border-radius: 3px;
-  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.35);
-  animation: jibSway 6s ease-in-out infinite;
-  transform-origin: 140px 50%;
-}
-
-@keyframes jibSway {
-  0%, 100% { transform: rotate(-6deg); }
-  50%      { transform: rotate(6deg); }
-}
-
-.crane-cable {
-  position: absolute;
-  top: 8px;
-  left: -130px;
-  width: 2px;
-  height: 70px;
-  background: #1f3c56;
-  animation: cableSwing 6s ease-in-out infinite;
-  transform-origin: top center;
-}
-
-@keyframes cableSwing {
-  0%, 100% { transform: translateX(0) rotate(-4deg); }
-  50%      { transform: translateX(8px) rotate(4deg); }
-}
-
-.crane-hook {
-  position: absolute;
-  top: 78px;
-  left: -134px;
+  left: -59px;
+  top: 58px;
   width: 10px;
   height: 10px;
-  border: 2px solid #1f3c56;
+  border: 2px solid #1e293b;
+  border-bottom: none;
+  border-right: none;
   border-radius: 50%;
-  animation: cableSwing 6s ease-in-out infinite;
+  transform: translateZ(40px) rotate(-45deg);
 }
 
-/* ── Floating blueprint card ── */
-.blueprint-card {
+/* Floating blueprint card (Counter-rotated to face the viewer) */
+.iso-blueprint {
   position: absolute;
-  top: 6%;
-  right: -6%;
-  width: 130px;
+  right: -60px;
+  top: -20px;
+  width: 140px;
+  height: 60px;
+  background: #ffffff;
+  border-radius: 8px;
   padding: 12px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 20px 40px -12px rgba(35, 97, 147, 0.45);
-  transform: translateZ(80px);
-  animation: floatCard 5s ease-in-out infinite;
+  box-shadow: 0 15px 35px rgba(35, 97, 147, 0.15);
+  /* Counter-rotate so it stands up straight */
+  transform: translateZ(80px) rotateZ(45deg) rotateX(-60deg);
+  animation: floatBlueprint 5s ease-in-out infinite;
 }
 
-@keyframes floatCard {
-  0%, 100% { transform: translateZ(80px) translateY(0) rotate(-2deg); }
-  50%      { transform: translateZ(80px) translateY(-12px) rotate(2deg); }
-}
-
-.bp-line {
+.iso-blueprint-line {
   height: 6px;
-  margin: 6px 0;
-  border-radius: 4px;
-  background: linear-gradient(90deg, #236193, #4f88c2);
-  opacity: 0.55;
+  background: #4f88c2;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+.iso-blueprint-line.w-3-4 { width: 75%; }
+.iso-blueprint-line.w-1-2 { width: 50%; }
+
+/* ── Scene Keyframes ── */
+@keyframes floatScene {
+  0%, 100% { transform: rotateX(60deg) rotateZ(-45deg) translateY(0); }
+  50% { transform: rotateX(60deg) rotateZ(-45deg) translateY(-15px); }
 }
 
-/* ── Utility: line clamp (safety net if plugin absent) ── */
+@keyframes blockFloat {
+  0% { margin-top: 0px; }
+  100% { margin-top: -10px; }
+}
+
+@keyframes floatBlueprint {
+  0%, 100% { transform: translateZ(80px) rotateZ(45deg) rotateX(-60deg) translateY(0); }
+  50% { transform: translateZ(80px) rotateZ(45deg) rotateX(-60deg) translateY(-10px); }
+}
+
+/* ── Utility: line clamp ── */
 .line-clamp-3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -354,12 +369,9 @@
 
 /* ── Respect reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
-  .cube-wrap,
-  .block,
-  .crane-jib,
-  .crane-cable,
-  .crane-hook,
-  .blueprint-card,
+  .iso-wrapper,
+  .iso-block,
+  .iso-blueprint,
   .animate-float-slow,
   .animate-fade-up {
     animation: none !important;
@@ -369,152 +381,4 @@
     transform: none;
     transition: none;
   }
-}
-
-
-
-
-/* ───────── Reveal animation ───────── */
-.reveal > * {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
-}
-.reveal.is-visible > * {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ───────── 3D Hero Scene ───────── */
-.scene {
-  perspective: 1000px;
-  perspective-origin: 50% 40%;
-}
-.cube-wrap {
-  position: relative;
-  width: 340px;
-  height: 340px;
-  transform-style: preserve-3d;
-  transform: rotateX(58deg) rotateZ(-35deg);
-  animation: sceneSpin 22s linear infinite;
-}
-@keyframes sceneSpin {
-  from { transform: rotateX(58deg) rotateZ(-35deg); }
-  to   { transform: rotateX(58deg) rotateZ(325deg); }
-}
-
-.ground {
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  background:
-    linear-gradient(rgba(35,97,147,.18) 1px, transparent 1px) 0 0 / 40px 40px,
-    linear-gradient(90deg, rgba(35,97,147,.18) 1px, transparent 1px) 0 0 / 40px 40px,
-    linear-gradient(135deg, #e6eef6, #f4f8fb);
-  box-shadow: inset 0 0 0 2px rgba(35,97,147,.12);
-}
-
-/* Building blocks */
-.block {
-  position: absolute;
-  bottom: 20%;
-  width: 70px;
-  height: 70px;
-  border-radius: 8px;
-  background: linear-gradient(145deg, #4f88c2, #236193);
-  box-shadow: 0 12px 30px -8px rgba(35,97,147,.5),
-              inset 0 2px 4px rgba(255,255,255,.25);
-  transform: translateZ(20px);
-  animation: blockBob 3.6s ease-in-out infinite;
-}
-.block.b1 { left: 18%;  animation-delay: 0s;   height: 90px; }
-.block.b2 { left: 42%;  animation-delay: .6s;  height: 120px; }
-.block.b3 { left: 66%;  animation-delay: 1.2s; height: 70px; }
-.block.b4 { left: 42%;  bottom: 52%; animation-delay: 1.8s; height: 60px; }
-@keyframes blockBob {
-  0%,100% { transform: translateZ(20px) translateY(0); }
-  50%     { transform: translateZ(20px) translateY(-8px); }
-}
-
-/* Crane */
-.crane {
-  position: absolute;
-  left: 6%;
-  bottom: 20%;
-  width: 10px;
-  transform-style: preserve-3d;
-  transform: translateZ(40px);
-}
-.crane-mast {
-  width: 10px;
-  height: 200px;
-  background: repeating-linear-gradient(45deg, #f2b60d, #f2b60d 6px, #d99c00 6px, #d99c00 12px);
-  border-radius: 3px;
-  box-shadow: 0 8px 20px -6px rgba(0,0,0,.35);
-}
-.crane-jib {
-  position: absolute;
-  top: 0; left: -140px;
-  width: 160px; height: 8px;
-  background: #f2b60d;
-  border-radius: 3px;
-  box-shadow: 0 8px 20px -6px rgba(0,0,0,.35);
-  animation: jibSway 6s ease-in-out infinite;
-  transform-origin: 140px 50%;
-}
-@keyframes jibSway {
-  0%,100% { transform: rotate(-6deg); }
-  50%     { transform: rotate(6deg); }
-}
-.crane-cable {
-  position: absolute;
-  top: 8px; left: -130px;
-  width: 2px; height: 70px;
-  background: #1f3c56;
-  animation: cableSwing 6s ease-in-out infinite;
-  transform-origin: top center;
-}
-@keyframes cableSwing {
-  0%,100% { transform: translateX(0) rotate(-4deg); }
-  50%     { transform: translateX(8px) rotate(4deg); }
-}
-.crane-hook {
-  position: absolute;
-  top: 78px; left: -134px;
-  width: 10px; height: 10px;
-  border: 2px solid #1f3c56;
-  border-radius: 50%;
-  animation: cableSwing 6s ease-in-out infinite;
-}
-
-/* Floating blueprint card */
-.blueprint-card {
-  position: absolute;
-  top: 6%; right: -6%;
-  width: 130px;
-  padding: 12px;
-  border-radius: 10px;
-  background: rgba(255,255,255,.9);
-  box-shadow: 0 20px 40px -12px rgba(35,97,147,.45);
-  transform: translateZ(80px);
-  animation: floatCard 5s ease-in-out infinite;
-}
-@keyframes floatCard {
-  0%,100% { transform: translateZ(80px) translateY(0) rotate(-2deg); }
-  50%     { transform: translateZ(80px) translateY(-12px) rotate(2deg); }
-}
-.bp-line {
-  height: 6px;
-  margin: 6px 0;
-  border-radius: 4px;
-  background: linear-gradient(90deg, #236193, #4f88c2);
-  opacity: .55;
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .cube-wrap, .block, .crane-jib, .crane-cable, .crane-hook, .blueprint-card {
-    animation: none !important;
-  }
-  .reveal > * { opacity: 1; transform: none; }
 }

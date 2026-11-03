@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import {
   Stethoscope,
   Wallet,
@@ -137,7 +136,7 @@ export default function PhysicianMortgagePage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="/apply"
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-7 py-3 font-semibold text-white hover:bg-white/10 transition"
               >
                 Start Application
@@ -383,7 +382,7 @@ export default function PhysicianMortgagePage() {
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              href="/apply"
+              href="/contact"
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-8 py-3 font-semibold text-white hover:bg-white/10 transition"
             >
               Start Application

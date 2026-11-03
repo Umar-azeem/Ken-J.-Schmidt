@@ -200,7 +200,7 @@ export default function FAQSection() {
             Still have questions? Let's talk through your situation.
           </p>
           <a
-            href="#contact"
+            href="/contact"
             className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full px-7 py-3 font-semibold text-white transition-all duration-300 hover:brightness-110"
             style={{
               backgroundColor: "#236193",

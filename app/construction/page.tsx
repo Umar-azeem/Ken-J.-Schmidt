@@ -585,45 +585,31 @@ export default function ConstructionPage() {
 }
 
 // ─────────────────────────────────────────────
-// 3D ANIMATED HERO SCENE (pure CSS)
+// 3D ANIMATED HERO SCENE (MATCHING CSS)
 // ─────────────────────────────────────────────
 function Hero3D() {
   return (
-    <div className="relative mx-auto h-[380px] w-full max-w-[520px] sm:h-[480px]">
-      {/* Glow base */}
-      <div
-        className="absolute inset-0 rounded-3xl"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 60%, rgba(35,97,147,0.15), transparent 70%)",
-        }}
-      />
+    <div className="scene-container">
+      <div className="iso-wrapper">
+        {/* Ground Grid */}
+        <div className="iso-ground" />
 
-      {/* 3D scene container */}
-      <div className="scene absolute inset-0 flex items-center justify-center">
-        <div className="cube-wrap">
-          {/* Ground plate */}
-          <div className="ground" />
-          {/* Crane */}
-          <div className="crane">
-            <div className="crane-mast" />
-            <div className="crane-jib" />
-            <div className="crane-cable" />
-            <div className="crane-hook" />
-          </div>
+        {/* Crane */}
+        <div className="iso-crane-mast">
+          <div className="iso-crane-jib" />
+          <div className="iso-crane-cable" />
+          <div className="iso-crane-hook" />
+        </div>
 
-          {/* Building blocks */}
-          <div className="block b1" />
-          <div className="block b2" />
-          <div className="block b3" />
-          <div className="block b4" />
+        {/* Building Blocks */}
+        <div className="iso-block b1" />
+        <div className="iso-block b2" />
+        <div className="iso-block b3" />
 
-          {/* Floating blueprint card */}
-          <div className="blueprint-card">
-            <div className="bp-line w-3/4" />
-            <div className="bp-line w-1/2" />
-            <div className="bp-line w-2/3" />
-          </div>
+        {/* Floating Blueprint Card */}
+        <div className="iso-blueprint">
+          <div className="iso-blueprint-line w-3-4" />
+          <div className="iso-blueprint-line w-1-2" />
         </div>
       </div>
     </div>
