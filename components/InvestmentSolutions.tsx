@@ -65,7 +65,9 @@ export default function InvestmentSolutions() {
 
           <div className="mt-8">
             <Button className="bg-[#236193] hover:bg-[#1a4a70] text-white px-8 py-6 text-lg">
-              Contact an Advisor
+             <Link href="/contact" className="text-white">
+                    Contact an Advisor
+                  </Link>
             </Button>
           </div>
         </div>
@@ -450,14 +452,7 @@ export default function InvestmentSolutions() {
               <p className="text-2xl font-bold text-[#236193]">(877) 587-8049</p>
               <p className="text-sm text-slate-500 mt-2">Monday-Friday 8am-5pm ET</p>
             </div>
-            <div className="text-center p-6 bg-slate-50 rounded-lg">
-              <Building2 className="w-8 h-8 text-[#236193] mx-auto mb-3" />
-              <h3 className="font-semibold text-lg mb-2">Visit a Branch</h3>
-              <p className="text-slate-600">Find your nearest Ken J. Schmidt location</p>
-              <Button variant="outline" className="mt-3 border-[#236193] text-[#236193] hover:bg-[#236193] hover:text-white">
-                Find a Branch
-              </Button>
-            </div>
+           
           </div>
         </div>
       </section>

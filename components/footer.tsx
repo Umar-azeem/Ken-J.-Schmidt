@@ -36,8 +36,8 @@ export function Footer() {
                   </svg>
                 </span>
               </Link>
-             
-              <Link
+
+              {/* <Link
                 target="_blank"
                 href="https://www.facebook.com/HuntingtonBank"
                 className="flex items-center gap-2"
@@ -51,7 +51,7 @@ export function Footer() {
                     <path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
                   </svg>
                 </span>
-              </Link>
+              </Link> */}
               <Link
                 target="_blank"
                 href="https://www.instagram.com/huntingtonbank/?hl=en"
@@ -68,9 +68,11 @@ export function Footer() {
                   </svg>
                 </span>
               </Link>
-              <Link  target="_blank"
+              <Link
+                target="_blank"
                 href="https://www.youtube.com/user/HuntingtonBank"
-                className="flex items-center gap-2">
+                className="flex items-center gap-2"
+              >
                 <span className="[&>svg]:h-5 [&>svg]:w-5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -81,9 +83,11 @@ export function Footer() {
                   </svg>
                 </span>
               </Link>
-              <Link  target="_blank"
+              {/* <Link
+                target="_blank"
                 href="https://twitter.com/Huntington_Bank"
-                className="flex items-center gap-2">
+                className="flex items-center gap-2"
+              >
                 <span className="[&>svg]:h-5 [&>svg]:w-5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -93,8 +97,8 @@ export function Footer() {
                     <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
                   </svg>
                 </span>
-              </Link>
-               <Link
+              </Link> */}
+              <Link
                 target="_blank"
                 href="https://www.zillow.com/lender-profile/ken%20schmidt12/"
                 className="flex items-center gap-2"
@@ -113,7 +117,7 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <h4 className="font-bold text-lg mb-4">Ken J. Schmidt</h4>
-            <p className="text-blue-100 text-sm mb-2">Mortgage Broker</p>
+            <p className="text-blue-100 text-sm mb-2">loan officer</p>
             <div className="flex items-start gap-2 text-blue-100 text-sm">
               <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
               <span>Coverage Area: Illinois</span>
@@ -124,8 +128,6 @@ export function Footer() {
                   <Phone className="w-4 h-4" />
                   <a className="hover:text-white transition">(630) 479-8545 </a>
                 </div>
-                
-                
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
@@ -281,9 +283,7 @@ export function Footer() {
 
         {/* Legal and Copyright */}
         <div className="border-t border-blue-400 pt-8 text-center text-blue-100">
-          <p className="text-sm mb-2">
-           
-          </p>
+          <p className="text-sm mb-2"></p>
           <p className="text-xs">
             © Lending products are subject to credit application and approval.
           </p>
@@ -295,8 +295,9 @@ export function Footer() {
               Terms of Use
             </Link>
             <Link href="/licensing" className="hover:text-white transition">
-              VA loans require a VA certificate of eligibility. not acting on behalf of, or at the direction of, the VA, FHA, or
-              the Federal Government.
+              VA loans require a VA certificate of eligibility. not acting on
+              behalf of, or at the direction of, the VA, FHA, or the Federal
+              Government.
             </Link>
           </div>
         </div>

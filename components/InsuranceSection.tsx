@@ -551,13 +551,7 @@ export default function InsuranceSection() {
       {/* Contact Section */}
       <section className="py-16 bg-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              We're Here for You
-            </h2>
-            <div className="h-1 w-20 bg-[#236193] rounded-full mx-auto"></div>
-            <p className="text-slate-600 mt-4">Online, by phone, or in a branch</p>
-          </div>
+         
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             <div className="text-center p-6 bg-slate-50 rounded-lg">
@@ -566,14 +560,7 @@ export default function InsuranceSection() {
               <p className="text-2xl font-bold text-[#236193]">(800) 628-7064</p>
               <p className="text-sm text-slate-500 mt-2">Weekdays 8am-7pm ET</p>
             </div>
-            <div className="text-center p-6 bg-slate-50 rounded-lg">
-              <Building2 className="w-8 h-8 text-[#236193] mx-auto mb-3" />
-              <h3 className="font-semibold text-lg mb-2">Find a Branch</h3>
-              <p className="text-slate-600">Visit us for in-person support</p>
-              <Button variant="outline" className="mt-3 border-[#236193] text-[#236193] hover:bg-[#236193] hover:text-white">
-                Branch Locator
-              </Button>
-            </div>
+          
             <div className="text-center p-6 bg-slate-50 rounded-lg">
               <FileText className="w-8 h-8 text-[#236193] mx-auto mb-3" />
               <h3 className="font-semibold text-lg mb-2">Get a Quote</h3>

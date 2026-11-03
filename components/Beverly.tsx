@@ -100,20 +100,17 @@ export default function Beverly() {
             Every home has a story, and your mortgage should support the one
             you're creating. ken j, we don't just offer loans. We offer
             guidance, built around your goals, your timeline and your life.
-            every stage of homeownership.
-            <strong className="text-slate-800">First-time buyer support Let's get more from money</strong>
-            . From first-time buyers to complex and high-value transactions, our
-            team helps borrowers find the right financing fit.
+            every stage of homeownership. Complex and high-value transactions,
+            our team helps borrowers find the right financing fit.
           </p>
           <p className="text-slate-600 text-sm leading-relaxed mb-4 max-w-sm">
             Learn more about our .
-          
           </p>
 
           <p className="text-slate-600 text-sm mb-8 max-w-sm">
             Learn more about working with a{" "}
             <span className="underline font-semibold cursor-pointer text-slate-800">
-               Illinois mortgage broker
+              Illinois loan officer
             </span>
             .
           </p>
@@ -141,15 +138,10 @@ export default function Beverly() {
 
           <p className="text-slate-200 text-sm leading-relaxed mb-4">
             Every home has a story, and your mortgage should support the one
-            you're creating. we don't just offer loans. We offer
-            guidance, built around your goals, your timeline and your life.{" "}
+            you're creating. we don't just offer loans. We offer guidance, built
+            around your goals, your timeline and your life.{" "}
             <strong className="text-white">every stage of homeownership</strong>
             .
-          </p>
-
-          <p className="text-slate-200 text-sm leading-relaxed mb-4">
-            <strong className="text-white">First-time buyer support</strong>{" "}
-            Let's get more from money
           </p>
 
           <p className="text-slate-200 text-sm mb-8">Learn more about our .</p>

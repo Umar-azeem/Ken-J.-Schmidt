@@ -13,7 +13,7 @@ export default function MeetMarkCohen() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/img/ken-j.png"
-          alt="Mortgage Broker Background"
+          alt="loan officer Background"
           fill
           className="object-cover"
           priority
@@ -38,15 +38,15 @@ export default function MeetMarkCohen() {
 
           {/* Title */}
           <h1 className="w-full text-5xl md:text-6xl lg:text-7xl font-extralight text-white leading-tight mb-6">
-            MORTGAGE BROKER
+            loan officer
           </h1>
 
           {/* Description */}
           <p className="text-lg md:text-xl text-slate-200 leading-relaxed mb-8 max-w-3xl mx-auto">
-           Ken J. Schmidt is a leading mortgage lending expert with over 20
-              years of experience in the home financing industry, committed to
-              delivering tailored loan solutions designed to meet your unique
-              homeownership goals.
+            Ken J. Schmidt is a leading mortgage lending expert with over 20
+            years of experience in the home financing industry, committed to
+            delivering tailored loan solutions designed to meet your unique
+            homeownership goals.
           </p>
 
           {/* Features List */}
@@ -116,7 +116,7 @@ export default function HeroSection() {
         <div className="relative w-full h-full">
           <Image
             src="/img/ken-j.png"
-            alt="Mortgage Broker Background"
+            alt="loan officer Background"
             fill
             className="object-cover md:object-cover"
             priority

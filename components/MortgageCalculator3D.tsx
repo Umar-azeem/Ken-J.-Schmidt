@@ -5,189 +5,346 @@ import { useState, useMemo, useEffect } from "react";
 // ─────────────────────────────────────────────
 // TYPES
 // ─────────────────────────────────────────────
-type LoanType = "purchase" | "refinance";
+type CalcMode = "dimensions" | "concrete" | "roofing" | "stairs" | "materials";
 
-interface CalculatorState {
-  loanType: LoanType;
-  purchasePrice: number;
-  downPayment: number;
-  downPaymentType: "percent" | "dollar";
-  interestRate: number;
-  loanTerm: number;
-  propertyTax: number;
-  insurance: number;
-  hoa: number;
-  closingCosts: number;
-  existingLoanBalance: number;
-  appraisedValue: number;
+interface ConstructionState {
+  mode: CalcMode;
+
+  // Dimensional math
+  feetA: number;
+  inchesA: number;
+  fracA: number;
+  feetB: number;
+  inchesB: number;
+  fracB: number;
+  operation: "add" | "subtract" | "multiply" | "divide";
+
+  // Concrete
+  slabLengthFt: number;
+  slabWidthFt: number;
+  slabThicknessIn: number;
+  wastePct: number;
+
+  // Roofing
+  roofRunFt: number;
+  roofPitch: number; // rise per 12
+  roofOverhangIn: number;
+
+  // Stairs
+  totalRiseIn: number;
+  maxRiserIn: number;
+  treadDepthIn: number;
+
+  // Materials
+  areaSqFt: number;
+  coveragePerUnit: number; // sq ft per sheet/gallon/etc
+  unitLabel: string;
+  pricePerUnit: number;
+
+  // Board feet
+  bfThicknessIn: number;
+  bfWidthIn: number;
+  bfLengthFt: number;
+  bfQty: number;
+  bfPricePerBf: number;
 }
 
 interface Results {
-  loanAmount: number;
-  monthlyPI: number;
-  monthlyTax: number;
-  monthlyInsurance: number;
-  monthlyHOA: number;
-  totalMonthly: number;
-  interestOnly: number;
-  totalInterest: number;
-  totalPayments: number;
-  ltv: number;
-  downPaymentAmount: number;
-  equity: number;
-  cashNeeded: number;
-  amortization: Array<{
-    month: number;
-    payment: number;
-    principal: number;
-    interest: number;
-    balance: number;
-    equity: number;
-  }>;
+  // Dimensions
+  dimTotalInches: number;
+  dimFeet: number;
+  dimInches: number;
+  dimFraction: string;
+  dimDecimalFt: number;
+
+  // Concrete
+  concreteCuFt: number;
+  concreteCuYd: number;
+  concreteBags80: number;
+  concreteBags60: number;
+
+  // Roofing
+  rafterLengthFt: number;
+  roofAngleDeg: number;
+  roofSlopePct: number;
+  roofAreaSqFt: number;
+
+  // Stairs
+  riserCount: number;
+  actualRiserIn: number;
+  totalRunIn: number;
+  stringerLengthFt: number;
+  stairAngleDeg: number;
+
+  // Materials
+  unitsNeeded: number;
+  totalCost: number;
+
+  // Board feet
+  boardFeet: number;
+  bfCost: number;
 }
 
 // ─────────────────────────────────────────────
-// FORMULAS (Real Market Standard)
+// HELPERS
 // ─────────────────────────────────────────────
-function calculateMortgage(state: CalculatorState): Results {
-  const {
-    purchasePrice,
-    downPayment,
-    downPaymentType,
-    interestRate,
-    loanTerm,
-    propertyTax,
-    insurance,
-    hoa,
-    closingCosts,
-    existingLoanBalance,
-    appraisedValue,
-    loanType,
-  } = state;
+const FRACTIONS: Array<[number, string]> = [
+  [0, ""],
+  [1 / 16, "1/16"],
+  [1 / 8, "1/8"],
+  [3 / 16, "3/16"],
+  [1 / 4, "1/4"],
+  [5 / 16, "5/16"],
+  [3 / 8, "3/8"],
+  [7 / 16, "7/16"],
+  [1 / 2, "1/2"],
+  [9 / 16, "9/16"],
+  [5 / 8, "5/8"],
+  [11 / 16, "11/16"],
+  [3 / 4, "3/4"],
+  [13 / 16, "13/16"],
+  [7 / 8, "7/8"],
+  [15 / 16, "15/16"],
+];
 
-  const downPaymentAmount =
-    downPaymentType === "percent"
-      ? purchasePrice * (downPayment / 100)
-      : downPayment;
+function inchesToFeetInchesFrac(totalInches: number) {
+  const sign = totalInches < 0 ? -1 : 1;
+  const abs = Math.abs(totalInches);
+  const feet = Math.floor(abs / 12);
+  const remaining = abs - feet * 12;
+  const wholeInches = Math.floor(remaining);
+  const fracRemainder = remaining - wholeInches;
 
-  const loanAmount = Math.max(0, purchasePrice - downPaymentAmount);
-  const ltv = purchasePrice > 0 ? (loanAmount / purchasePrice) * 100 : 0;
-  const r = interestRate / 100 / 12;
-  const n = loanTerm * 12;
-
-  const monthlyPI =
-    r > 0 && n > 0
-      ? (loanAmount * (r * Math.pow(1 + r, n))) / (Math.pow(1 + r, n) - 1)
-      : loanAmount / n;
-
-  const interestOnly = loanAmount * (interestRate / 100 / 12);
-  const monthlyTax = propertyTax / 12;
-  const monthlyInsurance = insurance / 12;
-  const monthlyHOA = hoa;
-  const totalMonthly = monthlyPI + monthlyTax + monthlyInsurance + monthlyHOA;
-
-  const totalPayments = monthlyPI * n;
-  const totalInterest = totalPayments - loanAmount;
-
-  const equity =
-    loanType === "refinance"
-      ? appraisedValue - existingLoanBalance
-      : downPaymentAmount;
-
-  const cashNeeded =
-    loanType === "refinance"
-      ? Math.max(0, closingCosts + existingLoanBalance - loanAmount)
-      : Math.max(0, downPaymentAmount + closingCosts);
-
-  const amortization = [];
-  let balance = loanAmount;
-  for (let month = 1; month <= 12; month++) {
-    const interestPayment = balance * r;
-    const principalPayment = monthlyPI - interestPayment;
-    balance = Math.max(0, balance - principalPayment);
-
-    amortization.push({
-      month,
-      payment: monthlyPI,
-      principal: principalPayment,
-      interest: interestPayment,
-      balance,
-      equity: downPaymentAmount + (loanAmount - balance),
-    });
+  // Snap to nearest 1/16
+  let best = FRACTIONS[0];
+  let bestDiff = Infinity;
+  for (const f of FRACTIONS) {
+    const diff = Math.abs(f[0] - fracRemainder);
+    if (diff < bestDiff) {
+      bestDiff = diff;
+      best = f;
+    }
   }
 
+  let inches = wholeInches;
+  let fracStr = best[1];
+  if (best[0] === 1) {
+    inches += 1;
+    fracStr = "";
+  }
+
+  return { sign, feet, inches, fraction: fracStr };
+}
+
+function formatFeetInches(totalInches: number): string {
+  if (!isFinite(totalInches)) return "—";
+  const { sign, feet, inches, fraction } = inchesToFeetInchesFrac(totalInches);
+  const parts: string[] = [];
+  if (feet > 0) parts.push(`${feet}'`);
+  if (inches > 0 || fraction) parts.push(`${inches}${fraction ? ` ${fraction}` : ""}"`);
+  if (parts.length === 0) parts.push(`0"`);
+  return `${sign < 0 ? "-" : ""}${parts.join(" ")}`;
+}
+
+// ─────────────────────────────────────────────
+// CORE CALCULATION
+// ─────────────────────────────────────────────
+function calculate(s: ConstructionState): Results {
+  // ── Dimensional math ──
+  const aIn = s.feetA * 12 + s.inchesA + s.fracA;
+  const bIn = s.feetB * 12 + s.inchesB + s.fracB;
+  let dimTotalInches = 0;
+  if (s.operation === "add") dimTotalInches = aIn + bIn;
+  else if (s.operation === "subtract") dimTotalInches = aIn - bIn;
+  else if (s.operation === "multiply") dimTotalInches = aIn * bIn;
+  else dimTotalInches = bIn !== 0 ? aIn / bIn : 0;
+
+  const { feet: dimFeet, inches: dimInches, fraction: dimFraction } =
+    inchesToFeetInchesFrac(dimTotalInches);
+
+  // ── Concrete ──
+  const thicknessFt = s.slabThicknessIn / 12;
+  const slabCuFt = s.slabLengthFt * s.slabWidthFt * thicknessFt;
+  const wasteMultiplier = 1 + s.wastePct / 100;
+  const concreteCuFt = slabCuFt * wasteMultiplier;
+  const concreteCuYd = concreteCuFt / 27;
+  const concreteBags80 = Math.ceil(concreteCuFt / 0.6);
+  const concreteBags60 = Math.ceil(concreteCuFt / 0.45);
+
+  // ── Roofing ──
+  const runWithOverhang = s.roofRunFt + s.roofOverhangIn / 12;
+  const risePerFt = s.roofPitch / 12;
+  const rafterLengthFt = Math.sqrt(
+    runWithOverhang * runWithOverhang +
+      (runWithOverhang * risePerFt) * (runWithOverhang * risePerFt)
+  );
+  const roofAngleDeg = (Math.atan(risePerFt) * 180) / Math.PI;
+  const roofSlopePct = risePerFt * 100;
+  const roofAreaSqFt = rafterLengthFt * (runWithOverhang * 2); // both slopes
+
+  // ── Stairs ──
+  const riserCount = Math.max(1, Math.ceil(s.totalRiseIn / s.maxRiserIn));
+  const actualRiserIn = s.totalRiseIn / riserCount;
+  const treadCount = Math.max(1, riserCount - 1);
+  const totalRunIn = treadCount * s.treadDepthIn;
+  const stringerLengthIn = Math.sqrt(
+    s.totalRiseIn * s.totalRiseIn + totalRunIn * totalRunIn
+  );
+  const stringerLengthFt = stringerLengthIn / 12;
+  const stairAngleDeg = (Math.atan(s.totalRiseIn / totalRunIn) * 180) / Math.PI;
+
+  // ── Materials ──
+  const unitsNeeded =
+    s.coveragePerUnit > 0 ? Math.ceil(s.areaSqFt / s.coveragePerUnit) : 0;
+  const totalCost = unitsNeeded * s.pricePerUnit;
+
+  // ── Board feet ──
+  const bfPerPiece =
+    (s.bfThicknessIn * s.bfWidthIn * s.bfLengthFt) / 12;
+  const boardFeet = bfPerPiece * s.bfQty;
+  const bfCost = boardFeet * s.bfPricePerBf;
+
   return {
-    loanAmount,
-    monthlyPI,
-    monthlyTax,
-    monthlyInsurance,
-    monthlyHOA,
-    totalMonthly,
-    interestOnly,
-    totalInterest,
-    totalPayments,
-    ltv,
-    downPaymentAmount,
-    equity,
-    cashNeeded,
-    amortization,
+    dimTotalInches,
+    dimFeet,
+    dimInches,
+    dimFraction,
+    dimDecimalFt: dimTotalInches / 12,
+    concreteCuFt,
+    concreteCuYd,
+    concreteBags80,
+    concreteBags60,
+    rafterLengthFt,
+    roofAngleDeg,
+    roofSlopePct,
+    roofAreaSqFt,
+    riserCount,
+    actualRiserIn,
+    totalRunIn,
+    stringerLengthFt,
+    stairAngleDeg,
+    unitsNeeded,
+    totalCost,
+    boardFeet,
+    bfCost,
   };
 }
 
-const fmt = (n: number) =>
+const fmt = (n: number, digits = 2) =>
+  new Intl.NumberFormat("en-US", {
+    maximumFractionDigits: digits,
+    minimumFractionDigits: 0,
+  }).format(n);
+
+const fmtCur = (n: number) =>
   new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
     maximumFractionDigits: 0,
   }).format(n);
 
-const fmtPct = (n: number) => `${n.toFixed(2)}%`;
-
 // ─────────────────────────────────────────────
 // MAIN COMPONENT
 // ─────────────────────────────────────────────
-export default function MortgageCalculator3D() {
-  const [state, setState] = useState<CalculatorState>({
-    loanType: "purchase",
-    purchasePrice: 450000,
-    downPayment: 20,
-    downPaymentType: "percent",
-    interestRate: 6.75,
-    loanTerm: 30,
-    propertyTax: 6000,
-    insurance: 1800,
-    hoa: 0,
-    closingCosts: 8000,
-    existingLoanBalance: 0,
-    appraisedValue: 450000,
+export default function ConstructionCalculator3D() {
+  const [state, setState] = useState<ConstructionState>({
+    mode: "dimensions",
+
+    feetA: 10,
+    inchesA: 6,
+    fracA: 0.5,
+    feetB: 4,
+    inchesB: 3,
+    fracB: 0.25,
+    operation: "add",
+
+    slabLengthFt: 20,
+    slabWidthFt: 12,
+    slabThicknessIn: 4,
+    wastePct: 10,
+
+    roofRunFt: 12,
+    roofPitch: 6,
+    roofOverhangIn: 12,
+
+    totalRiseIn: 108,
+    maxRiserIn: 7.5,
+    treadDepthIn: 10.5,
+
+    areaSqFt: 500,
+    coveragePerUnit: 32, // drywall sheet (4x8)
+    unitLabel: "sheets",
+    pricePerUnit: 18,
+
+    bfThicknessIn: 2,
+    bfWidthIn: 6,
+    bfLengthFt: 10,
+    bfQty: 10,
+    bfPricePerBf: 4.5,
   });
 
-  const [animatedTotal, setAnimatedTotal] = useState(0);
-  const results = useMemo(() => calculateMortgage(state), [state]);
+  const results = useMemo(() => calculate(state), [state]);
+
+  const [animatedValue, setAnimatedValue] = useState(0);
+
+  // animated "hero" number depending on mode
+  const heroValue = useMemo(() => {
+    switch (state.mode) {
+      case "dimensions":
+        return results.dimDecimalFt;
+      case "concrete":
+        return results.concreteCuYd;
+      case "roofing":
+        return results.rafterLengthFt;
+      case "stairs":
+        return results.stringerLengthFt;
+      case "materials":
+        return results.unitsNeeded;
+      default:
+        return 0;
+    }
+  }, [state.mode, results]);
 
   useEffect(() => {
-    let start = animatedTotal;
-    const end = results.totalMonthly;
-    const duration = 600;
+    const start = animatedValue;
+    const end = heroValue;
+    const duration = 500;
     const startTime = performance.now();
-
     const tick = (now: number) => {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setAnimatedTotal(start + (end - start) * eased);
+      setAnimatedValue(start + (end - start) * eased);
       if (progress < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [results.totalMonthly]);
+  }, [heroValue]);
 
-  const update = (key: keyof CalculatorState, value: any) =>
-    setState((s) => ({ ...s, [key]: value }));
+  const update = <K extends keyof ConstructionState>(
+    key: K,
+    value: ConstructionState[K]
+  ) => setState((s) => ({ ...s, [key]: value }));
+
+  const heroLabel = {
+    dimensions: "Total (decimal feet)",
+    concrete: "Concrete Volume (cubic yards)",
+    roofing: "Rafter Length (feet)",
+    stairs: "Stringer Length (feet)",
+    materials: "Units Needed",
+  }[state.mode];
+
+  const heroSuffix = {
+    dimensions: " ft",
+    concrete: " yd³",
+    roofing: " ft",
+    stairs: " ft",
+    materials: "",
+  }[state.mode];
 
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#f8fafc] via-[#eef4fa] to-white py-12 sm:py-16 md:py-20">
-      {/* Floating 3D orbs — smaller on mobile */}
+      {/* Floating orbs */}
       <div className="pointer-events-none absolute inset-0">
         <div
           className="absolute -top-16 -left-16 h-48 w-48 rounded-full blur-3xl animate-float-slow sm:-top-32 sm:-left-24 sm:h-96 sm:w-96"
@@ -216,24 +373,24 @@ export default function MortgageCalculator3D() {
             className="inline-block rounded-full px-3 py-1 text-xs font-semibold tracking-wide sm:px-4 sm:py-1.5 sm:text-sm"
             style={{ backgroundColor: "rgba(35, 97, 147, 0.1)", color: "#236193" }}
           >
-            SMART FINANCING TOOL
+            JOBSITE MATH, INSTANTLY
           </span>
           <h2
             className="mt-3 text-2xl font-bold tracking-tight sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl"
             style={{ color: "#133653" }}
           >
-            Estimate Your Mortgage in Real Time
+            The Construction Calculator
           </h2>
           <p
             className="mx-auto mt-3 max-w-2xl text-sm sm:mt-4 sm:text-base md:text-lg"
             style={{ color: "rgba(35, 97, 147, 0.75)" }}
           >
-            Adjust any field and watch your payment, equity, and cash needed update
-            instantly — using the same formulas lenders use.
+            Feet-inch-fractions, concrete, rafters, stairs, and material takeoffs —
+            all in one place, with real trade formulas.
           </p>
         </div>
 
-        {/* Grid — stacks on mobile, side-by-side on lg */}
+        {/* Grid */}
         <div className="grid gap-6 lg:grid-cols-5 lg:gap-8">
           {/* ── LEFT: INPUTS ── */}
           <div
@@ -243,202 +400,124 @@ export default function MortgageCalculator3D() {
               boxShadow: "0 20px 60px -20px rgba(35, 97, 147, 0.2)",
             }}
           >
-            {/* Loan Type Toggle */}
+            {/* Mode tabs */}
             <div className="mb-5 sm:mb-6">
               <label
                 className="mb-2 block text-xs font-semibold sm:text-sm"
                 style={{ color: "#133653" }}
               >
-                Loan Purpose
+                Calculator Mode
               </label>
               <div
-                className="inline-flex w-full rounded-xl border p-1 sm:w-auto"
+                className="grid grid-cols-2 gap-1 rounded-xl border p-1 sm:grid-cols-5"
                 style={{ borderColor: "rgba(35,97,147,0.15)" }}
               >
-                {(["purchase", "refinance"] as LoanType[]).map((t) => (
+                {(
+                  [
+                    ["dimensions", "Dimensions"],
+                    ["concrete", "Concrete"],
+                    ["roofing", "Roofing"],
+                    ["stairs", "Stairs"],
+                    ["materials", "Materials"],
+                  ] as Array<[CalcMode, string]>
+                ).map(([m, label]) => (
                   <button
-                    key={t}
-                    onClick={() => update("loanType", t)}
-                    className="flex-1 rounded-lg px-3 py-2 text-xs font-semibold capitalize transition-all duration-300 sm:flex-none sm:px-5 sm:text-sm"
+                    key={m}
+                    onClick={() => update("mode", m)}
+                    className="rounded-lg px-2 py-2 text-[11px] font-semibold transition-all duration-300 sm:text-xs"
                     style={{
                       backgroundColor:
-                        state.loanType === t ? "#236193" : "transparent",
-                      color: state.loanType === t ? "#ffffff" : "#236193",
+                        state.mode === m ? "#236193" : "transparent",
+                      color: state.mode === m ? "#ffffff" : "#236193",
                     }}
                   >
-                    {t}
+                    {label}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Input Grid — 1 col mobile, 2 col md+ */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
-              {state.loanType === "purchase" ? (
+            {/* Mode-specific inputs */}
+            {state.mode === "dimensions" && (
+              <DimensionsInputs state={state} update={update} results={results} />
+            )}
+            {state.mode === "concrete" && (
+              <ConcreteInputs state={state} update={update} />
+            )}
+            {state.mode === "roofing" && (
+              <RoofingInputs state={state} update={update} />
+            )}
+            {state.mode === "stairs" && (
+              <StairsInputs state={state} update={update} />
+            )}
+            {state.mode === "materials" && (
+              <MaterialsInputs state={state} update={update} />
+            )}
+
+            {/* Board feet (always shown) */}
+            <div className="mt-6 border-t pt-5" style={{ borderColor: "rgba(35,97,147,0.1)" }}>
+              <p
+                className="mb-3 text-xs font-semibold uppercase tracking-wide sm:text-sm"
+                style={{ color: "#133653" }}
+              >
+                Board Feet (Lumber)
+              </p>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 <InputField
-                  label="Purchase Price"
-                  value={state.purchasePrice}
-                  onChange={(v) => update("purchasePrice", v)}
+                  label="Thickness"
+                  value={state.bfThicknessIn}
+                  onChange={(v) => update("bfThicknessIn", v)}
+                  suffix="in"
+                  step={0.25}
+                />
+                <InputField
+                  label="Width"
+                  value={state.bfWidthIn}
+                  onChange={(v) => update("bfWidthIn", v)}
+                  suffix="in"
+                  step={0.5}
+                />
+                <InputField
+                  label="Length"
+                  value={state.bfLengthFt}
+                  onChange={(v) => update("bfLengthFt", v)}
+                  suffix="ft"
+                  step={1}
+                />
+                <InputField
+                  label="Qty"
+                  value={state.bfQty}
+                  onChange={(v) => update("bfQty", v)}
+                  step={1}
+                />
+                <InputField
+                  label="Price / BF"
+                  value={state.bfPricePerBf}
+                  onChange={(v) => update("bfPricePerBf", v)}
                   prefix="$"
-                  step={5000}
+                  step={0.25}
                 />
-              ) : (
-                <>
-                  <InputField
-                    label="Appraised Value"
-                    value={state.appraisedValue}
-                    onChange={(v) => update("appraisedValue", v)}
-                    prefix="$"
-                    step={5000}
-                  />
-                  <InputField
-                    label="Existing Loan Balance"
-                    value={state.existingLoanBalance}
-                    onChange={(v) => update("existingLoanBalance", v)}
-                    prefix="$"
-                    step={5000}
-                  />
-                </>
-              )}
-
-              {state.loanType === "purchase" && (
-                <div>
-                  <label
-                    className="mb-1.5 block text-xs font-semibold sm:text-sm"
-                    style={{ color: "#133653" }}
-                  >
-                    Down Payment
-                  </label>
-                  <div className="flex gap-2">
-                    <div className="relative flex-1">
-                      <input
-                        type="number"
-                        value={state.downPayment}
-                        onChange={(e) =>
-                          update("downPayment", Number(e.target.value))
-                        }
-                        className="w-full rounded-xl border px-3 py-2.5 text-sm font-medium outline-none transition-all focus:ring-2 sm:px-4 sm:py-3"
-                        style={{
-                          borderColor: "rgba(35,97,147,0.2)",
-                          color: "#133653",
-                        }}
-                      />
-                      <span
-                        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm"
-                        style={{ color: "#236193" }}
-                      >
-                        {state.downPaymentType === "percent" ? "%" : "$"}
-                      </span>
-                    </div>
-                    <button
-                      onClick={() =>
-                        update(
-                          "downPaymentType",
-                          state.downPaymentType === "percent" ? "dollar" : "percent"
-                        )
-                      }
-                      className="rounded-xl border px-3 text-xs font-semibold transition-colors hover:bg-[#236193]/5"
-                      style={{
-                        borderColor: "rgba(35,97,147,0.2)",
-                        color: "#236193",
-                      }}
-                    >
-                      {state.downPaymentType === "percent" ? "%" : "$"}
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              <InputField
-                label="Interest Rate"
-                value={state.interestRate}
-                onChange={(v) => update("interestRate", v)}
-                suffix="%"
-                step={0.125}
-              />
-
-              <div>
-                <label
-                  className="mb-1.5 block text-xs font-semibold sm:text-sm"
-                  style={{ color: "#133653" }}
-                >
-                  Loan Term
-                </label>
-                <select
-                  value={state.loanTerm}
-                  onChange={(e) => update("loanTerm", Number(e.target.value))}
-                  className="w-full rounded-xl border px-3 py-2.5 text-sm font-medium outline-none sm:px-4 sm:py-3"
-                  style={{
-                    borderColor: "rgba(35,97,147,0.2)",
-                    color: "#133653",
-                  }}
-                >
-                  {[10, 15, 20, 25, 30].map((y) => (
-                    <option key={y} value={y}>
-                      {y} Years
-                    </option>
-                  ))}
-                </select>
               </div>
-
-              <InputField
-                label="Annual Property Tax"
-                value={state.propertyTax}
-                onChange={(v) => update("propertyTax", v)}
-                prefix="$"
-                step={500}
-              />
-
-              <InputField
-                label="Annual Insurance"
-                value={state.insurance}
-                onChange={(v) => update("insurance", v)}
-                prefix="$"
-                step={100}
-              />
-
-              <InputField
-                label="Monthly HOA"
-                value={state.hoa}
-                onChange={(v) => update("hoa", v)}
-                prefix="$"
-                step={25}
-              />
-
-              <InputField
-                label="Closing Costs"
-                value={state.closingCosts}
-                onChange={(v) => update("closingCosts", v)}
-                prefix="$"
-                step={500}
-              />
-            </div>
-
-            {/* LTV Bar */}
-            <div className="mt-5 sm:mt-6">
-              <div className="mb-2 flex items-center justify-between text-xs sm:text-sm">
-                <span className="font-semibold" style={{ color: "#133653" }}>
-                  Loan-to-Value (LTV)
+              <div className="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm">
+                <span style={{ color: "rgba(35,97,147,0.7)" }}>
+                  Board feet:{" "}
+                  <strong style={{ color: "#133653" }}>
+                    {fmt(results.boardFeet, 2)} bf
+                  </strong>
                 </span>
-                <span className="font-bold" style={{ color: "#236193" }}>
-                  {fmtPct(results.ltv)}
+                <span style={{ color: "rgba(35,97,147,0.7)" }}>
+                  Cost:{" "}
+                  <strong style={{ color: "#133653" }}>
+                    {fmtCur(results.bfCost)}
+                  </strong>
                 </span>
-              </div>
-              <div className="h-2.5 overflow-hidden rounded-full bg-[#eef4fa]">
-                <div
-                  className="h-full rounded-full transition-all duration-700 ease-out"
-                  style={{
-                    width: `${Math.min(results.ltv, 100)}%`,
-                    background: "linear-gradient(90deg, #4f88c2, #236193)",
-                  }}
-                />
               </div>
             </div>
           </div>
 
           {/* ── RIGHT: RESULTS ── */}
           <div className="space-y-4 sm:space-y-5 lg:col-span-2">
-            {/* Total Monthly Payment Card */}
+            {/* Hero card */}
             <div
               className="relative overflow-hidden rounded-2xl p-5 text-white animate-fade-up shadow-2xl sm:rounded-3xl sm:p-7"
               style={{
@@ -451,64 +530,152 @@ export default function MortgageCalculator3D() {
                 className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full blur-2xl"
                 style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
               />
-
               <p className="text-xs font-medium uppercase tracking-wider opacity-80 sm:text-sm">
-                Estimated Monthly Payment
+                {heroLabel}
               </p>
               <p className="mt-1.5 text-3xl font-bold tabular-nums sm:mt-2 sm:text-4xl md:text-5xl">
-                {fmt(animatedTotal)}
+                {fmt(animatedValue, state.mode === "materials" ? 0 : 2)}
+                {heroSuffix}
               </p>
-              <p className="mt-1 text-xs opacity-70 sm:text-sm">
-                P&I + Taxes + Insurance + HOA
-              </p>
+              {state.mode === "dimensions" && (
+                <p className="mt-1 text-xs opacity-80 sm:text-sm">
+                  {formatFeetInches(results.dimTotalInches)}
+                </p>
+              )}
+            </div>
 
-              <div className="mt-4 space-y-1.5 border-t border-white/20 pt-4 text-xs sm:mt-6 sm:space-y-2 sm:pt-5 sm:text-sm">
-                <BreakdownRow
-                  label="Principal & Interest"
-                  value={fmt(results.monthlyPI)}
+            {/* Mode-specific stats */}
+            {state.mode === "dimensions" && (
+              <div className="grid grid-cols-1 gap-3 min-[400px]:grid-cols-2 sm:gap-4">
+                <StatCard
+                  label="Feet-Inch-Fraction"
+                  value={formatFeetInches(results.dimTotalInches)}
+                  delay={200}
+                  highlight
                 />
-                <BreakdownRow
-                  label="Property Tax"
-                  value={fmt(results.monthlyTax)}
+                <StatCard
+                  label="Total Inches"
+                  value={`${fmt(results.dimTotalInches, 3)}"`}
+                  delay={250}
                 />
-                <BreakdownRow
-                  label="Insurance"
-                  value={fmt(results.monthlyInsurance)}
+                <StatCard
+                  label="Decimal Feet"
+                  value={`${fmt(results.dimDecimalFt, 3)} ft`}
+                  delay={300}
                 />
-                <BreakdownRow label="HOA" value={fmt(results.monthlyHOA)} />
+                <StatCard
+                  label="Meters"
+                  value={`${fmt((results.dimTotalInches * 0.0254), 3)} m`}
+                  delay={350}
+                />
               </div>
-            </div>
+            )}
 
-            {/* Quick Stats Grid — 1 col on very small, 2 col from 400px+ */}
-            <div className="grid grid-cols-1 gap-3 min-[400px]:grid-cols-2 sm:gap-4">
-              <StatCard
-                label="Loan Amount"
-                value={fmt(results.loanAmount)}
-                delay={200}
-              />
-              <StatCard
-                label="Interest-Only Payment"
-                value={fmt(results.interestOnly)}
-                delay={250}
-              />
-              <StatCard
-                label="Total Interest (Life)"
-                value={fmt(results.totalInterest)}
-                delay={300}
-              />
-              <StatCard
-                label={
-                  state.loanType === "refinance"
-                    ? "Cash Out Available"
-                    : "Cash Needed to Close"
-                }
-                value={fmt(results.cashNeeded)}
-                delay={350}
-                highlight
-              />
-            </div>
+            {state.mode === "concrete" && (
+              <div className="grid grid-cols-1 gap-3 min-[400px]:grid-cols-2 sm:gap-4">
+                <StatCard
+                  label="Volume (cu yd)"
+                  value={`${fmt(results.concreteCuYd, 2)} yd³`}
+                  delay={200}
+                  highlight
+                />
+                <StatCard
+                  label="Volume (cu ft)"
+                  value={`${fmt(results.concreteCuFt, 2)} ft³`}
+                  delay={250}
+                />
+                <StatCard
+                  label="80 lb Bags"
+                  value={fmt(results.concreteBags80, 0)}
+                  delay={300}
+                />
+                <StatCard
+                  label="60 lb Bags"
+                  value={fmt(results.concreteBags60, 0)}
+                  delay={350}
+                />
+              </div>
+            )}
 
-            {/* Equity Card */}
+            {state.mode === "roofing" && (
+              <div className="grid grid-cols-1 gap-3 min-[400px]:grid-cols-2 sm:gap-4">
+                <StatCard
+                  label="Rafter Length"
+                  value={`${fmt(results.rafterLengthFt, 2)} ft`}
+                  delay={200}
+                  highlight
+                />
+                <StatCard
+                  label="Roof Angle"
+                  value={`${fmt(results.roofAngleDeg, 2)}°`}
+                  delay={250}
+                />
+                <StatCard
+                  label="Slope"
+                  value={`${fmt(results.roofSlopePct, 1)}%`}
+                  delay={300}
+                />
+                <StatCard
+                  label="Roof Area (est.)"
+                  value={`${fmt(results.roofAreaSqFt, 0)} ft²`}
+                  delay={350}
+                />
+              </div>
+            )}
+
+            {state.mode === "stairs" && (
+              <div className="grid grid-cols-1 gap-3 min-[400px]:grid-cols-2 sm:gap-4">
+                <StatCard
+                  label="Risers"
+                  value={fmt(results.riserCount, 0)}
+                  delay={200}
+                  highlight
+                />
+                <StatCard
+                  label="Actual Riser"
+                  value={`${fmt(results.actualRiserIn, 3)}"`}
+                  delay={250}
+                />
+                <StatCard
+                  label="Total Run"
+                  value={formatFeetInches(results.totalRunIn)}
+                  delay={300}
+                />
+                <StatCard
+                  label="Stair Angle"
+                  value={`${fmt(results.stairAngleDeg, 1)}°`}
+                  delay={350}
+                />
+              </div>
+            )}
+
+            {state.mode === "materials" && (
+              <div className="grid grid-cols-1 gap-3 min-[400px]:grid-cols-2 sm:gap-4">
+                <StatCard
+                  label={`Units (${state.unitLabel})`}
+                  value={fmt(results.unitsNeeded, 0)}
+                  delay={200}
+                  highlight
+                />
+                <StatCard
+                  label="Total Cost"
+                  value={fmtCur(results.totalCost)}
+                  delay={250}
+                />
+                <StatCard
+                  label="Area"
+                  value={`${fmt(state.areaSqFt, 0)} ft²`}
+                  delay={300}
+                />
+                <StatCard
+                  label="Coverage / Unit"
+                  value={`${fmt(state.coveragePerUnit, 2)} ft²`}
+                  delay={350}
+                />
+              </div>
+            )}
+
+            {/* Quick reference card */}
             <div
               className="rounded-2xl border bg-white/80 p-4 backdrop-blur-sm animate-fade-up sm:p-5"
               style={{
@@ -516,97 +683,322 @@ export default function MortgageCalculator3D() {
                 animationDelay: "400ms",
               }}
             >
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <span
-                  className="text-xs font-semibold sm:text-sm"
-                  style={{ color: "#133653" }}
-                >
-                  Estimated Equity
-                </span>
-                <span
-                  className="text-base font-bold sm:text-lg"
-                  style={{ color: "#236193" }}
-                >
-                  {fmt(results.equity)}
-                </span>
-              </div>
               <p
-                className="mt-1 text-[11px] sm:text-xs"
-                style={{ color: "rgba(35,97,147,0.6)" }}
-              >
-                {state.loanType === "refinance"
-                  ? "Appraised value minus existing balance"
-                  : "Down payment + principal paid"}
-              </p>
-            </div>
-
-            {/* Amortization Preview */}
-            <div
-              className="rounded-2xl border bg-white/80 p-4 backdrop-blur-sm animate-fade-up sm:p-5"
-              style={{
-                borderColor: "rgba(35,97,147,0.15)",
-                animationDelay: "450ms",
-              }}
-            >
-              <p
-                className="mb-3 text-xs font-semibold sm:text-sm"
+                className="mb-2 text-xs font-semibold sm:text-sm"
                 style={{ color: "#133653" }}
               >
-                First 6 Months (Principal vs Interest)
+                Quick Reference
               </p>
-              <div className="space-y-1.5">
-                {results.amortization.slice(0, 6).map((row) => {
-                  const principalPct = (row.principal / row.payment) * 100;
-                  return (
-                    <div
-                      key={row.month}
-                      className="flex items-center gap-2 text-[11px] sm:gap-3 sm:text-xs"
-                    >
-                      <span
-                        className="w-7 tabular-nums sm:w-8"
-                        style={{ color: "rgba(35,97,147,0.6)" }}
-                      >
-                        M{row.month}
-                      </span>
-                      <div className="flex h-2 flex-1 overflow-hidden rounded-full bg-[#eef4fa]">
-                        <div
-                          className="h-full transition-all duration-500"
-                          style={{
-                            width: `${principalPct}%`,
-                            backgroundColor: "#236193",
-                          }}
-                        />
-                        <div
-                          className="h-full flex-1 transition-all duration-500"
-                          style={{ backgroundColor: "rgba(35,97,147,0.2)" }}
-                        />
-                      </div>
-                      <span
-                        className="w-14 text-right tabular-nums sm:w-16"
-                        style={{ color: "#133653" }}
-                      >
-                        {fmt(row.balance)}
-                      </span>
-                    </div>
-                  );
-                })}
+              <div
+                className="space-y-1 text-[11px] sm:text-xs"
+                style={{ color: "rgba(35,97,147,0.75)" }}
+              >
+                <p>• 1 yd³ = 27 ft³ &nbsp;|&nbsp; 80 lb bag ≈ 0.6 ft³</p>
+                <p>• Board feet = (T × W × L) / 12 &nbsp;(inches/feet)</p>
+                <p>• Rafter = √(run² + rise²) &nbsp;|&nbsp; rise = run × pitch/12</p>
+                <p>• Stair: risers = ⌈total rise ÷ max riser⌉</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Compliance Disclosure */}
+        {/* Disclaimer */}
         <p
           className="mx-auto mt-8 max-w-4xl text-center text-[11px] leading-relaxed sm:mt-10 sm:text-xs"
           style={{ color: "rgba(35,97,147,0.55)" }}
         >
-          This calculator provides estimates based on user inputs and standard
-          formulas. Results are not a Loan Estimate, commitment to lend, or credit
-          decision. Actual rates and payments depend on borrower qualifications,
-          underwriting, and program guidelines. All loans subject to credit approval.
+          Estimates only. Always verify measurements, local code requirements, and
+          manufacturer coverage before ordering materials or cutting lumber. Bag
+          yields and coverage vary by product.
         </p>
       </div>
     </section>
+  );
+}
+
+// ─────────────────────────────────────────────
+// MODE-SPECIFIC INPUT PANELS
+// ─────────────────────────────────────────────
+function DimensionsInputs({
+  state,
+  update,
+  results,
+}: {
+  state: ConstructionState;
+  update: <K extends keyof ConstructionState>(k: K, v: ConstructionState[K]) => void;
+  results: Results;
+}) {
+  return (
+    <div className="space-y-4">
+      {/* Measurement A */}
+      <div>
+        <label
+          className="mb-1.5 block text-xs font-semibold sm:text-sm"
+          style={{ color: "#133653" }}
+        >
+          Measurement A
+        </label>
+        <div className="grid grid-cols-3 gap-2">
+          <InputField
+            label="Feet"
+            value={state.feetA}
+            onChange={(v) => update("feetA", v)}
+            suffix="ft"
+            step={1}
+          />
+          <InputField
+            label="Inches"
+            value={state.inchesA}
+            onChange={(v) => update("inchesA", v)}
+            suffix="in"
+            step={1}
+          />
+          <FractionSelect
+            label="Fraction"
+            value={state.fracA}
+            onChange={(v) => update("fracA", v)}
+          />
+        </div>
+      </div>
+
+      {/* Operation */}
+      <div>
+        <label
+          className="mb-1.5 block text-xs font-semibold sm:text-sm"
+          style={{ color: "#133653" }}
+        >
+          Operation
+        </label>
+        <div
+          className="inline-flex w-full rounded-xl border p-1"
+          style={{ borderColor: "rgba(35,97,147,0.15)" }}
+        >
+          {(
+            [
+              ["add", "+"],
+              ["subtract", "−"],
+              ["multiply", "×"],
+              ["divide", "÷"],
+            ] as Array<[ConstructionState["operation"], string]>
+          ).map(([op, sym]) => (
+            <button
+              key={op}
+              onClick={() => update("operation", op)}
+              className="flex-1 rounded-lg px-3 py-2 text-sm font-bold transition-all duration-300"
+              style={{
+                backgroundColor:
+                  state.operation === op ? "#236193" : "transparent",
+                color: state.operation === op ? "#ffffff" : "#236193",
+              }}
+            >
+              {sym}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Measurement B */}
+      <div>
+        <label
+          className="mb-1.5 block text-xs font-semibold sm:text-sm"
+          style={{ color: "#133653" }}
+        >
+          Measurement B
+        </label>
+        <div className="grid grid-cols-3 gap-2">
+          <InputField
+            label="Feet"
+            value={state.feetB}
+            onChange={(v) => update("feetB", v)}
+            suffix="ft"
+            step={1}
+          />
+          <InputField
+            label="Inches"
+            value={state.inchesB}
+            onChange={(v) => update("inchesB", v)}
+            suffix="in"
+            step={1}
+          />
+          <FractionSelect
+            label="Fraction"
+            value={state.fracB}
+            onChange={(v) => update("fracB", v)}
+          />
+        </div>
+      </div>
+
+      {/* Result preview */}
+      <div
+        className="rounded-xl border p-3 text-center"
+        style={{ borderColor: "rgba(35,97,147,0.2)", backgroundColor: "rgba(35,97,147,0.04)" }}
+      >
+        <p className="text-[11px] sm:text-xs" style={{ color: "rgba(35,97,147,0.7)" }}>
+          Result
+        </p>
+        <p className="text-lg font-bold sm:text-xl" style={{ color: "#133653" }}>
+          {formatFeetInches(results.dimTotalInches)}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function ConcreteInputs({
+  state,
+  update,
+}: {
+  state: ConstructionState;
+  update: <K extends keyof ConstructionState>(k: K, v: ConstructionState[K]) => void;
+}) {
+  return (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+      <InputField
+        label="Slab Length"
+        value={state.slabLengthFt}
+        onChange={(v) => update("slabLengthFt", v)}
+        suffix="ft"
+        step={1}
+      />
+      <InputField
+        label="Slab Width"
+        value={state.slabWidthFt}
+        onChange={(v) => update("slabWidthFt", v)}
+        suffix="ft"
+        step={1}
+      />
+      <InputField
+        label="Thickness"
+        value={state.slabThicknessIn}
+        onChange={(v) => update("slabThicknessIn", v)}
+        suffix="in"
+        step={0.5}
+      />
+      <InputField
+        label="Waste"
+        value={state.wastePct}
+        onChange={(v) => update("wastePct", v)}
+        suffix="%"
+        step={1}
+      />
+    </div>
+  );
+}
+
+function RoofingInputs({
+  state,
+  update,
+}: {
+  state: ConstructionState;
+  update: <K extends keyof ConstructionState>(k: K, v: ConstructionState[K]) => void;
+}) {
+  return (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+      <InputField
+        label="Run (half-span)"
+        value={state.roofRunFt}
+        onChange={(v) => update("roofRunFt", v)}
+        suffix="ft"
+        step={0.5}
+      />
+      <InputField
+        label="Pitch (rise / 12)"
+        value={state.roofPitch}
+        onChange={(v) => update("roofPitch", v)}
+        suffix="/12"
+        step={0.5}
+      />
+      <InputField
+        label="Overhang"
+        value={state.roofOverhangIn}
+        onChange={(v) => update("roofOverhangIn", v)}
+        suffix="in"
+        step={1}
+      />
+    </div>
+  );
+}
+
+function StairsInputs({
+  state,
+  update,
+}: {
+  state: ConstructionState;
+  update: <K extends keyof ConstructionState>(k: K, v: ConstructionState[K]) => void;
+}) {
+  return (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+      <InputField
+        label="Total Rise"
+        value={state.totalRiseIn}
+        onChange={(v) => update("totalRiseIn", v)}
+        suffix="in"
+        step={1}
+      />
+      <InputField
+        label="Max Riser"
+        value={state.maxRiserIn}
+        onChange={(v) => update("maxRiserIn", v)}
+        suffix="in"
+        step={0.25}
+      />
+      <InputField
+        label="Tread Depth"
+        value={state.treadDepthIn}
+        onChange={(v) => update("treadDepthIn", v)}
+        suffix="in"
+        step={0.25}
+      />
+    </div>
+  );
+}
+
+function MaterialsInputs({
+  state,
+  update,
+}: {
+  state: ConstructionState;
+  update: <K extends keyof ConstructionState>(k: K, v: ConstructionState[K]) => void;
+}) {
+  return (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+      <InputField
+        label="Area to Cover"
+        value={state.areaSqFt}
+        onChange={(v) => update("areaSqFt", v)}
+        suffix="ft²"
+        step={10}
+      />
+      <InputField
+        label="Coverage / Unit"
+        value={state.coveragePerUnit}
+        onChange={(v) => update("coveragePerUnit", v)}
+        suffix="ft²"
+        step={1}
+      />
+      <InputField
+        label="Price / Unit"
+        value={state.pricePerUnit}
+        onChange={(v) => update("pricePerUnit", v)}
+        prefix="$"
+        step={1}
+      />
+      <div>
+        <label
+          className="mb-1.5 block text-xs font-semibold sm:text-sm"
+          style={{ color: "#133653" }}
+        >
+          Unit Label
+        </label>
+        <input
+          type="text"
+          value={state.unitLabel}
+          onChange={(e) => update("unitLabel", e.target.value)}
+          className="w-full rounded-xl border px-3 py-2.5 text-sm font-medium outline-none sm:px-4 sm:py-3"
+          style={{ borderColor: "rgba(35,97,147,0.2)", color: "#133653" }}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -631,7 +1023,7 @@ function InputField({
   return (
     <div>
       <label
-        className="mb-1.5 block text-xs font-semibold sm:text-sm"
+        className="mb-1.5 block text-[11px] font-semibold sm:text-xs"
         style={{ color: "#133653" }}
       >
         {label}
@@ -639,7 +1031,7 @@ function InputField({
       <div className="relative">
         {prefix && (
           <span
-            className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm sm:left-3.5"
+            className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm"
             style={{ color: "#236193" }}
           >
             {prefix}
@@ -653,15 +1045,12 @@ function InputField({
           onChange={(e) => onChange(Number(e.target.value))}
           className={`w-full rounded-xl border py-2.5 text-sm font-medium outline-none transition-all focus:ring-2 sm:py-3 ${
             prefix ? "pl-7 sm:pl-8" : "pl-3 sm:pl-4"
-          } ${suffix ? "pr-7 sm:pr-8" : "pr-3 sm:pr-4"}`}
-          style={{
-            borderColor: "rgba(35,97,147,0.2)",
-            color: "#133653",
-          }}
+          } ${suffix ? "pr-9 sm:pr-11" : "pr-3 sm:pr-4"}`}
+          style={{ borderColor: "rgba(35,97,147,0.2)", color: "#133653" }}
         />
         {suffix && (
           <span
-            className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm sm:right-3.5"
+            className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-[11px] sm:right-3 sm:text-xs"
             style={{ color: "#236193" }}
           >
             {suffix}
@@ -672,11 +1061,35 @@ function InputField({
   );
 }
 
-function BreakdownRow({ label, value }: { label: string; value: string }) {
+function FractionSelect({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  onChange: (v: number) => void;
+}) {
   return (
-    <div className="flex items-center justify-between gap-2">
-      <span className="opacity-80">{label}</span>
-      <span className="font-semibold tabular-nums">{value}</span>
+    <div>
+      <label
+        className="mb-1.5 block text-[11px] font-semibold sm:text-xs"
+        style={{ color: "#133653" }}
+      >
+        {label}
+      </label>
+      <select
+        value={value}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="w-full rounded-xl border px-2 py-2.5 text-sm font-medium outline-none sm:px-3 sm:py-3"
+        style={{ borderColor: "rgba(35,97,147,0.2)", color: "#133653" }}
+      >
+        {FRACTIONS.map(([val, lbl]) => (
+          <option key={val} value={val}>
+            {lbl || "0"}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }

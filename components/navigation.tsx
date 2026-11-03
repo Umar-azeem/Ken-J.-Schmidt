@@ -27,7 +27,7 @@ export function Navigation() {
       label: 'ABOUT US',
       submenu: [
         { label: 'Ken J. Schmidt', href: '/about/ken' },
-        { label: 'Mortgage', href: '/about/mortgage' },
+        // { label: 'Mortgage', href: '/about/mortgage' },
       ],
     },
     {
@@ -37,23 +37,23 @@ export function Navigation() {
         { label: 'Insurance', href: '/business/insurance' },
       ],
     },
-    {
-      label: 'Banking',
-      submenu: [
-        { label: 'Private Bank', href: '/banking/private' },
-        { label: 'Investment Browsing', href: '/banking/investment' },
-      ],
-    },
-    {
-      label: 'communication',
-      submenu: [
-        { label: 'Learn', href: '/communication/learn' },
-        { label: 'Online Services', href: '/communication/services' },
-        { label: 'Customer Service', href: '/communication/support' },
-        { label: 'Community', href: '/communication/community' },
-        { label: 'Find a branch', href: '/communication/branches' },
-      ],
-    },
+    // {
+    //   label: 'Banking',
+    //   submenu: [
+    //     { label: 'Private Bank', href: '/banking/private' },
+    //     { label: 'Investment Browsing', href: '/banking/investment' },
+    //   ],
+    // },
+    // {
+    //   label: 'communication',
+    //   submenu: [
+    //     { label: 'Learn', href: '/communication/learn' },
+    //     { label: 'Online Services', href: '/communication/services' },
+    //     { label: 'Customer Service', href: '/communication/support' },
+    //     { label: 'Community', href: '/communication/community' },
+    //     { label: 'Find a branch', href: '/communication/branches' },
+    //   ],
+    // },
     { label: 'Security', href: '/security' },
   ]
 

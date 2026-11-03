@@ -178,75 +178,8 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Account Opening */}
-              <div className="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
-                <div className="bg-gradient-to-r from-[#000D1E] to-[#000A19] px-6 py-4">
-                  <h3 className="text-xl font-semibold text-white">Account Management</h3>
-                </div>
-                <div className="divide-y divide-slate-200">
-                  <div className="p-6 hover:bg-slate-50 transition group">
-                    <div className="flex items-start justify-between cursor-pointer">
-                      <div className="flex gap-3">
-                        <Building2 className="w-5 h-5 text-[#236193] mt-1 flex-shrink-0" />
-                        <p className="text-slate-700 font-medium">How do I open an account?</p>
-                      </div>
-                      <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-[#236193] transition" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Featured Help Articles */}
-            <div className="mt-12">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Featured Help Articles</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6 hover:shadow-lg transition">
-                  <div className="w-12 h-12 bg-[#236193]/10 rounded-lg flex items-center justify-center mb-4">
-                    <CreditCard className="w-6 h-6 text-[#236193]" />
-                  </div>
-                  <h4 className="text-lg font-bold text-slate-900 mb-2">CHECKING BASICS</h4>
-                  <p className="text-slate-600 text-sm mb-3">How to activate a debit card</p>
-                  <p className="text-slate-500 text-sm mb-4">
-                    You just received your new ken j debit card but before you can start using it, 
-                    you need to activate it. Here's how.
-                  </p>
-                  <Link href="#" className="text-[#236193] font-semibold text-sm hover:underline">
-                    Read More →
-                  </Link>
-                </div>
-
-                <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6 hover:shadow-lg transition">
-                  <div className="w-12 h-12 bg-[#236193]/10 rounded-lg flex items-center justify-center mb-4">
-                    <FileText className="w-6 h-6 text-[#236193]" />
-                  </div>
-                  <h4 className="text-lg font-bold text-slate-900 mb-2">CHECKING BASICS</h4>
-                  <p className="text-slate-600 text-sm mb-3">How to check your routing number</p>
-                  <p className="text-slate-500 text-sm mb-4">
-                    Have you ever wondered how and where you can find your routing number? 
-                    We detail four ways to find your routing number.
-                  </p>
-                  <Link href="#" className="text-[#236193] font-semibold text-sm hover:underline">
-                    Read More →
-                  </Link>
-                </div>
-
-                <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6 hover:shadow-lg transition">
-                  <div className="w-12 h-12 bg-[#236193]/10 rounded-lg flex items-center justify-center mb-4">
-                    <BookOpen className="w-6 h-6 text-[#236193]" />
-                  </div>
-                  <h4 className="text-lg font-bold text-slate-900 mb-2">CHECKING BASICS</h4>
-                  <p className="text-slate-600 text-sm mb-3">How to order checks and checkbooks online</p>
-                  <p className="text-slate-500 text-sm mb-4">
-                    Need to order checks? It's easy. You can do it online, by phone, or at your local 
-                    branch—whatever works best for you.
-                  </p>
-                  <Link href="#" className="text-[#236193] font-semibold text-sm hover:underline">
-                    Read More →
-                  </Link>
-                </div>
-              </div>
-            </div>
+             
+            </div>            
           </div>
 
           {/* Right Column - Contact Options */}
@@ -266,18 +199,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-[#236193]/20 rounded-lg">
-                    <Building2 className="w-6 h-6 text-[#236193]" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Find a branch</h4>
-                    <p className="text-slate-300 text-sm mb-2">Find your nearest ken j branch</p>
-                    <Button variant="outline" className="border-[#236193] text-[#236193] hover:bg-[#236193] hover:text-white mt-2">
-                      Branch Locator
-                    </Button>
-                  </div>
-                </div>
+                
 
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-[#236193]/20 rounded-lg">
@@ -292,23 +214,7 @@ export default function ContactPage() {
             </div>
 
             {/* Quick Contact Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Quick Help</h3>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
-                  <Clock className="w-5 h-5 text-[#236193]" />
-                  <span className="text-slate-700">24/7 Customer Support</span>
-                </div>
-                <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
-                  <Globe className="w-5 h-5 text-[#236193]" />
-                  <span className="text-slate-700">Online Banking Available</span>
-                </div>
-                <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
-                  <CheckCircle2 className="w-5 h-5 text-[#236193]" />
-                  <span className="text-slate-700">Secure Messaging</span>
-                </div>
-              </div>
-            </div>
+           
           </div>
         </div>
       </div>

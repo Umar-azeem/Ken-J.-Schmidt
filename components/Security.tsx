@@ -176,9 +176,7 @@ export default function Security() {
                       </p>
                     </div>
 
-                    <div className="mt-4">
-                      <p className="text-slate-600 text-sm">Only download the Mobile App from the Apple Store (iOS) or Google Play (Android).</p>
-                    </div>
+                   
                   </CardContent>
                 </Card>
               </div>

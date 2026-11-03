@@ -10,9 +10,7 @@ import {
   Phone,
   MapPin,
   ArrowRight,
-  CheckCircle2,
-  BookOpen,
-  Calculator,
+  
   Save,
   DoorClosedLocked,
   CircleDollarSign,
@@ -20,17 +18,13 @@ import {
   HandCoins,
   CloudSync,
 } from "lucide-react";
-import { Footer } from "@/components/footer";
-import Header from "@/components/header";
+
 import { useEffect, useRef } from "react";
 import Beverly from "@/components/Beverly";
 import Hero from "@/components/hero";
 import Email from "@/components/email";
 import MortgageCalculator3D from "@/components/MortgageCalculator3D";
-import LeadCaptureSection from "@/components/LeadCaptureSection";
 import WhyChooseSection from "@/components/WhyChooseSection";
-import PhysicianGuidanceSection from "@/components/PhysicianGuidanceSection";
-
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -115,7 +109,7 @@ export default function HomePage() {
         </section>
 
         <Beverly />
-        <PhysicianGuidanceSection/>
+        {/* <PhysicianGuidanceSection/> */}
         <WhyChooseSection />
         <section id="specialties" className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -163,10 +157,7 @@ export default function HomePage() {
                 <p className="text-slate-600 mb-4">
                   Your home. Your story. Your mortgage, crafted with care.
                 </p>
-                <a className="text-[#236193] font-semibold flex items-center gap-2 hover:gap-3 transition">
-                  <Link href="/mortgage">Learn more</Link>{" "}
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+               
               </Card>
 
               {/* Jumbo Financing */}
@@ -256,14 +247,16 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        {/* <LeadCaptureSection  /> */}
-        <MortgageCalculator3D/>
+        <MortgageCalculator3D />
         <section id="contact" className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                Get in Touch
-              </h2>
+              <Link href="/contact">
+                {" "}
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                  Get in Touch
+                </h2>
+              </Link>
               <p className="text-xl text-slate-600">
                 Reach out to discuss your mortgage needs
               </p>

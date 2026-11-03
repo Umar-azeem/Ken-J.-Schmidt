@@ -44,15 +44,7 @@ const features = [
       "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
     alt: "Mortgage advisor meeting with clients",
   },
-  {
-    icon: Smartphone,
-    title: "Get the mobile app",
-    description:
-      "Track your application, upload documents, and message your loan officer from anywhere. Your mortgage, in your pocket.",
-    image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
-    alt: "Person using mortgage mobile app on phone",
-  },
+  
   {
     icon: ShieldCheck,
     title: "Pre-approval that prepares you",

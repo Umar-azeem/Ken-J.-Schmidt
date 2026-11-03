@@ -80,13 +80,13 @@ export default function kenSchmidt() {
                   </span>
                 </Link>
 
-                <Link target="_blank" href="https://www.facebook.com/HuntingtonBank" className="flex items-center text-white gap-2">
+                {/* <Link target="_blank" href="https://www.facebook.com/HuntingtonBank" className="flex items-center text-white gap-2">
                   <span className="[&>svg]:h-5 [&>svg]:w-5">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 320 512">
                       <path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
                     </svg>
                   </span>
-                </Link>
+                </Link> */}
 
                 <Link target="_blank" href="https://www.instagram.com/huntingtonbank/?hl=en" className="flex items-center text-white gap-2">
                   <span className="[&>svg]:h-5 [&>svg]:w-5">
@@ -104,13 +104,13 @@ export default function kenSchmidt() {
                   </span>
                 </Link>
 
-                <Link target="_blank" href="https://twitter.com/Huntington_Bank" className="flex items-center text-white gap-2">
+                {/* <Link target="_blank" href="https://twitter.com/Huntington_Bank" className="flex items-center text-white gap-2">
                   <span className="[&>svg]:h-5 [&>svg]:w-5">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512">
                       <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
                     </svg>
                   </span>
-                </Link>
+                </Link> */}
 
                 <Link target="_blank" href="https://www.zillow.com/lender-profile/ken%20schmidt12/" className="flex text-white items-center gap-2">
                   <Image src="zil.png" alt="Ken Schmidt" width={30} height={30} priority className="h-12 w-20 object-contain" />
@@ -325,7 +325,9 @@ export default function kenSchmidt() {
                   Let's discuss your mortgage needs
                 </p>
                 <Button className="bg-[#236193] hover:bg-[#1a4a70] text-white w-full">
-                  Apply Now
+                  <Link href="/contact" className="text-white">
+                    Apply Now
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -358,7 +360,7 @@ export default function kenSchmidt() {
                     Confused by the world of mortgages and home loans? Ken can
                     help. Get smart with our mortgage education and tools.
                   </p>
-                  <Link href="/resources" className="inline-flex items-center gap-2 text-[#236193] font-semibold hover:gap-3 transition-all">
+                  <Link href="/tools/calculator" className="inline-flex items-center gap-2 text-[#236193] font-semibold hover:gap-3 transition-all">
                     Read more <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
@@ -379,7 +381,7 @@ export default function kenSchmidt() {
                     Check out Ken's home calculators for help determining the
                     financial decisions that best meet your needs.
                   </p>
-                  <Link href="/calculators" className="inline-flex items-center gap-2 text-[#236193] font-semibold hover:gap-3 transition-all">
+                  <Link href="/tools/calculator" className="inline-flex items-center gap-2 text-[#236193] font-semibold hover:gap-3 transition-all">
                     Read more <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>

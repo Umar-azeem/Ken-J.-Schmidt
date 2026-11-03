@@ -62,11 +62,7 @@ export default function Header() {
                     Ken J. Schmidt
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/mortgage" className="cursor-pointer">
-                    Mortgage
-                  </Link>
-                </DropdownMenuItem>
+                
                 <DropdownMenuItem asChild>
                   <Link href="/physician-mortgage" className="cursor-pointer">
                      Physician-mortgage
@@ -125,69 +121,13 @@ export default function Header() {
                 </DropdownMenuItem>
               </DropdownMenuGroup>
             </DropdownMenuContent>
-          </DropdownMenu>
-
-          {/* Private Bank Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                className="text-white hover:bg-[#1b4f78] hover:text-white"
-              >
-                Private Bank <ChevronDown className="ml-1 h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 bg-white">
-              <DropdownMenuLabel>Private Banking</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem asChild>
-                  <Link href="/" className="cursor-pointer">
-                    Open an Account
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/" className="cursor-pointer">
-                    Banking
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/" className="cursor-pointer">
-                    Borrowing
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          {/* Communication Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                className="text-white hover:bg-[#1b4f78] hover:text-white"
-              >
-                Communication <ChevronDown className="ml-1 h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-48 bg-white">
-              <DropdownMenuLabel>Communication</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem asChild>
-                  <Link href="/" className="cursor-pointer">
-                    Online Services
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/" className="cursor-pointer">
-                    Learn
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
+          </DropdownMenu>      
+           <Link
+            href="/construction"
+            className="hover:bg-[#1b4f78] px-3 py-2 rounded-md transition"
+          >
+            Construction
+          </Link>
           <Link
             href="/security"
             className="hover:bg-[#1b4f78] px-3 py-2 rounded-md transition"
@@ -238,13 +178,7 @@ export default function Header() {
               >
                 Ken J. Schmidt
               </Link>
-              <Link
-                href="/mortgage"
-                className="hover:underline px-3 py-1"
-                onClick={() => setOpen(false)}
-              >
-                Mortgage
-              </Link>
+              
             </div>
           </details>
 
@@ -288,58 +222,10 @@ export default function Header() {
           </details>
 
           {/* Private Bank */}
-          <details className="group">
-            <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-              Private Bank
-            </summary>
-            <div className="ml-4 mt-2 flex flex-col gap-2">
-              <Link
-                href="/"
-                className="hover:underline px-3 py-1"
-                onClick={() => setOpen(false)}
-              >
-                Open an Account
-              </Link>
-              <Link
-                href="/"
-                className="hover:underline px-3 py-1"
-                onClick={() => setOpen(false)}
-              >
-                Banking
-              </Link>
-              <Link
-                href="/"
-                className="hover:underline px-3 py-1"
-                onClick={() => setOpen(false)}
-              >
-                Borrowing
-              </Link>
-            </div>
-          </details>
+           
 
           {/* Communication */}
-          <details className="group">
-            <summary className="cursor-pointer list-none hover:bg-[#1b4f78] px-3 py-2 rounded-md">
-              Communication
-            </summary>
-            <div className="ml-4 mt-2 flex flex-col gap-2">
-              <Link
-                href="/"
-                className="hover:underline px-3 py-1"
-                onClick={() => setOpen(false)}
-              >
-                Online Services
-              </Link>
-              <Link
-                href="/"
-                className="hover:underline px-3 py-1"
-                onClick={() => setOpen(false)}
-              >
-                Learn
-              </Link>
-            </div>
-          </details>
-
+         
           <Link
             href="/security"
             className="hover:bg-[#1b4f78] px-3 py-2 rounded-md"

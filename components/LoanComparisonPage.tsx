@@ -86,12 +86,7 @@ export default function LoanComparisonPage() {
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-2">People who listen first</h3>
             </div>
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-[#236193]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Smartphone className="w-8 h-8 text-[#236193]" />
-              </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">Get the mobile app</h3>
-            </div>
+            
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-[#236193]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-[#236193]" />
@@ -227,7 +222,7 @@ export default function LoanComparisonPage() {
             </h2>
             <div className="h-1 w-20 bg-[#236193] rounded-full mx-auto"></div>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto mt-4">
-              Whether you prefer to manage your loan in our mobile app or sit down with a local banker, 
+              Whether you prefer to manage your loan in our  site down with a local banker, 
               we're here to support you with tools and people you can trust.
             </p>
           </div>
@@ -333,14 +328,7 @@ export default function LoanComparisonPage() {
                 <CardTitle>Come see us</CardTitle>
                 <CardDescription>The kind of help you can look in the eye</CardDescription>
               </CardHeader>
-              <CardContent>
-                <p className="text-slate-600 mb-4">
-                  Visit a local branch to meet with a banker face-to-face for personalized mortgage guidance.
-                </p>
-                <Button variant="outline" className="border-[#236193] text-[#236193] hover:bg-[#236193] hover:text-white">
-                  Find a Branch
-                </Button>
-              </CardContent>
+             
             </Card>
           </div>
         </div>
