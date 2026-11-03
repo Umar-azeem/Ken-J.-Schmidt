@@ -255,7 +255,7 @@ export default function HomePage() {
                 {" "}
                 <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
                   Get in Touch
-                </h2>
+                </h2> 
               </Link>
               <p className="text-xl text-slate-600">
                 Reach out to discuss your mortgage needs
@@ -270,7 +270,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Email</h3>
                 <a
-                  href="mailto:ken@example.com"
+                  href="mailto:ken.j.schmidt@huntington.com"
                   className="text-[#236193] hover:underline text-lg"
                 >
                   ken.j.schmidt@huntington.com{" "}
