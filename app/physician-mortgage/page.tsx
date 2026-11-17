@@ -20,6 +20,7 @@ import {
   BadgeCheck,
   Home,
 } from "lucide-react";
+import FAQSection from "@/components/FAQSection";
 
 
 const benefits = [
@@ -163,10 +164,10 @@ export default function PhysicianMortgagePage() {
             <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#236193]/30 to-transparent blur-lg" />
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border-4 border-white/10 shadow-2xl">
               <Image
-                src="/img/ho.jpg"
+                src="/img/hrr.png"
                 alt="Physician mortgage loans for medical professionals"
                 fill
-                className="object-cover"
+                className=""
                 priority
               />
             </div>
@@ -362,6 +363,7 @@ export default function PhysicianMortgagePage() {
           </div>
         </div>
       </section>
+      <FAQSection/>
 
       {/* ================= CTA ================= */}
       <section className="py-20 bg-gradient-to-r from-[#000D1E] to-[#000A19]">
