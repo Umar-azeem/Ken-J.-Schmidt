@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import MortgageCalculator3D from "@/components/MortgageCalculator3D";
 import LeadCaptureSection from "@/components/LeadCaptureSection";
 
 // ─────────────────────────────────────────────
