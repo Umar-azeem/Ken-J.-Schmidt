@@ -9,7 +9,7 @@ export default function PhysicianGuidanceSection() {
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-50 py-24">
       {/* Decorative background orbs */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-[#236193]/10 blur-3xl" />
+        <div className="absolute  h-72 w-72 rounded-full bg-[#236193]/10 blur-3xl" />
         <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-[#236193]/10 blur-3xl" />
       </div>
 

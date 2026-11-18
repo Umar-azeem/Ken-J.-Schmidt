@@ -382,3 +382,86 @@
     transition: none;
   }
 }
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  #print-section, #print-section * {
+    visibility: visible;
+  }
+
+  #print-section {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 2rem;
+    background: white;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+}
+/* =========================================
+   PRINT PDF STYLES
+   ========================================= */
+@media print {
+  /* 1. Page Setup (Margins) */
+  @page {
+    size: A4 portrait;
+    margin: 100px 50px 80px 50px; /* Top, Right, Bottom, Left */
+  }
+
+  /* 2. Hide the Web Interface */
+  body * {
+    visibility: hidden;
+  }
+
+  /* 3. Show ONLY the Print Container */
+  #print-container, #print-container * {
+    visibility: visible;
+  }
+
+  #print-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white;
+  }
+
+  /* 4. Custom Header (Injected at top of every page) */
+  #print-container::before {
+    content: "KEN J SCHMIDT | MORTGAGE BROKER";
+    position: fixed;
+    top: -70px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000C1C;
+    border-bottom: 2px solid #236193;
+    padding-bottom: 10px;
+  }
+
+  /* 5. Custom Footer (Injected at bottom of every page) */
+  #print-container::after {
+    content: "https://kenjschmidt.com  |  630-479-8545  |  NMLS #697466";
+    position: fixed;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+    color: #666;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+  }
+
+  /* 6. Page Break Rules */
+  .page-break-before { page-break-before: always; }
+  .avoid-break { page-break-inside: avoid; }
+}

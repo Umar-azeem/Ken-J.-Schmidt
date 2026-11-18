@@ -92,15 +92,12 @@ const steps = [
   },
 ];
 
-/* ------------------------------------------------------------------ */
-/*  PAGE                                                               */
-/* ------------------------------------------------------------------ */
 
 export default function PhysicianMortgagePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* ================= HERO ================= */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#000D1E] via-[#000A19] to-[#000D1E] py-20 md:py-28">
+      <section className="relative overflow-hidden py-24 m-2 rounded-2xl bg-gradient-to-r from-[#000D1E] via-[#000A19] to-[#000D1E] py-20 md:py-28">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#236193] rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#236193] rounded-full blur-3xl" />
@@ -171,12 +168,12 @@ export default function PhysicianMortgagePage() {
                 priority
               />
             </div>
-            <div className="absolute -bottom-6 -left-4 sm:left-6 flex items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-xl border border-slate-100">
+            <div className="absolute -bottom-6 -left-2 sm:left-6 flex items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-xl border border-slate-100">
               <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#236193]/10">
                 <Stethoscope className="h-6 w-6 text-[#236193]" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-slate-900 leading-tight">
+                <p className="text-sm font-semibold text-slate-900 leading-tight ">
                   MD · DO · DDS · DMD
                 </p>
                 <p className="text-xs text-slate-500">Residents &amp; Fellows Welcome</p>

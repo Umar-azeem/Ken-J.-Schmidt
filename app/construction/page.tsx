@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import ConstructionLoanCalculator from "@/components/ConstructionLoanCalculator";
+import { Footer } from "@/components/footer";
+import Image from "next/image";
 
-// ─────────────────────────────────────────────
-// ICONS (inline SVG — no dependency)
-// ─────────────────────────────────────────────
 const Icons = {
   HardHat: (p: any) => (
     <svg
@@ -130,9 +130,6 @@ const Icons = {
   ),
 };
 
-// ─────────────────────────────────────────────
-// SCROLL REVEAL HOOK
-// ─────────────────────────────────────────────
 function useReveal() {
   const ref = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
@@ -150,42 +147,6 @@ function useReveal() {
   }, []);
   return ref;
 }
-
-// ─────────────────────────────────────────────
-// DATA
-// ─────────────────────────────────────────────
-const BLOGS = [
-  {
-    tag: "Project Spotlight",
-    title: "How We Build a Home from the Ground Up",
-    excerpt:
-      "From foundation pour to final walkthrough — a step-by-step look at our 12-week build sequence.",
-    image: "/img/c1.png",
-    alt: "Crew framing a new residential home",
-    readTime: "6 min",
-    date: "Jan 2026",
-  },
-  {
-    tag: "Materials",
-    title: "Choosing the Right Concrete Mix for Your Slab",
-    excerpt:
-      "PSI, aggregate size, and cure time — the numbers that actually matter for durability.",
-    image: "/img/c2.png",
-    alt: "Concrete being poured into slab formwork",
-    readTime: "4 min",
-    date: "Feb 2026",
-  },
-  {
-    tag: "Safety",
-    title: "OSHA Compliance: A Field Guide for Small Crews",
-    excerpt:
-      "Practical checklists for fall protection, trenching, and PPE that keep your team safe.",
-    image: "/img/c3.png",
-    alt: "Worker wearing hard hat and harness",
-    readTime: "8 min",
-    date: "Mar 2026",
-  },
-];
 
 const SERVICES = [
   {
@@ -220,61 +181,14 @@ const SERVICES = [
   },
 ];
 
-const STATS = [
-  { value: 240, suffix: "+", label: "Projects Completed" },
-  { value: 18, suffix: "yrs", label: "Years Building" },
-  { value: 98, suffix: "%", label: "On-Time Delivery" },
-  { value: 45, suffix: "+", label: "Licensed Crew" },
-];
-
-// ─────────────────────────────────────────────
-// ANIMATED COUNTER
-// ─────────────────────────────────────────────
-function Counter({ target, suffix }: { target: number; suffix: string }) {
-  const [n, setN] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        const start = performance.now();
-        const dur = 1200;
-        const tick = (now: number) => {
-          const p = Math.min((now - start) / dur, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          setN(Math.round(target * eased));
-          if (p < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-        io.disconnect();
-      },
-      { threshold: 0.4 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [target]);
-  return (
-    <span ref={ref} className="tabular-nums">
-      {n}
-      {suffix}
-    </span>
-  );
-}
-
-// ─────────────────────────────────────────────
-// PAGE
-// ─────────────────────────────────────────────
 export default function ConstructionPage() {
   const blogReveal = useReveal();
   const svcReveal = useReveal();
 
   return (
+
     <main className="relative w-full overflow-hidden bg-gradient-to-b from-[#f8fafc] via-[#eef4fa] to-white">
-      {/* ─────────── HERO with 3D scene ─────────── */}
-      <section className="relative min-h-[92vh] flex items-center px-4 sm:px-6 lg:px-8">
-        {/* Floating orbs */}
+      <section className="relative min-h-[92vh] p-24 m-2 rounded-2xl bg-gradient-to-b from-[#000C1C] via-[#000C1C] to-[#03152e] flex items-center px-4 sm:px-6 lg:px-8">
         <div className="pointer-events-none absolute inset-0">
           <div
             className="absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl animate-float-slow"
@@ -303,15 +217,14 @@ export default function ConstructionPage() {
             </span>
             <h1
               className="mt-4 text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl"
-              style={{ color: "#133653" }}
+              style={{ color: "#236193" }}
             >
               We Build.
               <br />
-              <span style={{ color: "#236193" }}>You Live.</span>
+              <span style={{ color: "#ffffff " }}>You Live.</span>
             </h1>
             <p
-              className="mt-5 max-w-xl text-base leading-relaxed sm:text-lg"
-              style={{ color: "rgba(35,97,147,0.75)" }}
+              className="mt-5 max-w-xl text-white text-base leading-relaxed sm:text-lg"
             >
               From foundation to finish, our crews deliver residential and
               commercial construction that stands the test of time — on
@@ -329,48 +242,26 @@ export default function ConstructionPage() {
               >
                 Request a Quote <Icons.Arrow className="h-4 w-4" />
               </Link>
-              <Link
-                href="/security"
-                className="inline-flex items-center gap-2 rounded-xl border px-6 py-3 text-sm font-semibold transition-colors hover:bg-white"
-                style={{
-                  borderColor: "rgba(35,97,147,0.25)",
-                  color: "#133653",
-                }}
-              >
-                View Services
-              </Link>
+              
             </div>
 
-            <dl className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {STATS.map((s) => (
-                <div
-                  key={s.label}
-                  className="rounded-xl border bg-white/70 p-3 backdrop-blur-sm"
-                  style={{ borderColor: "rgba(35,97,147,0.12)" }}
-                >
-                  <dt
-                    className="text-[11px] font-medium uppercase tracking-wide"
-                    style={{ color: "rgba(35,97,147,0.6)" }}
-                  >
-                    {s.label}
-                  </dt>
-                  <dd
-                    className="mt-1 text-xl font-bold sm:text-2xl"
-                    style={{ color: "#133653" }}
-                  >
-                    <Counter target={s.value} suffix={s.suffix} />
-                  </dd>
-                </div>
-              ))}
-            </dl>
+           
           </div>
 
           {/* 3D animated scene */}
-          <Hero3D />
+           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border-4 border-white shadow-2xl">
+                        <Image
+                          src="/img/ho.jpg"   /* <-- swap in your image path */
+                          alt="Ken Schmidt, Mortgage Loan Officer — Physician Mortgage Guidance"
+                          fill
+                          className="object-cover"
+                          priority
+                        />
+                      </div>
+         
         </div>
+        
       </section>
-
-      {/* ─────────── SERVICES (icon cards) ─────────── */}
       <section
         id="services"
         className="relative px-4 py-16 sm:px-6 lg:px-8 lg:py-24"
@@ -451,108 +342,7 @@ export default function ConstructionPage() {
       </section>
 
       {/* ─────────── BLOG (image cards) ─────────── */}
-      <section
-        id="blog"
-        className="relative px-4 py-16 sm:px-6 lg:px-8 lg:py-24"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <span
-                className="inline-block rounded-full px-3 py-1 text-xs font-semibold sm:px-4 sm:py-1.5 sm:text-sm"
-                style={{
-                  backgroundColor: "rgba(35,97,147,0.10)",
-                  color: "#236193",
-                }}
-              >
-                FROM THE JOBSITE
-              </span>
-              <h2
-                className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
-                style={{ color: "#133653" }}
-              >
-                Construction Insights
-              </h2>
-              <p
-                className="mt-3 max-w-xl text-sm sm:text-base"
-                style={{ color: "rgba(35,97,147,0.75)" }}
-              >
-                Field notes, material guides, and safety tips from our crew.
-              </p>
-            </div>
-          </div>
-
-          <div
-            ref={blogReveal}
-            className="reveal grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-          >
-            {BLOGS.map((b, i) => (
-              <article
-                key={b.title}
-                className="group overflow-hidden rounded-2xl border bg-white/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
-                style={{
-                  borderColor: "rgba(35,97,147,0.12)",
-                  animationDelay: `${i * 80}ms`,
-                }}
-              >
-                {/* Image w/ zoom-on-hover */}
-                <div className="relative aspect-[16/10] overflow-hidden bg-[#eef4fa]">
-                  <img
-                    src={b.image}
-                    alt={b.alt}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <span
-                    className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-semibold backdrop-blur"
-                    style={{ color: "#236193" }}
-                  >
-                    {b.tag}
-                  </span>
-                </div>
-
-                <div className="p-5 sm:p-6">
-                  <div
-                    className="mb-2 flex items-center gap-3 text-[11px] sm:text-xs"
-                    style={{ color: "rgba(35,97,147,0.55)" }}
-                  >
-                    <span>{b.date}</span>
-                    <span className="inline-flex items-center gap-1">
-                      <Icons.Clock className="h-3.5 w-3.5" /> {b.readTime}
-                    </span>
-                  </div>
-                  <h3
-                    className="text-lg font-bold leading-snug transition-colors group-hover:text-[#236193]"
-                    style={{ color: "#133653" }}
-                  >
-                    {b.title}
-                  </h3>
-                  <p
-                    className="mt-2 line-clamp-3 text-sm leading-relaxed"
-                    style={{ color: "rgba(35,97,147,0.7)" }}
-                  >
-                    {b.excerpt}
-                  </p>
-                  <span
-                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold transition-transform group-hover:translate-x-1"
-                    style={{ color: "#236193" }}
-                  >
-                    <Link
-                      href="/contact"
-                      className="flex gap-2 justify-center items-center"
-                    >
-                      {" "}
-                      contact us <Icons.Arrow className="h-4 w-4" />{" "}
-                    </Link>
-                  </span>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────── CTA ─────────── */}
+<ConstructionLoanCalculator />
       <section id="contact" className="relative px-4 pb-20 sm:px-6 lg:px-8">
         <div
           className="mx-auto max-w-5xl overflow-hidden rounded-3xl p-8 text-center text-white sm:p-12"
@@ -587,31 +377,3 @@ export default function ConstructionPage() {
 // ─────────────────────────────────────────────
 // 3D ANIMATED HERO SCENE (MATCHING CSS)
 // ─────────────────────────────────────────────
-function Hero3D() {
-  return (
-    <div className="scene-container">
-      <div className="iso-wrapper">
-        {/* Ground Grid */}
-        <div className="iso-ground" />
-
-        {/* Crane */}
-        <div className="iso-crane-mast">
-          <div className="iso-crane-jib" />
-          <div className="iso-crane-cable" />
-          <div className="iso-crane-hook" />
-        </div>
-
-        {/* Building Blocks */}
-        <div className="iso-block b1" />
-        <div className="iso-block b2" />
-        <div className="iso-block b3" />
-
-        {/* Floating Blueprint Card */}
-        <div className="iso-blueprint">
-          <div className="iso-blueprint-line w-3-4" />
-          <div className="iso-blueprint-line w-1-2" />
-        </div>
-      </div>
-    </div>
-  );
-}

@@ -2,8 +2,8 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link"; // Fixed import path
 import { Button } from "./ui/button";
-import Link from "next/dist/client/link";
 
 export default function Beverly() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -11,15 +11,25 @@ export default function Beverly() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   useEffect(() => {
-    if (videoRef.current && !videoError) {
-      const video = videoRef.current;
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => setVideoError(true));
-      }
-      video.addEventListener("canplay", () => setIsVideoLoaded(true));
-      video.addEventListener("error", () => setVideoError(true));
+    // Only run if the video exists in the DOM and hasn't errored
+    const video = videoRef.current;
+    if (!video || videoError) return;
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => setVideoError(true));
     }
+
+    const handleCanPlay = () => setIsVideoLoaded(true);
+    const handleError = () => setVideoError(true);
+
+    video.addEventListener("canplay", handleCanPlay);
+    video.addEventListener("error", handleError);
+
+    return () => {
+      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("error", handleError);
+    };
   }, [videoError]);
 
   return (
@@ -58,7 +68,7 @@ export default function Beverly() {
               loop
               muted
               playsInline
-              poster="/img/sec.mp4"
+              poster="/img/wpr.png" // Fixed poster path (should be an image, not .mp4)
             >
               <source src="/img/sec.mp4" type="video/mp4" />
             </video>
@@ -115,7 +125,11 @@ export default function Beverly() {
             .
           </p>
 
-          <Button className="border-1  border-x-4 bg-transparent border-black hover:bg-[#1a4a70] text-black hover:text-white hover: px-10 py-7 text-lg rounded-none">
+          {/* Fixed nested button/link error using asChild */}
+          <Button
+            asChild
+            className="border-1 border-x-4 bg-transparent border-black hover:bg-[#1a4a70] text-black hover:text-white hover: px-10 py-7 text-lg rounded-none"
+          >
             <Link href="/mortgage" className="text-black hover:text-white">
               LEARN MORE
             </Link>

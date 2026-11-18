@@ -1,33 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import Header from "@/components/header";
 import { Footer } from "@/components/footer";
-import FAQSection from "@/components/FAQSection";
+import NavigationMenuDemo from "@/components/NavigationMenuDemo";
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+// ✅ Using next/font/local or the Geist npm package instead of Google Fonts
+// to fix the "Failed to download Geist from Google Fonts" network error.
+// If you have `geist` installed via npm, uncomment the lines below:
+// import { GeistSans } from "geist/font/sans";
+// import { GeistMono } from "geist/font/mono";
 
 export const metadata: Metadata = {
-  title: "Ken J Schmidt - loan officer | Chicago, IL",
+  title: "Ken J Schmidt - Loan Officer | Chicago, IL",
   description:
     "Premier mortgage lending professional with 25+ years of experience. Specializing in construction loans, jumbo financing, and self-employed borrowers.",
   generator: "v0.app",
   icons: {
     icon: [
-      {
-        url: "/img/logo.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/img/logo.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/img/logo.png",
-        type: "image/svg+xml",
-      },
+      { url: "/img/logo.png", media: "(prefers-color-scheme: light)" },
+      { url: "/img/logo.png", media: "(prefers-color-scheme: dark)" },
+      { url: "/img/logo.png", type: "image/svg+xml" },
     ],
     apple: "/img/logo.png",
   },
@@ -40,12 +32,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <Header />
-      <body className="font-sans antialiased bg-slate-50">
-        {children}
+      <body className="font-sans antialiased  min-h-screen flex flex-col">
+                <NavigationMenuDemo />
+        <main className="flex-1 ">
+          {children}
+        </main>
+        <Footer />
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
-      <Footer />
     </html>
   );
 }

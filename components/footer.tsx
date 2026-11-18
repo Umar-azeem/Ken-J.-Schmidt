@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="bg-[#236193] text-white">
+    <footer className="bg-[#000C1C] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
@@ -36,22 +36,6 @@ export function Footer() {
                   </svg>
                 </span>
               </Link>
-
-              {/* <Link
-                target="_blank"
-                href="https://www.facebook.com/HuntingtonBank"
-                className="flex items-center gap-2"
-              >
-                <span className="[&>svg]:h-5 [&>svg]:w-5">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 320 512"
-                  >
-                    <path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
-                  </svg>
-                </span>
-              </Link> */}
               <Link
                 target="_blank"
                 href="https://www.instagram.com/huntingtonbank/?hl=en"
@@ -159,9 +143,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/security" className="hover:text-white transition">
-                  Security
-                </Link>
+                
               </li>
               <li>
                 <Link href="/contact" className="hover:text-white transition">
@@ -171,99 +153,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Loan Programs */}
-          {/* <div>
-            <h4 className="font-bold mb-4">Loan Programs</h4>
-            <ul className="space-y-2 text-blue-100">
-              <li>
-                <Link
-                  href="/loans/construction"
-                  className="hover:text-white transition"
-                >
-                  Construction Loans
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/loans/doctors"
-                  className="hover:text-white transition"
-                >
-                  Doctors Only Program
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/loans/jumbo"
-                  className="hover:text-white transition"
-                >
-                  Jumbo Financing
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/loans/self-employed"
-                  className="hover:text-white transition"
-                >
-                  Self-Employed Borrowers
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/loans/fha-va"
-                  className="hover:text-white transition"
-                >
-                  FHA & VA Loans
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/loans/refinancing"
-                  className="hover:text-white transition"
-                >
-                  Refinancing Solutions
-                </Link>
-              </li>
-            </ul>
-          </div> */}
-
-          {/* Resources */}
-          {/* <div>
-            <h4 className="font-bold mb-4">Resources</h4>
-            <ul className="space-y-2 text-blue-100">
-              <li>
-                <Link
-                  href="/resources/calculator"
-                  className="hover:text-white transition"
-                >
-                  Mortgage Calculator
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resources/learning-center"
-                  className="hover:text-white transition"
-                >
-                  Learning Center
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resources/faq"
-                  className="hover:text-white transition"
-                >
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resources/blog"
-                  className="hover:text-white transition"
-                >
-                  Blog
-                </Link>
-              </li>
-            </ul>
-          </div> */}
         </div>
 
         {/* Map Section */}
