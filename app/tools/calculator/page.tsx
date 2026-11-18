@@ -55,9 +55,6 @@ export default function CalculatorPage() {
         </div>
       </section>
 
-      {/* ── Calculator ── */}
-      <MortgageCalculator3D />
-
       {/* ── Lead Capture ── */}
       <LeadCaptureSection />
 
