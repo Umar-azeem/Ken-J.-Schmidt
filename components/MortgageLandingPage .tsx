@@ -6,7 +6,7 @@ import Link from "next/link";
 const data = {
   title: "Your Mortgage\nLoan Officer",
   subtitle: "Hi, I'm Ken J. Schmidt",
-  description: "With over 25 years of experience, I specialize in construction loans, jumbo financing, and helping self-employed borrowers. Whether you're building your dream home or refinancing, I'm here to make the mortgage process simple, transparent, and stress-free.",
+  description: "Premier mortgage lending professional with 25 years plus of experience and over three quarters of a billion dollars in funded loans. I understand that listening to short term and long term goals is essential in structuring a loan that will help meet your individual mortgage needs. Whether new to the process or an old pro, as a knowledgeable professional, I’m here to work with you towards a successful and timely loan closing. My team works with experienced processors, underwriters and closers to make the financing process a smooth and pleasurable experience. Welcome to Huntington, we’re here to help!",
   image: "/img/ken.png", // Make sure this matches your actual image file name in /public/img/
 };
 

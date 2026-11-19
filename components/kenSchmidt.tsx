@@ -186,10 +186,6 @@ export default function KenSchmidt() {
                 <span className="font-semibold text-[#236193]">
                   more than 25 years of mortgage lending experience
                 </span>{" "}
-                and{" "}
-                <span className="font-semibold text-[#236193]">
-                  over $1 billion in funded mortgage loans
-                </span>
                 , Ken Schmidt has built his career helping individuals and families navigate the home financing process with confidence.
               </p>
 

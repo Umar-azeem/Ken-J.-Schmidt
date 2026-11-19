@@ -332,7 +332,6 @@ export default function ConstructionPage() {
                     className="flex justify-center items-center gap-2"
                   >
                     {" "}
-                    Learn more <Icons.Arrow className="h-4 w-4" />{" "}
                   </Link>
                 </span>
               </article>

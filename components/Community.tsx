@@ -8,20 +8,16 @@ export default function Community() {
     <section className="bg-[#f5f5f5] py-16 sm:py-24 lg:py-30 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div className="text-center lg:text-left">
-          <p className="text-[#1470AF] uppercase tracking-[3px] sm:tracking-[6px] font-bold text-md sm:text-xl mb-6 sm:mb-8">
+          {/* <p className="text-[#1470AF] uppercase tracking-[3px] sm:tracking-[6px] font-bold text-md sm:text-xl mb-6 sm:mb-8">
             DECADES OF EXPERTISE. ONE ADVOCATE WORKING FOR YOU.
-          </p>
+          </p> */}
 
           <h2 className="text-[25px] sm:text-[40px] lg:text-[35px] leading-[1.2] font-bold text-[#1f1f1f] mb-4 sm:mb-10">
             MEET Ken J. Schmidt
           </h2>
 
           <p className="text-[15px] text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-10 sm:mb-14">
-            Premier mortgage lending professional with more than 20 years of
-            expertise in the home financing industry, dedicated to building the
-            home loan that meets your needs.I'm here to work with you Whether
-            you are new to the process or an old pro, a knowledgeable,
-            trustworthy and patient loan officer is an invaluable resource.
+            Specialties: Construction - one time close construction to permanent loans (wide array of financing products), Doctors Only program, Jumbo Financing and Self Employed borrowers.
           </p>
 
           <Link href="/kenSchmidt">
