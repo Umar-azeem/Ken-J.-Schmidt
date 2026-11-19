@@ -392,19 +392,7 @@ export default function PhysicianMortgagePage() {
             Ken Schmidt &nbsp;|&nbsp; Mortgage Loan Officer &nbsp;|&nbsp; NMLS #697466
           </p>
         </div>
-      </section>
-
-      {/* ================= COMPLIANCE DISCLAIMER ================= */}
-      <section className="py-10 bg-white border-t border-slate-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-xs text-slate-500 leading-relaxed text-center">
-          Educational information only. Mortgage program availability,
-          eligibility, down payment requirements, loan limits, interest rates,
-          and other terms vary by lender and state. All loans are subject to
-          credit approval, underwriting, and applicable program requirements.
-          Final website content, licensing information, and required disclosures
-          are subject to employer compliance review.
-        </div>
-      </section>
+      </section>      
     </div>
   );
 }
