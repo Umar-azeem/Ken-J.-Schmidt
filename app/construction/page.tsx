@@ -240,7 +240,7 @@ export default function ConstructionPage() {
                   boxShadow: "0 15px 35px -10px rgba(35,97,147,0.55)",
                 }}
               >
-                Request a Quote <Icons.Arrow className="h-4 w-4" />
+                contact us <Icons.Arrow className="h-4 w-4" />
               </Link>
               
             </div>
@@ -343,7 +343,7 @@ export default function ConstructionPage() {
 
       {/* ─────────── BLOG (image cards) ─────────── */}
 <ConstructionLoanCalculator />
-      <section id="contact" className="relative px-4 pb-20 sm:px-6 lg:px-8">
+      {/* <section id="contact" className="relative px-4 pb-20 sm:px-6 lg:px-8">
         <div
           className="mx-auto max-w-5xl overflow-hidden rounded-3xl p-8 text-center text-white sm:p-12"
           style={{
@@ -369,7 +369,7 @@ export default function ConstructionPage() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }

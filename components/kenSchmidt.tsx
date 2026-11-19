@@ -276,11 +276,11 @@ export default function KenSchmidt() {
                     <p className="text-slate-300 mt-2 text-sm uppercase tracking-wide">Years of Experience</p>
                   </div>
                   <div className="w-12 h-px bg-white/20 mx-auto"></div>
-                  <div>
+                  {/* <div>
                     <div className="text-4xl font-bold text-[#5bb8f5]">$1B+</div>
                     <p className="text-slate-300 mt-2 text-sm uppercase tracking-wide">Funded Mortgage Loans</p>
-                  </div>
-                  <div className="w-12 h-px bg-white/20 mx-auto"></div>
+                  </div> */}
+                  {/* <div className="w-12 h-px bg-white/20 mx-auto"></div> */}
                   <div>
                     <div className="text-2xl font-bold text-[#5bb8f5]">#697466</div>
                     <p className="text-slate-300 mt-2 text-sm uppercase tracking-wide">NMLS ID</p>

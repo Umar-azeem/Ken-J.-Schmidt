@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import LeadCaptureSection from "@/components/LeadCaptureSection";
 
-// ─────────────────────────────────────────────
-// SEO — neutral, educational tone (no branding)
-// ─────────────────────────────────────────────
+
 export const metadata: Metadata = {
   title: "Construction Loan Calculator | Estimate Your Financing",
   description:
@@ -55,18 +53,13 @@ export default function CalculatorPage() {
         </div>
       </section>
 
-      {/* ── Lead Capture ── */}
       <LeadCaptureSection />
 
-      {/* ── Educational / Trust Section ── */}
       <EducationalNotes />
     </main>
   );
 }
 
-// ─────────────────────────────────────────────
-// Sub-component: Educational notes (neutral, no branding)
-// ─────────────────────────────────────────────
 function EducationalNotes() {
   return (
     <section className="w-full bg-white py-12 sm:py-16">

@@ -135,14 +135,14 @@ const MortgageLandingPage = () => {
                     target="_blank"
                     rel="noreferrer"
                     aria-label="Zillow"
-                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition shrink-0"
+                    className=":w-20 h-20 rounded-full  flex items-center justify-center hover:bg-gray-100 transition shrink-0"
                   >
                    <Image
                     src="/img/z-logo.svg"
                     alt="Zillow"
                     width={20}
                     height={20}
-                    className="w-5 h-5 object-contain"
+                    className="w-20 h-20 object-contain"
                   />
                   </a>
                 </div>

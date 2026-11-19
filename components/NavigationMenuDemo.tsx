@@ -45,51 +45,51 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
-const loanPrograms = [
-  {
-    title: "FHA Loans",
-    href: "/loan-programs?program=fha",
-    description:
-      "FHA loans are mortgages insured by the Federal Housing Administration (FHA).",
-    icon: HomeIcon,
-  },
-  {
-    title: "VA Home Loans",
-    href: "/loan-programs?program=va",
-    description:
-      "VA Loans offer options for veterans, service members, and their surviving spouses.",
-    icon: Shield,
-  },
+// const loanPrograms = [
+//   {
+//     title: "FHA Loans",
+//     href: "/loan-programs?program=fha",
+//     description:
+//       "FHA loans are mortgages insured by the Federal Housing Administration (FHA).",
+//     icon: HomeIcon,
+//   },
+//   {
+//     title: "VA Home Loans",
+//     href: "/loan-programs?program=va",
+//     description:
+//       "VA Loans offer options for veterans, service members, and their surviving spouses.",
+//     icon: Shield,
+//   },
  
-  {
-    title: "Jumbo Loans",
-    href: "/loan-programs?program=jumbo",
-    description: "Financing solutions for high-value properties.",
-    icon: TrendingUp,
-  },
-  {
-    title: "Refinance",
-    href: "/loan-programs?program=refinance",
-    description:
-      "Refinance and cash-out refinance loans can be beneficial for clients by potentially.",
-    icon: RefreshCw,
-  },
+//   {
+//     title: "Jumbo Loans",
+//     href: "/loan-programs?program=jumbo",
+//     description: "Financing solutions for high-value properties.",
+//     icon: TrendingUp,
+//   },
+//   {
+//     title: "Refinance",
+//     href: "/loan-programs?program=refinance",
+//     description:
+//       "Refinance and cash-out refinance loans can be beneficial for clients by potentially.",
+//     icon: RefreshCw,
+//   },
   
-  {
-    title: "USDA Loans",
-    href: "/loan-programs?program=usda",
-    description:
-      "USDA loans are designed to help low- and moderate-income individuals and families buy homes in rural areas.",
-    icon: FileTextIcon,
-  },
+//   {
+//     title: "USDA Loans",
+//     href: "/loan-programs?program=usda",
+//     description:
+//       "USDA loans are designed to help low- and moderate-income individuals and families buy homes in rural areas.",
+//     icon: FileTextIcon,
+//   },
   
-  {
-    title: "Fixed-Rate (FRM) Loans",
-    href: "/loan-programs?program=fixed-rate",
-    description: "Start with lower rates that adjust over time.",
-    icon: Activity,
-  },
-];
+//   {
+//     title: "Fixed-Rate (FRM) Loans",
+//     href: "/loan-programs?program=fixed-rate",
+//     description: "Start with lower rates that adjust over time.",
+//     icon: Activity,
+//   },
+// ];
 
 const navLinks = [
   { href: "/", label: "Home", icon: Home },
@@ -99,11 +99,11 @@ const navLinks = [
   { href: "/contact", label: "Contact", icon: Phone },
 ];
 
-const mobileLoanLinks = loanPrograms.map((p) => ({
-  href: p.href,
-  label: p.title,
-  icon: p.icon,
-}));
+// const mobileLoanLinks = loanPrograms.map((p) => ({
+//   href: p.href,
+//   label: p.title,
+//   icon: p.icon,
+// }));
 
 /* ================= LOAN PROGRAMS DROPDOWN (shadycn DropdownMenu) ================= */
 function LoanProgramsDropdown() {
@@ -115,77 +115,77 @@ function LoanProgramsDropdown() {
     setOpen(true);
   };
 
-  // small delay so the menu doesn't close when the mouse crosses the gap
-  const closeMenu = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setOpen(false), 120);
-  };
+//   // small delay so the menu doesn't close when the mouse crosses the gap
+//   const closeMenu = () => {
+//     if (closeTimer.current) clearTimeout(closeTimer.current);
+//     closeTimer.current = setTimeout(() => setOpen(false), 120);
+//   };
 
-  useEffect(() => {
-    return () => {
-      if (closeTimer.current) clearTimeout(closeTimer.current);
-    };
-  }, []);
+//   useEffect(() => {
+//     return () => {
+//       if (closeTimer.current) clearTimeout(closeTimer.current);
+//     };
+//   }, []);
 
-  return (
-    <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
-      <DropdownMenuTrigger asChild>
-        <button
-          type="button"
-          onMouseEnter={openMenu}
-          onMouseLeave={closeMenu}
-          // stops click from toggling it closed while hover has it open
-          onPointerDown={(e) => e.preventDefault()}
-          className="group flex items-center gap-1 rounded-xl px-6 py-2 text-md font-semibold text-white
-            outline-none ring-0 transition-transform duration-300
-            hover:-translate-y-1 hover:bg-white/10
-            focus:bg-transparent focus-visible:ring-0
-            data-[state=open]:bg-white/10"
-        >
-          Loan Programs
-          <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-        </button>
-      </DropdownMenuTrigger>
+//   return (
+//     <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
+//       <DropdownMenuTrigger asChild>
+//         <button
+//           type="button"
+//           onMouseEnter={openMenu}
+//           onMouseLeave={closeMenu}
+//           // stops click from toggling it closed while hover has it open
+//           onPointerDown={(e) => e.preventDefault()}
+//           className="group flex items-center gap-1 rounded-xl px-6 py-2 text-md font-semibold text-white
+//             outline-none ring-0 transition-transform duration-300
+//             hover:-translate-y-1 hover:bg-white/10
+//             focus:bg-transparent focus-visible:ring-0
+//             data-[state=open]:bg-white/10"
+//         >
+//           Loan Programs
+//           <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+//         </button>
+//       </DropdownMenuTrigger>
 
-      <DropdownMenuContent
-        align="start"
-        sideOffset={14}
-        onMouseEnter={openMenu}
-        onMouseLeave={closeMenu}
-        onCloseAutoFocus={(e) => e.preventDefault()}
-        className="w-[780px] rounded-xl border border-gray-200 bg-white p-3 shadow-2xl"
-      >
-        <div className="grid grid-cols-3 gap-1">
-          {loanPrograms.map((program) => (
-            <DropdownMenuItem
-              key={program.title}
-              asChild
-              className="cursor-pointer rounded-lg p-0 focus:bg-gray-100"
-            >
-              <Link
-                href={program.href}
-                onClick={() => setOpen(false)}
-                className="group/item flex items-start gap-3 rounded-lg p-3 text-sm"
-              >
-                <div className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md bg-[#000C1C]/10 text-[#000C1C] transition-colors group-hover/item:bg-[#000C1C] group-hover/item:text-white group-focus/item:bg-[#000C1C] group-focus/item:text-white">
-                  <program.icon className="h-4 w-4" />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <div className="font-semibold leading-none text-[#000C1C]">
-                    {program.title}
-                  </div>
-                  <div className="line-clamp-2 text-xs leading-snug text-[#000C1C]/70">
-                    {program.description}
-                  </div>
-                </div>
-              </Link>
-            </DropdownMenuItem>
-          ))}
-        </div>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-}
+//       <DropdownMenuContent
+//         align="start"
+//         sideOffset={14}
+//         onMouseEnter={openMenu}
+//         onMouseLeave={closeMenu}
+//         onCloseAutoFocus={(e) => e.preventDefault()}
+//         className="w-[780px] rounded-xl border border-gray-200 bg-white p-3 shadow-2xl"
+//       >
+//         {/* <div className="grid grid-cols-3 gap-1">
+//           {loanPrograms.map((program) => (
+//             <DropdownMenuItem
+//               key={program.title}
+//               asChild
+//               className="cursor-pointer rounded-lg p-0 focus:bg-gray-100"
+//             >
+//               <Link
+//                 href={program.href}
+//                 onClick={() => setOpen(false)}
+//                 className="group/item flex items-start gap-3 rounded-lg p-3 text-sm"
+//               >
+//                 <div className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md bg-[#000C1C]/10 text-[#000C1C] transition-colors group-hover/item:bg-[#000C1C] group-hover/item:text-white group-focus/item:bg-[#000C1C] group-focus/item:text-white">
+//                   <program.icon className="h-4 w-4" />
+//                 </div>
+//                 <div className="flex flex-col gap-1">
+//                   <div className="font-semibold leading-none text-[#000C1C]">
+//                     {program.title}
+//                   </div>
+//                   <div className="line-clamp-2 text-xs leading-snug text-[#000C1C]/70">
+//                     {program.description}
+//                   </div>
+//                 </div>
+//               </Link>
+//             </DropdownMenuItem>
+//           ))}
+//         </div> */}
+//       </DropdownMenuContent>
+//     </DropdownMenu>
+//   );
+ }
 
 export default function NavigationMenuDemo() {
   const [scrolled, setScrolled] = useState(false);
@@ -294,7 +294,7 @@ export default function NavigationMenuDemo() {
                 </Link>
               ))}
 
-              <div>
+              {/* <div>
                 <button
                   type="button"
                   onClick={() => setMobileLoanOpen(!mobileLoanOpen)}
@@ -332,7 +332,7 @@ export default function NavigationMenuDemo() {
                     ))}
                   </div>
                 )}
-              </div>
+              </div> */}
               <Button
             asChild
             className="bg-white text-[#000C1C] hover:bg-white hover:text-[#000C1C] px-6 py-3 rounded-xl font-semibold transition-transform duration-300 hover:-translate-y-1"
@@ -375,9 +375,9 @@ export default function NavigationMenuDemo() {
               </NavigationMenuItem>
 
               {/* Loan Programs (shadcn DropdownMenu) */}
-              <NavigationMenuItem className="bg-transparent">
+              {/* <NavigationMenuItem className="bg-transparent">
                 <LoanProgramsDropdown />
-              </NavigationMenuItem>
+              </NavigationMenuItem> */}
 
               {/* Construction */}
               <NavigationMenuItem className="text-white bg-transparent text-md font-semibold rounded-xl transition-transform duration-300 hover:bg-white/10 hover:-translate-y-1 px-6 py-2">
