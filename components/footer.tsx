@@ -177,17 +177,13 @@ export function Footer() {
             © Lending products are subject to credit application and approval.
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-4 text-xs">
-            <Link href="/privacy" className="hover:text-white transition">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-white transition">
-              Terms of Use
-            </Link>
-            <Link href="/licensing" className="hover:text-white transition">
+           
+           
+            <p className="hover:text-white transition">
               VA loans require a VA certificate of eligibility. not acting on
               behalf of, or at the direction of, the VA, FHA, or the Federal
               Government.
-            </Link>
+            </p>
           </div>
         </div>
       </div>
