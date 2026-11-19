@@ -135,7 +135,7 @@ export default function ContactPage() {
                   aria-label="Zillow"
                 >
                   <Image
-                    src="/zil.png"
+                    src="/z-logo.svg"
                     alt="Zillow"
                     width={24}
                     height={24}

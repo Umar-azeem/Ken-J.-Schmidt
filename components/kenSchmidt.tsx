@@ -108,10 +108,10 @@ export default function KenSchmidt() {
                 <Link 
                   target="_blank" 
                   href="https://www.zillow.com/lender-profile/ken%20schmidt12/" 
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white transition-colors"
+                  className="w-10 h-10  flex items-center justify-center  transition-colors"
                   aria-label="Zillow"
                 >
-                  <Image src="/zil.png" alt="Zillow" width={20} height={20} priority className="h-4 w-auto object-contain" />
+                  <Image src="/z-logo.svg" alt="Zillow" width={20} height={20} priority className="h-4 m-2 w-auto object-contain" />
                 </Link>
               </div>
             </div>
