@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import ConstructionLoanCalculator from "@/components/ConstructionLoanCalculator";
-import { Footer } from "@/components/footer";
 import Image from "next/image";
 
 const Icons = {

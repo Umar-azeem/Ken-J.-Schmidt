@@ -135,7 +135,7 @@ const MortgageLandingPage = () => {
                     target="_blank"
                     rel="noreferrer"
                     aria-label="Zillow"
-                    className=":w-20 h-20 rounded-full  flex items-center justify-center hover:bg-gray-100 transition shrink-0"
+                    className=":w-20 h-10 rounded-full  flex items-center justify-center hover:bg-gray-100 transition shrink-0"
                   >
                    <Image
                     src="/img/z-logo.svg"
