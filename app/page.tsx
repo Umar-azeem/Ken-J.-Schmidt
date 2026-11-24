@@ -15,7 +15,6 @@ import Education from "@/components/Education";
 import CreditBuild from "@/components/CreditBuild";
 import FAQ from "@/components/FAQ";
 
-// import MortgageLandingPage from "@/components/MortgageLandingPage";
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);

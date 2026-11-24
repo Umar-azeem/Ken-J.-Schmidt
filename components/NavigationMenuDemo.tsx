@@ -89,6 +89,7 @@ const navLinks = [
   { href: "/kenSchmidt", label: "About", icon: Info },
   { href: "/construction", label: "Construction", icon: UserSearch },
   { href: "/physician-mortgage", label: "Physician Mortgage", icon: Loader },
+  { href: "/Loan-Process", label: "Loan Process", icon: HomeIcon },
   { href: "/contact", label: "Contact", icon: Phone },
 ];
 
@@ -127,13 +128,13 @@ function LoanProgramsDropdown() {
           onMouseEnter={openMenu}
           onMouseLeave={closeMenu}
           onPointerDown={(e) => e.preventDefault()}
-          className="group flex items-center gap-1 rounded-xl px-6 py-2 text-md font-semibold text-white
+          className="group flex items-center gap-1 rounded-xl px-2 py-2 text-md font-semibold text-white
             outline-none ring-0 transition-transform duration-300
             hover:-translate-y-1 hover:bg-white/10
             focus:bg-transparent focus-visible:ring-0
             data-[state=open]:bg-white/10"
         >
-          Loan Programs
+          Loan Programs 
           <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
         </button>
       </DropdownMenuTrigger>
@@ -324,7 +325,7 @@ export default function NavigationMenuDemo() {
               </div>
               <Button
                 asChild
-                className="bg-white text-[#000C1C] hover:bg-white hover:text-[#000C1C] px-6 py-3 rounded-xl font-semibold transition-transform duration-300 hover:-translate-y-1"
+                className="bg-white text-[#000C1C] hover:bg-white hover:text-[#000C1C] px-2 py-3 rounded-xl font-semibold transition-transform duration-300 hover:-translate-y-1"
               >
                 <Link
                   href="https://start.huntington.com/signup?referrerId=ken.j.schmidt@huntington.com"
@@ -355,7 +356,7 @@ export default function NavigationMenuDemo() {
           <NavigationMenu viewport={false}>
             <NavigationMenuList className="gap-1">
               {/* About */}
-              <NavigationMenuItem className="text-white bg-transparent text-md font-semibold rounded-xl transition-transform duration-300 hover:bg-white/10 hover:-translate-y-1 px-6 py-2">
+              <NavigationMenuItem className="text-white bg-transparent text-md font-semibold rounded-xl transition-transform duration-300 hover:bg-white/10 hover:-translate-y-1 px-2 py-2">
                 <NavigationMenuLink asChild>
                   <Link
                     href="/kenSchmidt"
@@ -369,9 +370,20 @@ export default function NavigationMenuDemo() {
               <NavigationMenuItem className="bg-transparent">
                 <LoanProgramsDropdown />
               </NavigationMenuItem>
+              <NavigationMenuItem className="text-white bg-transparent text-md font-semibold rounded-xl transition-transform duration-300 hover:bg-white/10 hover:-translate-y-1 px-2 py-1.5">
+                <NavigationMenuLink asChild>
+                  <Link
+                    href="/Loan-Process"
+                    className="focus:bg-transparent hover:bg-transparent"
+                  >
+                    Loan Process
+                 
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
 
               {/* Construction */}
-              <NavigationMenuItem className="text-white bg-transparent text-md font-semibold rounded-xl transition-transform duration-300 hover:bg-white/10 hover:-translate-y-1 px-6 py-2">
+              <NavigationMenuItem className="text-white bg-transparent text-md font-semibold rounded-xl transition-transform duration-300 hover:bg-white/10 hover:-translate-y-1 px-2 py-2">
                 <NavigationMenuLink asChild>
                   <Link
                     href="/construction"
@@ -383,7 +395,7 @@ export default function NavigationMenuDemo() {
               </NavigationMenuItem>
 
               {/* Physician Mortgage */}
-              <NavigationMenuItem className="text-white bg-transparent text-md font-semibold rounded-xl transition-transform duration-300 hover:bg-white/10 hover:-translate-y-1 px-6 py-2">
+              <NavigationMenuItem className="text-white bg-transparent text-md font-semibold rounded-xl transition-transform duration-300 hover:bg-white/10 hover:-translate-y-1 px-2 py-2">
                 <NavigationMenuLink asChild>
                   <Link
                     href="/physician-mortgage"
@@ -393,9 +405,10 @@ export default function NavigationMenuDemo() {
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
+              
 
               {/* Contact Us */}
-              <NavigationMenuItem className="text-white bg-transparent text-md font-semibold rounded-xl transition-transform duration-300 hover:bg-white/10 hover:-translate-y-1 px-6 py-2">
+              <NavigationMenuItem className="text-white bg-transparent text-md font-semibold rounded-xl transition-transform duration-300 hover:bg-white/10 hover:-translate-y-1 px-2 py-2">
                 <NavigationMenuLink asChild>
                   <Link
                     href="/contact"
@@ -420,7 +433,7 @@ export default function NavigationMenuDemo() {
 
           <Button
             asChild
-            className="bg-white text-[#000C1C] hover:bg-white hover:text-[#000C1C] px-6 py-3 rounded-xl font-semibold transition-transform duration-300 hover:-translate-y-1"
+            className="bg-white text-[#000C1C] hover:bg-white hover:text-[#000C1C] px-2 py-3 rounded-xl font-semibold transition-transform duration-300 hover:-translate-y-1"
           >
             <Link
               href="https://start.huntington.com/signup?referrerId=ken.j.schmidt@huntington.com"
