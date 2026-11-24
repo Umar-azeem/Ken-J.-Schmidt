@@ -207,21 +207,7 @@ export function Footer() {
   </div>
 </div>
         {/* Legal and Copyright */}
-        <div className="border-t border-blue-400 pt-8 text-center text-blue-100">
-          <p className="text-sm mb-2"></p>
-          <p className="text-xs">
-            © Lending products are subject to credit application and approval.
-          </p>
-          <div className="mt-4 flex flex-wrap justify-center gap-4 text-xs">
-           
-           
-            <p className="hover:text-white transition">
-              VA loans require a VA certificate of eligibility. not acting on
-              behalf of, or at the direction of, the VA, FHA, or the Federal
-              Government.
-            </p>
-          </div>
-        </div>
+       
       </div>
     </footer>
   );

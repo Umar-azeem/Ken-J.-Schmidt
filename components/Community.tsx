@@ -22,7 +22,7 @@ export default function Community() {
 
           <Link href="/kenSchmidt">
             {" "}
-            <button className="bg-[#1470AF] w-full sm:w-auto flex items-center justify-center gap-3 text-white px-6 py-4 rounded-xl font-bold transition transform duration-300 hover:-translate-y-1">
+            <button className="bg-[#000C1C] w-full sm:w-auto flex items-center justify-center gap-3 text-white px-6 py-4 rounded-xl font-bold transition transform duration-300 hover:-translate-y-1">
               MORE ABOUT KEN j.
             </button>
           </Link>

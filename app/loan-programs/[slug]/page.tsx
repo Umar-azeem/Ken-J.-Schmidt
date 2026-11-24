@@ -145,28 +145,7 @@ export default function LoanProgramDetailPage({
             )}
 
             {/* Testimonials */}
-            {program.testimonials && program.testimonials.length > 0 && (
-              <div className="mt-6 bg-gray-50 p-6 rounded-lg border border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  What Our Clients Say
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {program.testimonials.slice(0, 2).map((testimonial, idx) => (
-                    <div
-                      key={idx}
-                      className="bg-white p-4 rounded-lg border border-gray-200"
-                    >
-                      <p className="text-gray-700 italic">
-                        "{testimonial.text}"
-                      </p>
-                      <p className="text-sm font-semibold text-gray-900 mt-2">
-                        - {testimonial.name}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+           
 
             {/* FAQs */}
             {program.faqs && program.faqs.length > 0 && (
@@ -199,18 +178,12 @@ export default function LoanProgramDetailPage({
             <div className="mt-8 flex flex-wrap gap-4 border-t border-gray-200 pt-8">
               <Link
                 href={program.ctaLink || "/contact"}
-                className="inline-flex items-center px-6 py-3 bg-[#1470AF] hover:bg-[#004d26] text-white font-semibold rounded-lg transition"
+                className="inline-flex items-center px-6 py-3 bg-[#000C1C] hover:bg-[#042146] text-white font-semibold rounded-lg transition"
               >
                 {program.ctaText || "Get Started"}
                 <Icons.ArrowRight className="ml-2 w-4 h-4" />
               </Link>
-              <Link
-                href="/tools"
-                className="inline-flex items-center px-6 py-3 border border-gray-300 hover:bg-gray-50 text-gray-800 font-semibold rounded-lg transition"
-              >
-                Calculate Payments
-                <Icons.Calculator className="ml-2 w-4 h-4" />
-              </Link>
+              
             </div>
           </div>
         </div>

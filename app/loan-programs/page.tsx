@@ -90,10 +90,10 @@ function LoanProgramsContent() {
           </button>
 
           <div className="flex items-start gap-4 mb-6">
-            <div className="p-3 bg-[#1470AF]/10 rounded-full">
+            <div className="p-3 bg-[#000C1C]/10 rounded-full">
               {(() => {
                 const Icon = getIconComponent(selectedProgram.icon);
-                return <Icon className="w-8 h-8 text-[#1470AF]" />;
+                return <Icon className="w-8 h-8 text-[#000C1C]" />;
               })()}
             </div>
             <div>
@@ -126,52 +126,8 @@ function LoanProgramsContent() {
                           key={idx}
                           className="flex items-start gap-2 text-gray-700"
                         >
-                          <Icons.CheckCircle className="w-5 h-5 text-[#1470AF] flex-shrink-0 mt-0.5" />
+                          <Icons.CheckCircle className="w-5 h-5 text-[#000C1C] flex-shrink-0 mt-0.5" />
                           <span>{benefit}</span>
-                        </li>
-                      ),
-                    )}
-                  </ul>
-                </div>
-              )}
-
-            {/* Features */}
-            {selectedProgram.features &&
-              selectedProgram.features.length > 0 && (
-                <div className="mt-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                    Features
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {selectedProgram.features.map(
-                      (feature: string, idx: number) => (
-                        <div
-                          key={idx}
-                          className="bg-gray-50 p-3 rounded-lg border border-gray-200"
-                        >
-                          <span className="text-gray-700">{feature}</span>
-                        </div>
-                      ),
-                    )}
-                  </div>
-                </div>
-              )}
-
-            {/* Ideal For */}
-            {selectedProgram.idealFor &&
-              selectedProgram.idealFor.length > 0 && (
-                <div className="mt-6 p-4 bg-[#F0F7F3] rounded-lg border border-[#1470AF]/20">
-                  <h3 className="text-md font-semibold text-[#1470AF] mb-3">
-                    Who This Loan Is For
-                  </h3>
-                  <ul className="flex flex-wrap gap-2 list-none p-0">
-                    {selectedProgram.idealFor.map(
-                      (item: string, idx: number) => (
-                        <li
-                          key={idx}
-                          className="bg-white px-4 py-2 rounded-full text-sm text-gray-700 border border-gray-200"
-                        >
-                          {item}
                         </li>
                       ),
                     )}
@@ -188,7 +144,7 @@ function LoanProgramsContent() {
                 <div className="space-y-4">
                   {selectedProgram.steps.map((step) => (
                     <div key={step.step} className="flex gap-4 items-start">
-                      <div className="flex-shrink-0 w-8 h-8 bg-[#1470AF] text-white rounded-full flex items-center justify-center font-bold text-sm">
+                      <div className="flex-shrink-0 w-8 h-8 bg-[#000C1C] text-white rounded-full flex items-center justify-center font-bold text-sm">
                         {step.step}
                       </div>
                       <div>
@@ -206,31 +162,6 @@ function LoanProgramsContent() {
             )}
 
             {/* Testimonials */}
-            {selectedProgram.testimonials &&
-              selectedProgram.testimonials.length > 0 && (
-                <div className="mt-6 bg-gray-50 p-6 rounded-lg border border-gray-200">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                    What Our Clients Say
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {selectedProgram.testimonials
-                      .slice(0, 2)
-                      .map((testimonial, idx) => (
-                        <div
-                          key={idx}
-                          className="bg-white p-4 rounded-lg border border-gray-200"
-                        >
-                          <p className="text-gray-700 italic">
-                            "{testimonial.text}"
-                          </p>
-                          <p className="text-sm font-semibold text-gray-900 mt-2">
-                            - {testimonial.name}
-                          </p>
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              )}
 
             {/* FAQs */}
             {selectedProgram.faqs && selectedProgram.faqs.length > 0 && (
@@ -262,13 +193,12 @@ function LoanProgramsContent() {
             {/* CTA */}
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href={selectedProgram.ctaLink || "/contact-us"}
-                className="inline-flex items-center px-6 py-3 bg-[#1470AF] hover:bg-[#004d26] text-white font-semibold rounded-lg transition"
+                href={selectedProgram.ctaLink || "/contact"}
+                className="inline-flex items-center px-6 py-3 bg-[#000C1C] hover:bg-[#00204b] text-white font-semibold rounded-lg transition"
               >
                 {selectedProgram.ctaText || "Get Started"}
                 <Icons.ArrowRight className="ml-2 w-4 h-4" />
               </Link>
-             
             </div>
           </div>
         </div>

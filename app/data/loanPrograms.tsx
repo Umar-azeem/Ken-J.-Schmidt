@@ -105,7 +105,7 @@ export const loanPrograms: LoanProgram[] = [
       },
     ],
     ctaText: "Get Your Personalized Rate",
-    ctaLink: "/contact-us",
+    ctaLink: "/contact",
   },
   {
     id: "va",
@@ -184,7 +184,7 @@ export const loanPrograms: LoanProgram[] = [
       },
     ],
     ctaText: "Get Your Personalized Rate",
-    ctaLink: "/contact-us",
+    ctaLink: "/contact",
   },
   {
     id: "dpa",
@@ -341,7 +341,7 @@ export const loanPrograms: LoanProgram[] = [
       },
     ],
     ctaText: "Get Your Personalized Rate",
-    ctaLink: "/contact-us",
+    ctaLink: "/contact",
   },
   {
     id: "refinance",
@@ -419,7 +419,7 @@ export const loanPrograms: LoanProgram[] = [
       },
     ],
     ctaText: "Get Your Personalized Rate",
-    ctaLink: "/contact-us",
+    ctaLink: "/contact",
   },
   {
     id: "cash-out-refinance",
@@ -498,7 +498,7 @@ export const loanPrograms: LoanProgram[] = [
       },
     ],
     ctaText: "Get Your Personalized Rate",
-    ctaLink: "/contact-us",
+    ctaLink: "/contact",
   },
   {
     id: "non-qm",
@@ -577,7 +577,7 @@ export const loanPrograms: LoanProgram[] = [
       },
     ],
     ctaText: "Get Your Personalized Rate",
-    ctaLink: "/contact-us",
+    ctaLink: "/contact",
   },
   {
     id: "rehab",
@@ -813,7 +813,7 @@ export const loanPrograms: LoanProgram[] = [
       },
     ],
     ctaText: "Get Your Personalized Rate",
-    ctaLink: "/contact-us",
+    ctaLink: "/contact",
   },
   {
     id: "fixed-rate",
@@ -892,6 +892,6 @@ export const loanPrograms: LoanProgram[] = [
       },
     ],
     ctaText: "Get Your Personalized Rate",
-    ctaLink: "/contact-us",
+    ctaLink: "/contact",
   },
 ];

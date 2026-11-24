@@ -209,46 +209,6 @@ export default function PhysicianMortgagePage() {
           </p>
         </div>
       </section>
-
-      {/* ================= BENEFITS ================= */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14 max-w-3xl mx-auto">
-            <span className="inline-block rounded-full bg-[#236193]/10 px-4 py-1 text-sm font-semibold text-[#236193]">
-              BENEFITS
-            </span>
-            <h2 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900">
-              Benefits of Physician Mortgage Loans
-            </h2>
-            <p className="mt-4 text-lg text-slate-600">
-              Physician mortgage programs offer several potential advantages
-              compared with traditional mortgage financing. Lenders offering
-              physician mortgage programs generally provide specialized
-              financing features that may include:
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {benefits.map((b, i) => (
-              <div
-                key={i}
-                className="group bg-white rounded-2xl p-7 shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#236193]/10 mb-5 group-hover:bg-[#236193] transition-colors">
-                  <b.icon className="h-6 w-6 text-[#236193] group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-3">
-                  {b.title}
-                </h3>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  {b.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ================= WHO MAY QUALIFY ================= */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
